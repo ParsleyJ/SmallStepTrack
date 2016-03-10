@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="b582a259-aeb1-41a6-a404-45cce28f0aa3" name="Default" comment="" />
+    <ignored path="SmallStepTrack.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="SmallStepTrack" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.66009104">
+              <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Rule.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Condition.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Judjement.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/ConfigurationElement.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Semantics.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/Reference.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/OperatorSymbol.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/Numeral.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/Parenthesis.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/SyntaxSymbol.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/Program.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/KeyWord.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/IntegerExpression.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/BooleanExpression.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Numeral.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Variable.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SequentialComposition.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/WhileCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/IfThenElseCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Skip.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/True.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/False.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command/IfThenElseCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Store.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Subtraction.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Program.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Multiplication.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/GreaterIntegerComparison.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command/SequentialComposition.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command/WhileCommand.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command/Command.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Assignment.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/BooleanExpression/False.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command/Assignment.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Assignment.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Numeral.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/GreaterIntegerComparison.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/LessIntegerComparison.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Addition.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SemanticObject.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/False.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="873" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages ProjectPane="false" />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parsleyj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smallsteptrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parsleyj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smallsteptrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="integerexpr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parsleyj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smallsteptrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="command" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SmallStepTrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parsleyj" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="smallsteptrack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="booleanexpr" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file:///Users/Giuseppe/GitHub/SmallStepTrack/src/com/parsleyj/smallsteptrack/Main.java" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr" />
+      <recent name="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Command" />
+      <recent name="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/BooleanExpression" />
+      <recent name="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack" />
+      <recent name="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/main" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.parsleyj.smallsteptrack.booleanexpr" />
+      <recent name="com.parsleyj.smallsteptrack.integerexpr" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.parsleyj.smallsteptrack.main" />
+      <recent name="com.parsleyj.smallsteptrack" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="com.parsleyj.smallsteptrack.Main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SmallStepTrack" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
+      <module name="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="myFilePath" />
+      <option name="GLUE" />
+      <option name="myNameFilter" />
+      <option name="myGeneratedName" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
+      <option name="BCName" value="" />
+      <option name="IOSSimulatorSdkPath" value="" />
+      <option name="adlOptions" value="" />
+      <option name="airProgramParameters" value="" />
+      <option name="appDescriptorForEmulator" value="Android" />
+      <option name="debugTransport" value="USB" />
+      <option name="debuggerSdkRaw" value="BC SDK" />
+      <option name="emulator" value="NexusOne" />
+      <option name="emulatorAdlOptions" value="" />
+      <option name="fastPackaging" value="true" />
+      <option name="fullScreenHeight" value="0" />
+      <option name="fullScreenWidth" value="0" />
+      <option name="launchUrl" value="false" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="mobileRunTarget" value="Emulator" />
+      <option name="moduleName" value="" />
+      <option name="overriddenMainClass" value="" />
+      <option name="overriddenOutputFileName" value="" />
+      <option name="overrideMainClass" value="false" />
+      <option name="runTrusted" value="true" />
+      <option name="screenDpi" value="0" />
+      <option name="screenHeight" value="0" />
+      <option name="screenWidth" value="0" />
+      <option name="url" value="http://" />
+      <option name="usbDebugPort" value="7936" />
+      <method />
+    </configuration>
+    <configuration default="true" type="FlexUnitRunConfigurationType" factoryName="FlexUnit" appDescriptorForEmulator="Android" class_name="" emulatorAdlOptions="" method_name="" package_name="" scope="Class">
+      <option name="BCName" value="" />
+      <option name="launcherParameters">
+        <LauncherParameters>
+          <option name="browser" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
+          <option name="launcherType" value="OSDefault" />
+          <option name="newPlayerInstance" value="false" />
+          <option name="playerPath" value="/Applications/Flash Player Debugger.app" />
+        </LauncherParameters>
+      </option>
+      <option name="moduleName" value="" />
+      <option name="trusted" value="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <module name="" />
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="depsClasspath" value="false" />
+      <setting name="passParentEnv" value="true" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <setting name="launchBrowser" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnitTestDiscovery" factoryName="JUnit Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SCRATCH_FILE_ID" value="0" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="SmallStepTrack" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNGTestDiscovery" factoryName="TestNG Test Discovery" changeList="All">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Run Launcher">
+      <method />
+    </configuration>
+    <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>$USER_HOME$/.subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b582a259-aeb1-41a6-a404-45cce28f0aa3" name="Default" comment="" />
+      <created>1457546843637</created>
+      <option name="number" value="Default" />
+      <updated>1457546843637</updated>
+      <workItem from="1457546845296" duration="1845000" />
+      <workItem from="1457553931497" duration="12343000" />
+      <workItem from="1457566691546" duration="650000" />
+      <workItem from="1457604731977" duration="1508000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="16346000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="873" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17602997" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SemanticObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <marker date="1457566618000" expanded="true" signature="38:81" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SemanticObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding>
+            <marker date="1457566618000" expanded="true" signature="38:81" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/BooleanExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13536379">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="57:142" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="144:187" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13536379">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="248:259" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="276:282" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="311:322" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="334:340" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="398:409" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="442:448" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="495:506" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="519:525" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="573:584" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="596:602" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="654:665" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="677:683" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="727:738" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="750:756" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Skip.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13536379">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="46:87" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="89:132" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="219:230" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="242:248" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="295:306" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="318:324" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="372:383" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="395:401" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="453:464" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="476:482" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="526:537" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="551:557" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Store.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1895093">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="123:166" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="290:301" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="318:324" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="358:369" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="390:396" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="431:442" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="472:478" placeholder=" }" />
+            <marker date="1457565120000" expanded="true" signature="523:708" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Subtraction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13536379">
+          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="337:384" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="443:862" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="909:920" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="933:939" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="987:998" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1010:1016" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1068:1079" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1091:1097" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1141:1152" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1173:1179" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/WhileCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1895093">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="53:153" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="391:458" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="507:722" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="769:780" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="793:799" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="847:858" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="870:876" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="928:939" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="951:957" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1001:1012" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1055:1061" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1895093">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="53:138" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="140:183" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40439934">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="53:210" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="212:255" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="426:473" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="522:775" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="822:833" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="846:852" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="900:911" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="923:929" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="981:992" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1004:1010" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1054:1065" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1087:1093" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Numeral.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7309645">
+          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="234:245" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="256:262" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="320:331" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="343:349" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="396:407" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="419:425" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="473:484" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="493:499" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="551:562" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="574:580" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="624:635" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="649:655" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/IfThenElseCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67681897">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="53:153" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="456:557" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="606:898" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="945:956" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="969:975" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1023:1034" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1046:1052" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1104:1115" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1127:1133" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1177:1188" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1252:1258" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Multiplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1895093">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="331:378" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="437:862" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="909:920" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="933:939" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="987:998" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1010:1016" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1068:1079" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1091:1097" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1141:1152" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1173:1179" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/LessIntegerComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.893401">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <folding>
+            <marker date="1457565662000" expanded="false" signature="57:157" placeholder="..." />
+            <marker date="1457565662000" expanded="true" signature="159:202" placeholder="/**...*/" />
+            <marker date="1457565662000" expanded="true" signature="423:470" placeholder="{...}" />
+            <marker date="1457565662000" expanded="true" signature="529:991" placeholder="{...}" />
+            <marker date="1457565662000" expanded="false" signature="1038:1049" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1062:1068" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1116:1127" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1139:1145" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1197:1208" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1220:1226" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1270:1281" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1302:1308" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Addition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1099831">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <marker date="1457565662000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565662000" expanded="true" signature="319:366" placeholder="{...}" />
+            <marker date="1457565662000" expanded="true" signature="425:838" placeholder="{...}" />
+            <marker date="1457565662000" expanded="false" signature="885:896" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="909:915" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="963:974" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="986:992" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1044:1055" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1067:1073" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1117:1128" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1149:1155" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Program.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5397631">
+          <caret line="22" column="30" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="30" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="91:134" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="211:222" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="233:239" placeholder=" }" />
+            <marker date="1457565120000" expanded="true" signature="245:405" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="443:591" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="635:646" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="671:677" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/False.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12139606">
+          <caret line="5" column="33" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
+          <folding>
+            <marker date="1457606269000" expanded="true" signature="93:134" placeholder="/**...*/" />
+            <marker date="1457606269000" expanded="false" signature="242:253" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="265:271" placeholder=" }" />
+            <marker date="1457606269000" expanded="false" signature="318:329" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="341:347" placeholder=" }" />
+            <marker date="1457606269000" expanded="false" signature="395:406" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="418:424" placeholder=" }" />
+            <marker date="1457606269000" expanded="false" signature="476:487" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="500:506" placeholder=" }" />
+            <marker date="1457606269000" expanded="false" signature="550:561" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="576:582" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/GreaterIntegerComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12139606">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="57:157" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="159:202" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="429:476" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="535:1003" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="1050:1061" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1074:1080" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1128:1139" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1151:1157" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1209:1220" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1232:1238" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1282:1293" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1314:1320" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/True.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12139606">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="false" signature="243:254" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="266:272" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="319:330" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="342:348" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="396:407" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="419:425" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="477:488" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="500:506" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="550:561" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="575:581" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/SequentialComposition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.64339906">
+          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="46:87" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="89:132" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="303:350" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="399:715" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="762:773" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="786:792" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="840:851" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="863:869" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="921:932" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="944:950" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="994:1005" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1037:1043" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SemanticObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12139606">
+          <caret line="5" column="31" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="31" />
+          <folding>
+            <marker date="1457566618000" expanded="true" signature="38:81" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/IntegerExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09711684">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="57:142" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="144:187" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66009104">
+          <caret line="61" column="17" selection-start-line="61" selection-start-column="17" selection-end-line="61" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>SmallStepTrack</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
