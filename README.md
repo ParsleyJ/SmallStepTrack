@@ -3,6 +3,8 @@
 
 Download the [.jar](https://github.com/ParsleyJ/SmallStepTrack/raw/master/out/artifacts/SmallStepTrack_jar/SmallStepTrack.jar)
 
+Launch it with `java -jar SmallStepTrack.jar`
+
 This program prints the execution track of a factorial program example written in the _While_ language, with `x` set to `3` in the Store.
 
 ```java
