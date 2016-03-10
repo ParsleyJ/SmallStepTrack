@@ -28,12 +28,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java">
+      <file leaf-file-name="SequentialComposition.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/SequentialComposition.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8300455">
-              <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-              <folding />
+            <state vertical-scroll-proportion="0.7040971">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <folding>
+                <marker date="1457609388000" expanded="false" signature="46:87" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -101,6 +103,7 @@
         <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/SemanticObject.java" />
         <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java" />
         <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/False.java" />
+        <option value="$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/SequentialComposition.java" />
       </list>
     </option>
   </component>
@@ -770,12 +773,12 @@
       <workItem from="1457546845296" duration="1845000" />
       <workItem from="1457553931497" duration="12343000" />
       <workItem from="1457566691546" duration="650000" />
-      <workItem from="1457604731977" duration="2335000" />
+      <workItem from="1457604731977" duration="4301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17173000" />
+    <option name="totallyTimeSpent" value="19139000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="873" extended-state="6" />
@@ -788,7 +791,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17602997" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17602997" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.175" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -842,17 +845,6 @@
           <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
           <folding>
             <marker date="1457566618000" expanded="true" signature="38:81" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/BooleanExpression.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13536379">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-          <folding>
-            <marker date="1457565120000" expanded="false" signature="57:142" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="144:187" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -939,27 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/WhileCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1895093">
-          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <marker date="1457565120000" expanded="false" signature="53:153" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
-            <marker date="1457565120000" expanded="true" signature="391:458" placeholder="{...}" />
-            <marker date="1457565120000" expanded="true" signature="507:722" placeholder="{...}" />
-            <marker date="1457565120000" expanded="false" signature="769:780" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="793:799" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="847:858" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="870:876" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="928:939" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="951:957" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1001:1012" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1055:1061" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Command.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1895093">
@@ -967,27 +938,6 @@
           <folding>
             <marker date="1457565120000" expanded="false" signature="53:138" placeholder="..." />
             <marker date="1457565120000" expanded="true" signature="140:183" placeholder="/**...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Assignment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40439934">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-          <folding>
-            <marker date="1457565120000" expanded="false" signature="53:210" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="212:255" placeholder="/**...*/" />
-            <marker date="1457565120000" expanded="true" signature="426:473" placeholder="{...}" />
-            <marker date="1457565120000" expanded="true" signature="522:775" placeholder="{...}" />
-            <marker date="1457565120000" expanded="false" signature="822:833" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="846:852" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="900:911" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="923:929" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="981:992" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1004:1010" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1054:1065" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1087:1093" placeholder=" }" />
           </folding>
         </state>
       </provider>
@@ -1014,27 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/IfThenElseCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.67681897">
-          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding>
-            <marker date="1457565120000" expanded="true" signature="53:153" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
-            <marker date="1457565120000" expanded="true" signature="456:557" placeholder="{...}" />
-            <marker date="1457565120000" expanded="true" signature="606:898" placeholder="{...}" />
-            <marker date="1457565120000" expanded="false" signature="945:956" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="969:975" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1023:1034" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1046:1052" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1104:1115" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1127:1133" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1177:1188" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1252:1258" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Multiplication.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1895093">
@@ -1051,47 +980,6 @@
             <marker date="1457565120000" expanded="false" signature="1091:1097" placeholder=" }" />
             <marker date="1457565120000" expanded="false" signature="1141:1152" placeholder=" { " />
             <marker date="1457565120000" expanded="false" signature="1173:1179" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/LessIntegerComparison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.893401">
-          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
-          <folding>
-            <marker date="1457565662000" expanded="false" signature="57:157" placeholder="..." />
-            <marker date="1457565662000" expanded="true" signature="159:202" placeholder="/**...*/" />
-            <marker date="1457565662000" expanded="true" signature="423:470" placeholder="{...}" />
-            <marker date="1457565662000" expanded="true" signature="529:991" placeholder="{...}" />
-            <marker date="1457565662000" expanded="false" signature="1038:1049" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1062:1068" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="1116:1127" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1139:1145" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="1197:1208" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1220:1226" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="1270:1281" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1302:1308" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Addition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1099831">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding>
-            <marker date="1457565662000" expanded="true" signature="93:136" placeholder="/**...*/" />
-            <marker date="1457565662000" expanded="true" signature="319:366" placeholder="{...}" />
-            <marker date="1457565662000" expanded="true" signature="425:838" placeholder="{...}" />
-            <marker date="1457565662000" expanded="false" signature="885:896" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="909:915" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="963:974" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="986:992" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="1044:1055" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1067:1073" placeholder=" }" />
-            <marker date="1457565662000" expanded="false" signature="1117:1128" placeholder=" { " />
-            <marker date="1457565662000" expanded="false" signature="1149:1155" placeholder=" }" />
           </folding>
         </state>
       </provider>
@@ -1132,27 +1020,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/GreaterIntegerComparison.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12139606">
-          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="35" />
-          <folding>
-            <marker date="1457565120000" expanded="false" signature="57:157" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="159:202" placeholder="/**...*/" />
-            <marker date="1457565120000" expanded="true" signature="429:476" placeholder="{...}" />
-            <marker date="1457565120000" expanded="true" signature="535:1003" placeholder="{...}" />
-            <marker date="1457565120000" expanded="false" signature="1050:1061" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1074:1080" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1128:1139" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1151:1157" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1209:1220" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1232:1238" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="1282:1293" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1314:1320" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/True.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12139606">
@@ -1169,27 +1036,6 @@
             <marker date="1457565120000" expanded="false" signature="500:506" placeholder=" }" />
             <marker date="1457565120000" expanded="false" signature="550:561" placeholder=" { " />
             <marker date="1457565120000" expanded="false" signature="575:581" placeholder=" }" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/SequentialComposition.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64339906">
-          <caret line="30" column="13" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
-          <folding>
-            <marker date="1457565120000" expanded="false" signature="46:87" placeholder="..." />
-            <marker date="1457565120000" expanded="true" signature="89:132" placeholder="/**...*/" />
-            <marker date="1457565120000" expanded="true" signature="303:350" placeholder="{...}" />
-            <marker date="1457565120000" expanded="true" signature="399:715" placeholder="{...}" />
-            <marker date="1457565120000" expanded="false" signature="762:773" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="786:792" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="840:851" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="863:869" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="921:932" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="944:950" placeholder=" }" />
-            <marker date="1457565120000" expanded="false" signature="994:1005" placeholder=" { " />
-            <marker date="1457565120000" expanded="false" signature="1037:1043" placeholder=" }" />
           </folding>
         </state>
       </provider>
@@ -1217,9 +1063,165 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8300455">
-          <caret line="70" column="36" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
-          <folding />
+        <state vertical-scroll-proportion="0.70864946">
+          <caret line="72" column="9" selection-start-line="64" selection-start-column="7" selection-end-line="72" selection-end-column="9" />
+          <folding>
+            <marker date="1457606269000" expanded="false" signature="45:576" placeholder="..." />
+            <marker date="1457606269000" expanded="true" signature="686:738" placeholder="/**...*/" />
+            <marker date="1457606269000" expanded="false" signature="782:792" placeholder=" { " />
+            <marker date="1457606269000" expanded="false" signature="845:851" placeholder=" }" />
+            <marker date="1457606269000" expanded="true" signature="857:944" placeholder="/**...*/" />
+            <marker date="1457606269000" expanded="true" signature="980:1081" placeholder="{...}" />
+            <marker date="1457606269000" expanded="true" signature="1087:1147" placeholder="/**...*/" />
+            <marker date="1457606269000" expanded="true" signature="1189:1248" placeholder="{...}" />
+            <marker date="1457606269000" expanded="true" signature="1294:2445" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/BooleanExpression.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09711684">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="57:142" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="144:187" placeholder="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/LessIntegerComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1168437">
+          <caret line="53" column="22" selection-start-line="53" selection-start-column="22" selection-end-line="53" selection-end-column="22" />
+          <folding>
+            <marker date="1457565662000" expanded="false" signature="57:157" placeholder="..." />
+            <marker date="1457565662000" expanded="true" signature="159:202" placeholder="/**...*/" />
+            <marker date="1457565662000" expanded="true" signature="423:470" placeholder="{...}" />
+            <marker date="1457565662000" expanded="true" signature="529:991" placeholder="{...}" />
+            <marker date="1457565662000" expanded="false" signature="1038:1049" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1062:1068" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1116:1127" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1139:1145" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1197:1208" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1220:1226" placeholder=" }" />
+            <marker date="1457565662000" expanded="true" signature="1270:1281" placeholder=" { " />
+            <marker date="1457565662000" expanded="true" signature="1302:1308" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/booleanexpr/GreaterIntegerComparison.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12139606">
+          <caret line="6" column="3" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="35" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="57:157" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="159:202" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="429:476" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="535:1003" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="1050:1061" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1074:1080" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1128:1139" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1151:1157" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1209:1220" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1232:1238" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1282:1293" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1314:1320" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/integerexpr/Addition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9514416">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <marker date="1457565662000" expanded="true" signature="93:136" placeholder="/**...*/" />
+            <marker date="1457565662000" expanded="true" signature="319:366" placeholder="{...}" />
+            <marker date="1457565662000" expanded="true" signature="425:838" placeholder="{...}" />
+            <marker date="1457565662000" expanded="false" signature="885:896" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="909:915" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="963:974" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="986:992" placeholder=" }" />
+            <marker date="1457565662000" expanded="false" signature="1044:1055" placeholder=" { " />
+            <marker date="1457565662000" expanded="false" signature="1067:1073" placeholder=" }" />
+            <marker date="1457565662000" expanded="true" signature="1117:1128" placeholder=" { " />
+            <marker date="1457565662000" expanded="true" signature="1149:1155" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/IfThenElseCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60698026">
+          <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
+          <folding>
+            <marker date="1457565120000" expanded="true" signature="53:153" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="456:557" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="606:898" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="945:956" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="969:975" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1023:1034" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1046:1052" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1104:1115" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1127:1133" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1177:1188" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1252:1258" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/Assignment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.46585736">
+          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="53:210" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="212:255" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="426:473" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="522:775" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="822:833" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="846:852" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="900:911" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="923:929" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="981:992" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1004:1010" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1054:1065" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1087:1093" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/WhileCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18968134">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
+          <folding>
+            <marker date="1457565120000" expanded="false" signature="53:153" placeholder="..." />
+            <marker date="1457565120000" expanded="true" signature="155:198" placeholder="/**...*/" />
+            <marker date="1457565120000" expanded="true" signature="391:458" placeholder="{...}" />
+            <marker date="1457565120000" expanded="true" signature="507:722" placeholder="{...}" />
+            <marker date="1457565120000" expanded="false" signature="769:780" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="793:799" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="847:858" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="870:876" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="928:939" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="951:957" placeholder=" }" />
+            <marker date="1457565120000" expanded="false" signature="1001:1012" placeholder=" { " />
+            <marker date="1457565120000" expanded="false" signature="1055:1061" placeholder=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/parsleyj/smallsteptrack/command/SequentialComposition.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7040971">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <marker date="1457609388000" expanded="false" signature="46:87" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>

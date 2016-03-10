@@ -16,15 +16,16 @@ public class SequentialComposition implements Command {
 
     @Override
     public Command step(Store x) {
-        if (!a.isTerminal()) {
-            Command a1 = a.step(x);
+        if (!a.isTerminal()) { //if a can make a step of computation
+            Command a1 = a.step(x); // then let it do it
+
+            // then return the new a Sequential composition made of the modified a' command and the original b command.
             return new SequentialComposition(a1, b);
 
-        } else if (!b.isTerminal()) { //a is terminal (numeral) but b is not terminal
+        } else { //if a is terminal (skip)
+            //then return the original b command.
             return b;
 
-        } else { // both are terminal
-            return new Skip();
         }
     }
 
