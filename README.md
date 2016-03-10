@@ -73,7 +73,7 @@ public Command step(Store x) {
 }
 ```
 
-The result of the execution of this program is something like this:
+The result of the execution of this jar is something like this:
 
 ```
 P  =  ((y := x; a := 1); while y > 0 do (a := a * y; y := y - 1))
