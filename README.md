@@ -5,7 +5,7 @@ Download the [.jar](https://github.com/ParsleyJ/SmallStepTrack/raw/master/out/ar
 
 Launch it with `java -jar SmallStepTrack.jar`
 
-This program prints the execution track of a factorial program example written in the _While_ language, with `x` set to `3` in the Store.
+This program prints the execution track of a factorial program example written in the _While_ language, with `x` set to `3` in the Store in the initial configuration.
 
 ```java
   y := x; a := 1;
@@ -223,3 +223,7 @@ S  =  { a=6; x=3; y=0; }
 P  =  skip
 S  =  { a=6; x=3; y=0; }
 ```
+
+### State of this project
+This is just an example; many things may be missing. If the original factorial program changes, some unhandled exceptions may raise. 
+Especially for the cases in which the program execution goes into a _stuck_ configuration, which is not handled at the moment. For example, I'm pretty sure that if the program tries to access to an undefined variable in the store, the application crashes with a NullPointerException, because the store relies on a simple HashMap<String, Integer>.
