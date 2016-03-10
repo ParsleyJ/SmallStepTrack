@@ -19,7 +19,7 @@ public class SequentialComposition implements Command {
         if (!a.isTerminal()) { //if a can make a step of computation
             Command a1 = a.step(x); // then let it do it
 
-            // then return the new a Sequential composition made of the modified a' command and the original b command.
+            // then return the new sequential composition made of the modified a command and the original b command.
             return new SequentialComposition(a1, b);
 
         } else { //if a is terminal (skip)
