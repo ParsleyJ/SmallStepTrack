@@ -44,4 +44,9 @@ public class ShortCircuitOr implements BooleanExpression {
     public Boolean getBooleanValue() {
         return null;
     }
+
+    @Override
+    public String toString() {
+        return a + " | " + b;
+    }
 }
