@@ -36,7 +36,7 @@ program = new Program(
 ```
 
 Then the `3` is written to the store at the point `x` in the store, and `program.step(store)` is called until it returns 
-true, which means that the program reached the ended state (`skip`). After each call of step() the state of the execution 
+true, which means that the program became `skip`. After each call of step() the state of the execution 
 is printed to stdout.
 
 ```java
