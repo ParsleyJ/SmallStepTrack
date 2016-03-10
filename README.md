@@ -1,5 +1,7 @@
 # SmallStepTrack
-##### An execution track generator for the _While_ language, defined with Small Step operational semantics, written in Java 8.
+##### An execution track generator for the _While_ language, defined with Small Step operational semantics, written in Java 8 :coffee:.
+
+Download the [.jar](https://github.com/ParsleyJ/SmallStepTrack/raw/master/out/artifacts/SmallStepTrack_jar/SmallStepTrack.jar)
 
 This program prints the execution track of a factorial program example written in the _While_ language, with `x` set to `3` in the Store.
 
@@ -10,7 +12,7 @@ This program prints the execution track of a factorial program example written i
     y := y - 1
 ```
 
-#### Brief overview
+### Brief overview
 
 In the main, the program is already structured in this way:
 
