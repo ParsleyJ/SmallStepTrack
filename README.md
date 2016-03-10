@@ -1,5 +1,5 @@
 # SmallStepTrack
-##### An execution track generator for the _While_ language, defined with Small Step operational semantics, written in Java 8 :coffee:.
+##### A simple execution track generator for the _While_ language, defined with Small Step operational semantics, written in Java 8 :coffee:.
 
 Download the [.jar](https://github.com/ParsleyJ/SmallStepTrack/raw/master/out/artifacts/SmallStepTrack_jar/SmallStepTrack.jar)
 
