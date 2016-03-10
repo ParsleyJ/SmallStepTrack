@@ -35,7 +35,7 @@ program = new Program(
 );
 ```
 
-Then `3` is written to the store at point `x` in the store, and `program.step(store)` is called until it returns 
+Then `3` is written to the store at point `x`, and `program.step(store)` is called until it returns 
 true, which means that the program became `skip`. After each call of step() the state of the execution 
 is printed to stdout.
 
@@ -227,4 +227,4 @@ S  =  { a=6; x=3; y=0; }
 
 ### State of this project
 This is just an example; many things may be missing. If the original factorial program changes, some unhandled exceptions may raise. 
-Especially for the cases in which the program execution goes into a _stuck_ configuration, which is not handled at the moment. For example, I'm pretty sure that if the program tries to access to an undefined variable in the store, the application crashes with a NullPointerException, because the store relies on a simple HashMap<String, Integer>.
+Especially for cases in which the program execution goes into a _stuck_ configuration, which is not handled at the moment. For example, I'm pretty sure that if the program tries to access to an undefined variable in the store, the application crashes with a NullPointerException, because the store relies on a simple HashMap<String, Integer>.
