@@ -22,7 +22,7 @@ public class SequentialComposition implements Command {
             // then return the new sequential composition made of the modified a command and the original b command.
             return new SequentialComposition(a1, b);
 
-        } else { //if a is terminal (skip)
+        } else { //else, a is terminal (skip)
             //then return the original b command.
             return b;
 

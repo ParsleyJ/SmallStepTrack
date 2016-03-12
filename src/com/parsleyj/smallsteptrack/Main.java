@@ -66,8 +66,12 @@ public class Main {
         store = new Store();
         store.write("x", 3);
 
-        printState();
 
+        executeProgram(program, store);
+    }
+
+    public static void executeProgram(Program program, Store store){
+        printState();
         while(!program.step(store)){
             printSepAndState();
         }
