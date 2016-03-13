@@ -40,26 +40,40 @@ Program program = new Program(
 );
 ```
 
-Then `3` is written to the store at point `x`, and `program.step(store)` is called until it returns 
-true, which means that the program became `skip`. After each call of step() the state of the execution 
-is printed to stdout.
+Then the store is initialized and the execution starts.
 
 ```java
-store = new Store();
+// creates a new store
+IntegerStore store = new IntegerStore(sName);
+// writes 3 to x in the store
 store.write("x", 3);
 
-printState();
+//starts the execution
+executeProgram(program, store);
+```
 
-while(!program.step(store)){
-    printSepAndState();
+During execution, `program.step(store)` is called until it returns true, which means that the program became `skip`. 
+After each call of step() the state of the execution is printed to stdout.
+```java
+/**
+ * Executes the program and prints the track of execution and the configuration state at each step.
+ * @param program the program
+ * @param configurationElements the configuration elements
+ */
+public static void executeProgram(Program program, ConfigurationElement... configurationElements){
+    Configuration configuration = new Configuration(configurationElements);
+    printState(program, configuration);
+    while(!program.step(configuration)){
+        printSepAndState(program, configuration);
+    }
 }
 ```
 
-Each of the classes SequentialComposition, Assignment, Variable, Numeral, etc... implements a `step(Store store)` method: 
+Each of the classes SequentialComposition, Assignment, Variable, Numeral, etc... implements a `step(Configuration c)` method: 
 the meaning of this is similar to the "_makes a step of computation_" concept of Small Step semantics.
 
-The actual Small Step semantics of _While_ is "hardcoded" inside each one of these `step(Store store)` methods. For example, for
-the SequentialComposition class:
+The actual Small Step semantics of _While_ is "hardcoded" inside each one of these `step(Configuration c)` methods. For example, for
+the `SequentialComposition` class:
 
 ```java
 @Override
@@ -77,6 +91,28 @@ public Command step(Configuration c) {
     }
 }
 ```
+
+Another example, `Sum.step(Configuration c)`:
+
+```java
+@Override
+public IntegerExpression step(Configuration c) {
+    if (!a.isTerminal()) { // if a can make a step of computation:
+        IntegerExpression a1 = a.step(c); // a makes a step
+        return new Sum(a1, b); // return a new Sum with a(modified) and b.
+
+    } else if (!b.isTerminal()) { //if a cannot make a step, but b can:
+        IntegerExpression b1 = b.step(c); // b makes a step
+        return new Sum(a, b1); // return a new Sum with a and b(modified)
+
+    } else { // neither a or b can make a step: they are both numerals!
+
+        //return a new numeral corresponding to the sum of the two numeral operands:
+        return new Numeral(a.getIntValue() + b.getIntValue());
+    }
+}
+```
+
 
 The result of the execution of this jar is something like this:
 
