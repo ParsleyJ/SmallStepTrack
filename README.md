@@ -19,16 +19,21 @@ This program prints the execution track of a factorial program example written i
 In the main, the program is already structured in this way:
 
 ```java
-program = new Program(
+Program program = new Program(
+    "Factorial",
     new SequentialComposition(
         new SequentialComposition(
-            new Assignment(new Variable("y"), new Variable("x")),
-            new Assignment(new Variable("a"), new Numeral(1))
+            new Assignment(sName, new Variable(sName, "y"),
+                new Variable(sName, "x")), // y := x;
+            new Assignment(sName, new Variable(sName, "a"),
+                new Numeral(1)) // a := 1;
         ),
-        new WhileCommand(new GreaterIntegerComparison(new Variable("y"), new Numeral(0)),
+        new WhileCommand(new GreaterIntegerComparison(new Variable(sName, "y"), new Numeral(0)), // while y > 0 do
             new SequentialComposition(
-                new Assignment(new Variable("a"), new Multiplication(new Variable("a"), new Variable("y"))),
-                new Assignment(new Variable("y"), new Subtraction(new Variable("y"), new Numeral(1)))
+                new Assignment(sName, new Variable(sName, "a"),
+                    new Multiplication(new Variable(sName, "a"), new Variable(sName, "y"))), // a := a * y;
+                new Assignment(sName, new Variable(sName, "y"),
+                    new Subtraction(new Variable(sName, "y"), new Numeral(1))) // y := y - 1
             )
         )
     )
