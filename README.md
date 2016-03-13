@@ -14,7 +14,7 @@ This program prints the execution track of a factorial program example written i
     y := y - 1
 ```
 
-### Brief overview
+### How it works
 
 In the main, the program is already structured in this way:
 
