@@ -4,7 +4,7 @@ import com.parsleyj.smallsteptrack.integerexpr.IntegerExpression;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing a 'is greater than' comparison between integers.
  */
 public class GreaterIntegerComparison implements BooleanExpression {
     private final IntegerExpression a;

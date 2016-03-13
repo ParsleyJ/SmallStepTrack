@@ -3,7 +3,7 @@ package com.parsleyj.smallsteptrack.booleanexpr;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing a the logical short-circuit 'or' boolean operator.
  */
 public class ShortCircuitOr implements BooleanExpression {
     private final BooleanExpression a;

@@ -3,7 +3,7 @@ package com.parsleyj.smallsteptrack.booleanexpr;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- *  Boolean false constant value;
+ *  Semantic object representing the {@code false} constant value
  */
 public class False implements BooleanExpression {
 

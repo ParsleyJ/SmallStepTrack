@@ -4,7 +4,7 @@ import com.parsleyj.smallsteptrack.Store;
 import com.parsleyj.smallsteptrack.integerexpr.IntegerExpression;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing a 'is less than' comparison between integers.
  */
 public class LessIntegerComparison implements BooleanExpression {
     private final IntegerExpression a;
