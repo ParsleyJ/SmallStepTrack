@@ -70,7 +70,7 @@ public static void executeProgram(Program program, ConfigurationElement... confi
 }
 ```
 
-Each of the classes SequentialComposition, Assignment, Variable, Numeral, etc... implements a `step(Configuration c)` method: 
+Each one of the classes SequentialComposition, Assignment, Variable, Numeral, etc... implements a `step(Configuration c)` method: 
 the meaning of this is similar to the "_makes a step of computation_" concept of Small Step semantics.
 
 The actual Small Step semantics of _While_ is "hardcoded" inside each one of these `step(Configuration c)` methods. For example, for
