@@ -19,6 +19,7 @@ This program prints the execution track of a factorial program example written i
 In the main, the program is already structured in this way:
 
 ```java
+String sName = "S"; //the name of the IntegerStore, used by Variable and Assignment classes to access the store.
 Program program = new Program(
     "Factorial",
     new SequentialComposition(
