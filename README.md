@@ -52,7 +52,7 @@ store.write("x", 3);
 executeProgram(program, store);
 ```
 
-During execution, `program.step(store)` is called until it returns true, which means that the program became `skip`. 
+During execution, `program.step(configuration)` is called until it returns true, which means that the program became `skip`. 
 After each call of step() the state of the execution is printed to stdout.
 ```java
 /**
