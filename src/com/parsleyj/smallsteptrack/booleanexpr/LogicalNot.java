@@ -33,11 +33,6 @@ public class LogicalNot implements BooleanExpression {
     }
 
     @Override
-    public Integer getIntValue() {
-        return null;
-    }
-
-    @Override
     public Boolean getBooleanValue() {
         return null;
     }

@@ -18,11 +18,6 @@ public class False implements BooleanExpression {
     }
 
     @Override
-    public Integer getIntValue() {
-        return null;
-    }
-
-    @Override
     public Boolean getBooleanValue() {
         return false;
     }

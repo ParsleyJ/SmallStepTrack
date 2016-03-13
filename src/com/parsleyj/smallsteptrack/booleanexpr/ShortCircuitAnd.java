@@ -35,10 +35,6 @@ public class ShortCircuitAnd implements BooleanExpression {
         return false;
     }
 
-    @Override
-    public Integer getIntValue() {
-        return null;
-    }
 
     @Override
     public Boolean getBooleanValue() {

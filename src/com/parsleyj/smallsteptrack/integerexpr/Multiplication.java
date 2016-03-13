@@ -40,11 +40,6 @@ public class Multiplication implements IntegerExpression {
     }
 
     @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return a + " * " + b;
     }

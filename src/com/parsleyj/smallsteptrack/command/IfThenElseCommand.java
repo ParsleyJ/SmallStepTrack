@@ -36,16 +36,6 @@ public class IfThenElseCommand implements Command {
     }
 
     @Override
-    public Integer getIntValue() {
-        return null;
-    }
-
-    @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
-
-    @Override
     public String toString() {
         return "if " + cond + " then " + thenComm + " else " + elseComm;
     }

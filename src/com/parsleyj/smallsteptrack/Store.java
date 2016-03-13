@@ -5,28 +5,54 @@ import com.parsleyj.smallsteptrack.integerexpr.Variable;
 import java.util.HashMap;
 
 /**
- * Created by Giuseppe on 09/03/16.
+ * The memory used by the {@link Program} during execution "step-by-step".
+ * This is in fact usually passed as argument to {@code step()} methods, in order to allow
+ * expressions and commands to write and read form the store.
+ * The store behaves like a Map. The variable name is used as key, and values are {@link Integer}
  */
 public class Store {
     private HashMap<String, Integer> map = new HashMap<>();
 
+    /**
+     * Writes a value in the store.
+     * @param name the name of the variable, used as key.
+     * @param n the value to be saved.
+     */
     public void write(String name, int n) {
         map.put(name, n);
     }
 
+    /**
+     * Reads a value from the store.
+     * @param name the name of the variable, used as key.
+     * @return the value relative to the specified key, or
+     *          {@code null} if no values are assigned to that key.
+     */
     public int read(String name) {
         return map.get(name);
     }
 
+    /**
+     * Reads a value from the store. Equivalent to {@code write(var.getName())}.
+     * @param var the Variable object, which name is used as key.
+     * @return the value relative to the specified variable, or
+     *          {@code null} if no values are assigned to that variable.
+     */
     public int read(Variable var) {
         return map.get(var.getName());
     }
 
+    /**
+     * Returns a simple {@link String} representation of the store, with its contents.
+     * @return the text string representation of the store.
+     */
     @Override
     public String toString() {
-        final String[] result = {"{ "};
-        map.keySet().forEach((String k) -> result[0] += k + "=" + map.get(k) + "; ");
-        result[0] += "}";
-        return result[0];
+        final StringBuilder result = new StringBuilder("{ ");
+
+        map.keySet().forEach((k) -> result.append(k).append("=").append(map.get(k)).append("; ")); //lambdas! yay!
+
+        result.append("}");
+        return result.toString();
     }
 }

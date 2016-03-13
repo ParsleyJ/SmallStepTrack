@@ -34,15 +34,6 @@ public class SequentialComposition implements Command {
         return false;
     }
 
-    @Override
-    public Integer getIntValue() {
-        return null;
-    }
-
-    @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
 
     @Override
     public String toString() {

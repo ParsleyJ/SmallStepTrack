@@ -27,10 +27,7 @@ public class Numeral implements IntegerExpression {
         return i;
     }
 
-    @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
+
 
     @Override
     public String toString() {

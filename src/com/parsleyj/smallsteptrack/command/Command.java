@@ -1,11 +1,17 @@
 package com.parsleyj.smallsteptrack.command;
 
-import com.parsleyj.smallsteptrack.SemanticObject;
+import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 09/03/16.
+ * Common interface of all commands of the While language.
  */
-public interface Command extends SemanticObject {
+public interface Command extends SmallStepSemanticObject {
+    /**
+     * Make a computational step.
+     * This method should return {@code null} if the {@link #isTerminal()} method returns {@code true}.
+     * @param x the Store
+     * @return a {@link Command} representing the original command modified by the step of computation.
+     */
     Command step(Store x);
 }

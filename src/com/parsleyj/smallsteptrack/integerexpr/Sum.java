@@ -5,11 +5,11 @@ import com.parsleyj.smallsteptrack.Store;
 /**
  * Created by Giuseppe on 09/03/16.
  */
-public class Addition implements IntegerExpression {
+public class Sum implements IntegerExpression {
     private IntegerExpression a;
     private IntegerExpression b;
 
-    public Addition(IntegerExpression a, IntegerExpression b) {
+    public Sum(IntegerExpression a, IntegerExpression b) {
         this.a = a;
         this.b = b;
     }
@@ -18,11 +18,11 @@ public class Addition implements IntegerExpression {
     public IntegerExpression step(Store x) {
         if (!a.isTerminal()) {
             IntegerExpression a1 = a.step(x);
-            return new Addition(a1, b);
+            return new Sum(a1, b);
 
         } else if (!b.isTerminal()) { //a is terminal (numeral) but b is not terminal
             IntegerExpression b1 = b.step(x);
-            return new Addition(a, b1);
+            return new Sum(a, b1);
 
         } else { // both are terminal
             return new Numeral(a.getIntValue() + b.getIntValue());
@@ -36,11 +36,6 @@ public class Addition implements IntegerExpression {
 
     @Override
     public Integer getIntValue() {
-        return null;
-    }
-
-    @Override
-    public Boolean getBooleanValue() {
         return null;
     }
 

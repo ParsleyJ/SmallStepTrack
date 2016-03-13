@@ -17,15 +17,7 @@ public class Skip implements Command {
         return true;
     }
 
-    @Override
-    public Integer getIntValue() {
-        return null;
-    }
 
-    @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
 
     @Override
     public String toString() {

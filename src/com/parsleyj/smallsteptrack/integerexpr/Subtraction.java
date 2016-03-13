@@ -39,10 +39,6 @@ public class Subtraction implements IntegerExpression {
         return null;
     }
 
-    @Override
-    public Boolean getBooleanValue() {
-        return null;
-    }
 
     @Override
     public String toString() {
