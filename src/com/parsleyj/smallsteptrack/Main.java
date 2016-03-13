@@ -44,11 +44,12 @@ public class Main {
                 )
         );
 
-        // writes 3 to x in the store
+        // creates a new store
         IntegerStore store = new IntegerStore(sName);
+        // writes 3 to x in the store
         store.write("x", 3);
 
-
+        //starts the execution
         executeProgram(program, store);
     }
 
