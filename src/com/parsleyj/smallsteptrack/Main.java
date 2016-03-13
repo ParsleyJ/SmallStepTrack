@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String sName = "S"; //the name of the IntegerStore.
+        String sName = "S"; //the name of the IntegerStore, used by Variable and Assignment classes to access the store.
 
         /*
         y := x; a := 1;
