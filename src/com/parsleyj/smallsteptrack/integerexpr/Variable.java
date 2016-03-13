@@ -1,14 +1,17 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
+import com.parsleyj.smallsteptrack.configuration.IntegerStore;
 
 /**
  * Semantic object representing a variable.
  */
 public class Variable implements IntegerExpression {
+    private String storeName;
     private String name;
 
-    public Variable(String name) {
+    public Variable(String storeName, String name) {
+        this.storeName = storeName;
         this.name = name;
     }
 
@@ -17,8 +20,9 @@ public class Variable implements IntegerExpression {
     }
 
     @Override
-    public IntegerExpression step(Store x) {
-        return new Numeral(x.read(name));
+    public IntegerExpression step(Configuration c) {
+        Integer val = ((IntegerStore) c.getConfigurationElement(storeName)).read(name);
+        return new Numeral(val);
     }
 
     @Override
@@ -30,7 +34,6 @@ public class Variable implements IntegerExpression {
     public Integer getIntValue() {
         return null;
     }
-
 
     @Override
     public String toString() {

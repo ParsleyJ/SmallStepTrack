@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.command;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Created by Giuseppe on 10/03/16.
@@ -15,9 +15,9 @@ public class SequentialComposition implements Command {
     }
 
     @Override
-    public Command step(Store x) {
+    public Command step(Configuration c) {
         if (!a.isTerminal()) { //if a can make a step of computation
-            Command a1 = a.step(x); // then let it do it
+            Command a1 = a.step(c); // then let it do it
 
             // then return the new sequential composition made of the modified a command and the original b command.
             return new SequentialComposition(a1, b);

@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
-import com.parsleyj.smallsteptrack.Store;
 
 /**
  * Common interface of all integer expressions.
@@ -11,10 +11,10 @@ public interface IntegerExpression extends SmallStepSemanticObject {
     /**
      * Make a computational step.
      * This method should return {@code null} if the {@link #isTerminal()} method returns {@code true}.
-     * @param x the Store
+     * @param c the configuration, that may change during computation.
      * @return a {@link IntegerExpression} representing the original expression modified by the step of computation.
      */
-    IntegerExpression step(Store x);
+    IntegerExpression step(Configuration c);
 
     /**
      * Returns the actual Integer value of the object.

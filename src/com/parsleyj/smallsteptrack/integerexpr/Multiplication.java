@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing the multiplication operation
@@ -15,13 +15,13 @@ public class Multiplication implements IntegerExpression {
     }
 
     @Override
-    public IntegerExpression step(Store x) {
+    public IntegerExpression step(Configuration c) {
         if (!a.isTerminal()) {
-            IntegerExpression a1 = a.step(x);
+            IntegerExpression a1 = a.step(c);
             return new Multiplication(a1, b);
 
         } else if (!b.isTerminal()) { //a is terminal (numeral) but b is not terminal
-            IntegerExpression b1 = b.step(x);
+            IntegerExpression b1 = b.step(c);
             return new Multiplication(a, b1);
 
         } else { // both are terminal

@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing a numeral.
@@ -13,7 +13,7 @@ public class Numeral implements IntegerExpression {
     }
 
     @Override
-    public IntegerExpression step(Store x) {
+    public IntegerExpression step(Configuration c) {
         return null;
     }
 

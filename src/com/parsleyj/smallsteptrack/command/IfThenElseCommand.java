@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.command;
 
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.booleanexpr.BooleanExpression;
-import com.parsleyj.smallsteptrack.Store;
 
 /**
  * Semantic object representing the if-then-else statement
@@ -19,9 +19,9 @@ public class IfThenElseCommand implements Command {
     }
 
     @Override
-    public Command step(Store x) {
+    public Command step(Configuration c) {
         if (!cond.isTerminal()) {
-            BooleanExpression cond1 = cond.step(x);
+            BooleanExpression cond1 = cond.step(c);
             return new IfThenElseCommand(cond1, thenComm, elseComm);
         } else if (cond.getBooleanValue()) {
             return thenComm;

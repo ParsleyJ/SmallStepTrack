@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  *  Semantic object representing the {@code false} constant value
@@ -8,7 +8,7 @@ import com.parsleyj.smallsteptrack.Store;
 public class False implements BooleanExpression {
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration x) {
         return null;
     }
 

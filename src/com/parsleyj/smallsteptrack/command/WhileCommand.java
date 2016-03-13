@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.command;
 
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.booleanexpr.BooleanExpression;
-import com.parsleyj.smallsteptrack.Store;
 
 /**
  * Semantic object representing the {@code while} statement
@@ -16,7 +16,7 @@ public class WhileCommand implements Command {
     }
 
     @Override
-    public Command step(Store x) {
+    public Command step(Configuration c) {
         return new IfThenElseCommand(condition,
                 new SequentialComposition(
                         com,

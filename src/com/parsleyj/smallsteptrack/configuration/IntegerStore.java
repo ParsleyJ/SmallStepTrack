@@ -1,17 +1,24 @@
-package com.parsleyj.smallsteptrack;
+package com.parsleyj.smallsteptrack.configuration;
 
+import com.parsleyj.smallsteptrack.Program;
 import com.parsleyj.smallsteptrack.integerexpr.Variable;
 
 import java.util.HashMap;
 
 /**
  * The memory used by the {@link Program} during execution "step-by-step".
- * This is in fact usually passed as argument to {@code step()} methods, in order to allow
- * expressions and commands to write and read form the store.
- * The store behaves like a Map. The variable name is used as key, and values are {@link Integer}
+ * This is in fact usually passed as argument to {@code step()} methods, wrapped inside a configuration,
+ * in order to allow expressions and commands to write and read from the store.
+ * The store behaves like a Map. The variable name is used as key, and values are {@link Integer}.
  */
-public class Store {
+public class IntegerStore implements ConfigurationElement{
     private HashMap<String, Integer> map = new HashMap<>();
+    private String storeName;
+
+    public IntegerStore(String storeName){
+
+        this.storeName = storeName;
+    }
 
     /**
      * Writes a value in the store.
@@ -28,7 +35,7 @@ public class Store {
      * @return the value relative to the specified key, or
      *          {@code null} if no values are assigned to that key.
      */
-    public int read(String name) {
+    public Integer read(String name) {
         return map.get(name);
     }
 
@@ -38,7 +45,7 @@ public class Store {
      * @return the value relative to the specified variable, or
      *          {@code null} if no values are assigned to that variable.
      */
-    public int read(Variable var) {
+    public Integer read(Variable var) {
         return map.get(var.getName());
     }
 
@@ -54,5 +61,10 @@ public class Store {
 
         result.append("}");
         return result.toString();
+    }
+
+    @Override
+    public String getConfigurationElementName() {
+        return storeName;
     }
 }

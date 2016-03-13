@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.integerexpr.IntegerExpression;
 
 import java.util.Objects;
@@ -19,13 +19,13 @@ public class EqualIntegerComparison implements BooleanExpression {
 
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration c) {
         if (!a.isTerminal()) {
-            IntegerExpression a1 = a.step(x);
+            IntegerExpression a1 = a.step(c);
             return new EqualIntegerComparison(a1, b);
 
         } else if (!b.isTerminal()) {
-            IntegerExpression b1 = b.step(x);
+            IntegerExpression b1 = b.step(c);
             return new EqualIntegerComparison(a, b1);
 
         } else {

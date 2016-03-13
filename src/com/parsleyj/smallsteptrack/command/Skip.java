@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.command;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing the {@code skip} terminal command
@@ -8,7 +8,7 @@ import com.parsleyj.smallsteptrack.Store;
 public class Skip implements Command {
 
     @Override
-    public Command step(Store x) {
+    public Command step(Configuration c) {
         return null;
     }
 

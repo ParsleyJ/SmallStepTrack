@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing a the logical short-circuit 'and' boolean operator.
@@ -17,9 +17,9 @@ public class ShortCircuitAnd implements BooleanExpression {
 
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration c) {
         if(!a.isTerminal()){
-            BooleanExpression a1 = a.step(x);
+            BooleanExpression a1 = a.step(c);
             return new ShortCircuitAnd(a1, b);
         } else {
             if(a.getBooleanValue()){

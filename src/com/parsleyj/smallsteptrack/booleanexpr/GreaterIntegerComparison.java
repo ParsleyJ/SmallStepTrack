@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.integerexpr.IntegerExpression;
-import com.parsleyj.smallsteptrack.Store;
 
 /**
  * Semantic object representing a 'is greater than' comparison between integers.
@@ -16,13 +16,13 @@ public class GreaterIntegerComparison implements BooleanExpression {
     }
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration c) {
         if (!a.isTerminal()) {
-            IntegerExpression a1 = a.step(x);
+            IntegerExpression a1 = a.step(c);
             return new GreaterIntegerComparison(a1, b);
 
         } else if (!b.isTerminal()) {
-            IntegerExpression b1 = b.step(x);
+            IntegerExpression b1 = b.step(c);
             return new GreaterIntegerComparison(a, b1);
 
         } else {

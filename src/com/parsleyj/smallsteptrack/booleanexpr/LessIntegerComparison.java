@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.integerexpr.IntegerExpression;
 
 /**
@@ -16,13 +16,13 @@ public class LessIntegerComparison implements BooleanExpression {
     }
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration c) {
         if (!a.isTerminal()) {
-            IntegerExpression a1 = a.step(x);
+            IntegerExpression a1 = a.step(c);
             return new LessIntegerComparison(a1, b);
 
         } else if (!b.isTerminal()) {
-            IntegerExpression b1 = b.step(x);
+            IntegerExpression b1 = b.step(c);
             return new LessIntegerComparison(a, b1);
 
         } else {

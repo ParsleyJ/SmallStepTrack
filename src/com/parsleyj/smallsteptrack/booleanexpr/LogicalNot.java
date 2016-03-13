@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.Store;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing a the logical 'not' boolean operator.
@@ -14,9 +14,9 @@ public class LogicalNot implements BooleanExpression {
     }
 
     @Override
-    public BooleanExpression step(Store x) {
+    public BooleanExpression step(Configuration c) {
         if(!a.isTerminal()){
-            BooleanExpression a1 = a.step(x);
+            BooleanExpression a1 = a.step(c);
             return new LogicalNot(a1);
         }else{
             if(a.getBooleanValue()){
