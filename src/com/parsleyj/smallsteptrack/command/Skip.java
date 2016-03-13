@@ -3,7 +3,7 @@ package com.parsleyj.smallsteptrack.command;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing the {@code skip} terminal command
  */
 public class Skip implements Command {
 

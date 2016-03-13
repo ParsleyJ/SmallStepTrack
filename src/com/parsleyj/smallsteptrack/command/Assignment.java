@@ -5,7 +5,7 @@ import com.parsleyj.smallsteptrack.Store;
 import com.parsleyj.smallsteptrack.integerexpr.Variable;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing the assignment operation
  */
 public class Assignment implements Command {
     private final Variable a;

@@ -12,10 +12,6 @@ public class EqualIntegerComparison implements BooleanExpression {
     private final IntegerExpression a;
     private final IntegerExpression b;
 
-    /**
-     * @param a the first operand
-     * @param b the second operand
-     */
     public EqualIntegerComparison(IntegerExpression a, IntegerExpression b) {
         this.a = a;
         this.b = b;

@@ -3,7 +3,7 @@ package com.parsleyj.smallsteptrack.integerexpr;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 09/03/16.
+ * Semantic object representing the subtraction operation
  */
 public class Subtraction implements IntegerExpression {
     private final IntegerExpression a;

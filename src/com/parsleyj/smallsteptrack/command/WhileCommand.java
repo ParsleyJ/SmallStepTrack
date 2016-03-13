@@ -4,7 +4,7 @@ import com.parsleyj.smallsteptrack.booleanexpr.BooleanExpression;
 import com.parsleyj.smallsteptrack.Store;
 
 /**
- * Created by Giuseppe on 10/03/16.
+ * Semantic object representing the {@code while} statement
  */
 public class WhileCommand implements Command {
     private final BooleanExpression condition;
