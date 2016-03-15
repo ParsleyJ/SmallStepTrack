@@ -1,11 +1,12 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
+import com.parsleyj.smallsteptrack.syntax.SyntaxObject;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing the multiplication operation
  */
-public class Multiplication implements IntegerExpression {
+public class Multiplication implements IntegerExpression, SyntaxObject {
     private IntegerExpression a;
     private IntegerExpression b;
 

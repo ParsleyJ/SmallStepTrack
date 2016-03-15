@@ -25,7 +25,7 @@ public class Program {
     /**
      * Makes a computational step.
      *
-     * @param store the store
+     * @param configuration the configuration
      * @return true if the program reached a "ended" state; false otherwise.
      */
     public boolean step(Configuration configuration) {
