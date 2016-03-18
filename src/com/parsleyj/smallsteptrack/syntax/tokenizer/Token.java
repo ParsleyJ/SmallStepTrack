@@ -1,10 +1,10 @@
 package com.parsleyj.smallsteptrack.syntax.tokenizer;
 
 /**
- * Assigned to Wyvilo
- * (note: you can add things here if you want to)
+ * todo: javadoc
  */
 public class Token {
+    public static final String UNSCANNED = "UNSCANNED";
     public static final String NUMERAL = "NUMERAL";
     public static final String TERMINAL_SYMBOL = "TERMINAL_SYMBOL";
     public static final String IDENTIFIER = "IDENTIFIER";
@@ -21,7 +21,8 @@ public class Token {
         return generatingString;
     }
 
-    public String getTokenClass() {
+    public String getTokenClassName() {
         return tokenClass;
     }
+
 }

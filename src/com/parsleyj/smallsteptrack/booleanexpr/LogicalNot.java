@@ -41,4 +41,6 @@ public class LogicalNot implements BooleanExpression {
     public String toString() {
         return "!"+a;
     }
+
+
 }

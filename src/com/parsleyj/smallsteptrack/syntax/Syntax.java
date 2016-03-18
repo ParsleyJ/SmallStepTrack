@@ -1,5 +1,8 @@
 package com.parsleyj.smallsteptrack.syntax;
 
+import com.parsleyj.smallsteptrack.syntax.tokenizer.RejectableTokenClass;
+import com.parsleyj.smallsteptrack.syntax.tokenizer.TokenClass;
+
 import java.util.*;
 
 /**
@@ -8,25 +11,31 @@ import java.util.*;
 public class Syntax {
 
     public Grammar getGrammar() {
+
+
+        TokenClass string = new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1");
+        TokenClass identifier = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
+        TokenClass add = new TokenClass("ADD_OPERATOR", "(\\+)");
+        TokenClass sub = new TokenClass("SUB_OPERATOR", "(\\-)");
+        TokenClass mul = new TokenClass("MUL_OPERATOR", "(\\*)");
+        TokenClass openBracket = new TokenClass("OPEN_ROUND_BRACKET", "(\\()");
+        TokenClass closedBracket = new TokenClass("CLOSED_ROUND_BRACKET", "(\\))");
+        TokenClass numeral = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
+        TokenClass blank = new RejectableTokenClass("BLANK", " ");
+        SyntaxCase variable = new SyntaxCase(identifier);
         SyntaxClass exp = new SyntaxClass("Exp");
-        SyntaxClass num = new SyntaxClass("Num");
         SyntaxClass comm = new SyntaxClass("Comm");
         SyntaxClass bool = new SyntaxClass("Bool");
-        SyntaxConstant add = new SyntaxConstant("add", "+");
-        SyntaxConstant sub = new SyntaxConstant("sub", "-");
-        SyntaxConstant mul = new SyntaxConstant("mul", "*");
-        SyntaxConstant openBracket = new SyntaxConstant("openBracket", "(");
-        SyntaxConstant closedBracket = new SyntaxConstant("closedBracket", ")");
-
-        exp.setComponents(
-                new SyntaxComponent(num),
-                new SyntaxComponent(openBracket, exp, closedBracket),
-                new SyntaxComponent(exp, add, exp),
-                new SyntaxComponent(exp, sub, exp),
-                new SyntaxComponent(exp, mul, exp)
+        exp.setCases(
+                new SyntaxCase(identifier),
+                new SyntaxCase(numeral),
+                new SyntaxCase(openBracket, exp, closedBracket),
+                new SyntaxCase(exp, add, exp),
+                new SyntaxCase(exp, sub, exp),
+                new SyntaxCase(exp, mul, exp)
         );
 
-        return new Grammar(exp, num, comm, bool);
+        return new Grammar(exp, comm, bool);
     }
 
     public class Grammar {
@@ -38,24 +47,24 @@ public class Syntax {
     public class SyntaxClass implements SyntaxEntity{
 
         private String name;
-        private List<SyntaxComponent> components;
+        private List<SyntaxCase> cases;
 
         public SyntaxClass(String name){
             this.name = name;
-            components = null;
+            cases = null;
         }
 
-        public SyntaxClass(String name, List<SyntaxComponent> components) {
+        public SyntaxClass(String name, List<SyntaxCase> cases) {
             this.name = name;
-            this.components = components;
+            this.cases = cases;
         }
 
-        public List<SyntaxComponent> getSyntaxComponents(){
-            return components;
+        public List<SyntaxCase> getSyntaxComponents(){
+            return cases;
         }
 
-        public void setComponents(SyntaxComponent... components) {
-            this.components = Arrays.asList(components);
+        public void setCases(SyntaxCase... cases) {
+            this.cases = Arrays.asList(cases);
         }
 
         @Override
@@ -65,44 +74,16 @@ public class Syntax {
 
     }
 
-    public class SyntaxTerminalClass extends SyntaxClass{
-
-        public SyntaxTerminalClass(String name) {
-            super(name);
-        }
-
-
-    }
-
-    public class SyntaxConstant implements SyntaxEntity{
-
-        private String name;
-        private String generatingString;
-
-        public SyntaxConstant(String name, String generatingString) {
-            this.name = name;
-            this.generatingString = generatingString;
-        }
-
-        @Override
-        public String getName() {
-            return name;
-        }
-
-        public String getGeneratingString() {
-            return generatingString;
-        }
-    }
 
     public interface SyntaxEntity {
         //TODO add some more useful metadata
         String getName();
     }
 
-    public class SyntaxComponent {
+    public class SyntaxCase {
         private List<SyntaxEntity> structure;
 
-        public SyntaxComponent(SyntaxEntity... structure) {
+        public SyntaxCase(SyntaxEntity... structure) {
             this.structure = Arrays.asList(structure);
         }
 

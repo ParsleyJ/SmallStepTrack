@@ -1,16 +1,28 @@
 package com.parsleyj.smallsteptrack.syntax.tokenizer;
 
+import com.parsleyj.smallsteptrack.syntax.Syntax;
+
 /**
- * Assigned to Wyvilo
- * (note: you can add things here if you want to)
+ * todo javadoc
  */
-public class TokenClass {
+public class TokenClass implements Syntax.SyntaxEntity{
     private String tokenClassName;
     private String pattern;
+    private boolean ignoreToken = false;
 
     public TokenClass(String tokenClassName, String pattern) {
         this.tokenClassName = tokenClassName;
         this.pattern = pattern;
+    }
+
+    public TokenClass(String tokenClassName, String pattern, boolean ignoreToken) {
+        this.tokenClassName = tokenClassName;
+        this.pattern = pattern;
+        this.ignoreToken = ignoreToken;
+    }
+
+    public boolean isIgnorable() {
+        return ignoreToken;
     }
 
     public String getTokenClassName() {
@@ -19,5 +31,10 @@ public class TokenClass {
 
     public String getPattern() {
         return pattern;
+    }
+
+    @Override
+    public String getName() {
+        return tokenClassName;
     }
 }
