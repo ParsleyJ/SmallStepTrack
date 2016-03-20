@@ -1,4 +1,4 @@
-package com.parsleyj.smallsteptrack.syntax.tokenizer;
+package com.parsleyj.smallsteptrack.parser.tokenizer;
 
 /**
  * todo: javadoc

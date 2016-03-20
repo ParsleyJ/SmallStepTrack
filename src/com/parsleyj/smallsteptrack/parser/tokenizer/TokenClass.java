@@ -1,11 +1,11 @@
-package com.parsleyj.smallsteptrack.syntax.tokenizer;
+package com.parsleyj.smallsteptrack.parser.tokenizer;
 
-import com.parsleyj.smallsteptrack.syntax.Syntax;
+import com.parsleyj.smallsteptrack.parser.SyntaxCaseComponent;
 
 /**
  * todo javadoc
  */
-public class TokenClass implements Syntax.SyntaxEntity{
+public class TokenClass implements SyntaxCaseComponent {
     private String tokenClassName;
     private String pattern;
     private boolean ignoreToken = false;
@@ -34,7 +34,7 @@ public class TokenClass implements Syntax.SyntaxEntity{
     }
 
     @Override
-    public String getName() {
+    public String getSyntaxComponentName() {
         return tokenClassName;
     }
 }
