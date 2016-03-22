@@ -13,6 +13,7 @@ import java.util.List;
  * TODO: javadoc
  */
 public class ASTObject {
+    private int id;
     private List<ASTObject> children;
     // for terminals
     private Token parsedToken;
@@ -23,12 +24,14 @@ public class ASTObject {
 
     private boolean isTerminal = false;
 
-    public ASTObject() {
-        children = new ArrayList<>();
+    public ASTObject(int id, ASTObject... children) {
+        this.id = id;
+        this.children = Arrays.asList(children);
     }
 
-    public ASTObject(ASTObject... children) {
-        this.children = Arrays.asList(children);
+    public ASTObject(int id) {
+        this.children = new ArrayList<>();
+        this.id = id;
     }
 
 
@@ -89,5 +92,9 @@ public class ASTObject {
 
     public void setTerminal(boolean terminal) {
         isTerminal = terminal;
+    }
+
+    public int getId() {
+        return id;
     }
 }

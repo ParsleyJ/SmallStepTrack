@@ -4,9 +4,8 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
 import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Created by Giuseppe on 19/03/16.
@@ -22,7 +21,7 @@ public class Grammar {
 
 
     /**
-     * Finds all the cases in all the classes in which {@code component} is contained.
+     * Finds all cases in all classes in which {@code component} is contained.
      * @param component
      * @return
      */
@@ -57,6 +56,21 @@ public class Grammar {
         return null;
     }
 
+    public Boolean isPriorityGreaterOrEqual(List<SyntaxCaseComponent> a, List<SyntaxCaseComponent> b){
+        SyntaxCase tempCaseA = new SyntaxCase("", a.toArray(new SyntaxCaseComponent[a.size()]));
+        SyntaxCase tempCaseB = new SyntaxCase("", b.toArray(new SyntaxCaseComponent[b.size()]));
+        for (SyntaxClass clas : list) {
+            for(SyntaxCase cas : clas.getSyntaxCases()){
+                if(caseMatch(tempCaseA, cas)){
+                    return true;
+                } else if (caseMatch(tempCaseB, cas)){
+                    return false;
+                }
+            }
+        }
+        return null;
+    }
+
     public static boolean caseMatch(SyntaxCase sc1, SyntaxCase sc2) {
         if(sc1.getStructure().size() != sc2.getStructure().size()) return false;
         for(int i = 0; i < sc1.getStructure().size(); ++i){
@@ -77,5 +91,14 @@ public class Grammar {
             }
         }
         return null;
+    }
+
+    public List<Integer> getCaseSizes() {
+        HashSet<Integer> hs= new HashSet<>();
+        for(SyntaxClass clas: list)
+            hs.addAll(clas.getSyntaxCases().stream().map(cas -> cas.getStructure().size()).collect(Collectors.toList()));
+        List<Integer> sortedList = new ArrayList<>(hs);
+        Collections.sort(sortedList);
+        return sortedList;
     }
 }

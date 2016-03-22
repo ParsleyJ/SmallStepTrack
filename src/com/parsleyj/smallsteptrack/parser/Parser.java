@@ -20,34 +20,46 @@ public class Parser {
 
     /* 9 + 3 - ( 4 * 7 - ( 12 + 2 ) ) * 2 */
 
-    public List<ASTObject> buildParseInput(List<Token> tokens){
-        List<ASTObject> result = new ArrayList<>();
+
+
+    //iterative attempt
+    public ASTObject parse(List<Token> tokens){
+        ASTFactory astf = new ASTFactory();
+
+        List<ASTObject> treeList = new ArrayList<>();
         for (Token t: tokens) {
             TokenClass tokenClass = grammar.getTokenClass(t);
             if(tokenClass == null) throw new InvalidTokenFoundException(); //todo: add token info to exception
-            ASTObject ast = new ASTObject();
+            ASTObject ast = astf.newASTObject();
             ast.setParsedToken(t);
             ast.setTokenClass(tokenClass);
             ast.setTerminal(true);
-            result.add(ast);
+            treeList.add(ast);
         }
-        return result;
-    }
 
-    public ASTObject parse(List<ASTObject> subtrees){
-        if(subtrees.isEmpty()) return null;
-        if(subtrees.size()==1){
-            ASTObject asto = subtrees.get(0);
-            Pair<SyntaxClass, SyntaxCase> lookupResult =
-                    grammar.lookup(Collections.singletonList(
-                            asto.isTerminal() ? asto.getTokenClass() : asto.getSyntaxClass()));
-            if(lookupResult == null) throw new InvalidAbstractSyntaxSubtreeFoundException();
-            asto.setSyntaxClass(lookupResult.getFirst());
-            asto.setSyntaxCase(lookupResult.getSecond());
-            return asto;
+        List<Integer> windows = grammar.getCaseSizes();
+        while(true){
+            List<ASTObject> tempList = new ArrayList<>();
+            for(Integer window: windows){
+                for(int start = 0; start <= treeList.size() - window; ++start){
+                    int end = start + window;
+                    List<ASTObject> currentSubList = treeList.subList(start, end);
+                    Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
+                            currentSubList.stream()
+                                    .map(a -> a.isTerminal()?a.getTokenClass():a.getSyntaxClass())
+                                    .collect(Collectors.toList())
+                    );
+                    if (lookupResult != null) {
+                        ASTObject asto = astf.newASTObject(currentSubList.toArray(new ASTObject[currentSubList.size()]));
+                        asto.setSyntaxClass(lookupResult.getFirst());
+                        asto.setSyntaxCase(lookupResult.getSecond());
+                        asto.setTerminal(false);
+
+                        //(WORK IN PROGRESS...)
+                    }
+                }
+            }
         }
-        //(work in progress...)
-        return null;
     }
 
 
