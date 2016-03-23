@@ -34,8 +34,8 @@ public class Tokenizer {
         Matcher matcher = Pattern.compile(tokenClass.getPattern()).matcher(input);
         int lastEnd = 0;
         while(matcher.find()){
-            if(lastEnd == 0 && matcher.start()!= 0){
-                tempResult.add(new UnscannedTempToken(input.substring(0, matcher.start())));
+            if(lastEnd<matcher.start()){
+                tempResult.add(new UnscannedTempToken(input.substring(lastEnd, matcher.start())));
             }
             lastEnd = matcher.end();
             Token found = new Token(input.substring(matcher.start(), matcher.end()),tokenClass.getTokenClassName());
@@ -72,9 +72,9 @@ public class Tokenizer {
                 //new TokenClass("OPERATOR", "[-!$%^&*_+|~=:;<>?,.\\/]"),
                 new TokenClass("ADD_OPERATOR", "(\\+)"),
                 new TokenClass("SUB_OPERATOR", "(\\-)"),
-                new TokenClass("MUL_OPERATOR", "(\\*)"),
-                new TokenClass("OPEN_ROUND_BRACKET", "(\\()"),
-                new TokenClass("CLOSED_ROUND_BRACKET", "(\\))"),
+                new TokenClass("MUL_OPERATOR", "\\Q*\\E"),
+                new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E"),
+                new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E"),
                 new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)"),
                 //new TokenClass("NUMERAL2", "^(0|[1-9][0-9]*)$"),
                 //new TokenClass("MUL_OPERATOR", "\\*"),
