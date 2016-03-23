@@ -2,20 +2,131 @@ package com.parsleyj.smallsteptrack;
 
 import com.parsleyj.smallsteptrack.booleanexpr.GreaterIntegerComparison;
 import com.parsleyj.smallsteptrack.command.Assignment;
+import com.parsleyj.smallsteptrack.command.Command;
 import com.parsleyj.smallsteptrack.command.SequentialComposition;
 import com.parsleyj.smallsteptrack.command.WhileCommand;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
-import com.parsleyj.smallsteptrack.configuration.ConfigurationElement;
 import com.parsleyj.smallsteptrack.configuration.IntegerStore;
-import com.parsleyj.smallsteptrack.integerexpr.Multiplication;
-import com.parsleyj.smallsteptrack.integerexpr.Numeral;
-import com.parsleyj.smallsteptrack.integerexpr.Subtraction;
-import com.parsleyj.smallsteptrack.integerexpr.Variable;
+import com.parsleyj.smallsteptrack.integerexpr.*;
+import com.parsleyj.smallsteptrack.parser.Grammar;
+import com.parsleyj.smallsteptrack.parser.SyntaxCase;
+import com.parsleyj.smallsteptrack.parser.SyntaxClass;
+import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
+import com.parsleyj.smallsteptrack.parser.tokenizer.RejectableTokenClass;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.program.*;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
+        //oldFact();
+        newTest();
+    }
 
+    public static void newTest(){
+        // String sName = "S"; // not needed now
+
+        SyntaxClass exp = new SyntaxClass("Exp");
+        SyntaxClass comm = new SyntaxClass("Comm");
+        SyntaxClass bool = new SyntaxClass("Bool");
+
+        TokenClass identifierToken = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
+        TokenClass plusToken = new TokenClass("ADD_OPERATOR", "\\Q+\\E");
+        TokenClass minusToken = new TokenClass("SUB_OPERATOR", "\\Q-\\E");
+        TokenClass asteriskToken = new TokenClass("MUL_OPERATOR", "\\Q*\\E");
+        TokenClass openBracketToken = new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E");
+        TokenClass closedBracketToken = new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E");
+        TokenClass numeralToken = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
+        TokenClass blankToken = new RejectableTokenClass("BLANK", " ");
+
+        //Exp :=
+        SyntaxCase variable = new SyntaxCase("identifier", identifierToken); // x |
+        SyntaxCase numeral = new SyntaxCase("numeral", numeralToken); // n |
+        SyntaxCase expressionBetweenRoundBrackets = new SyntaxCase("expressionBetweenRoundBrackets", openBracketToken, exp, closedBracketToken); // ( E ) |
+        SyntaxCase sum =new SyntaxCase("sum", exp, plusToken, exp); // E + E |
+        SyntaxCase subtraction = new SyntaxCase("subtraction", exp, minusToken, exp); // E - E |
+        SyntaxCase multiplication = new SyntaxCase("multiplication", exp, asteriskToken, exp); // E * E
+        exp.setCases(variable, numeral, expressionBetweenRoundBrackets, sum, subtraction, multiplication);
+
+        //Comm :=
+        //...
+
+        //Bool :=
+        //...
+
+
+        //TODO: complete with a not ambiguous grammar
+
+        ProgramGenerator programGenerator =
+                new ProgramGenerator(
+                        Arrays.asList(
+                                identifierToken, plusToken, minusToken,
+                                asteriskToken, openBracketToken, closedBracketToken,
+                                numeralToken, blankToken
+                        ),
+                        new Grammar(exp, comm, bool),
+                        new Semantics(//TODO: improve this part with a easier and less verbose converter definition mechanism
+                                Arrays.asList(
+                                        new CaseConverter(sum){
+                                            @Override
+                                            public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s) {
+                                                if(node.getChildren().size() == 3){
+                                                    return new Sum(s.resolve(node.get(0)), s.resolve(node.get(2)));
+                                                }else throw new InvalidParseTreeException();
+                                            }
+                                        },
+                                        new CaseConverter(numeral){
+                                            @Override
+                                            public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s) {
+                                                if(node.getChildren().size() == 1){
+                                                    return s.resolve(node.get(0));
+                                                }else throw new InvalidParseTreeException();
+                                            }
+                                        }
+                                        //TODO: add all semantics converters
+                                ), Arrays.asList(
+                                        new TokenConverter(numeralToken) {
+                                            @Override
+                                            public SmallStepSemanticObject convert(String generatingString, Semantics s) {
+                                                try{
+                                                    Integer i =Integer.decode(generatingString);
+                                                    return new Numeral(i);
+                                                }catch (NumberFormatException e){
+                                                    throw new InvalidTokenFoundException();
+                                                }
+                                            }
+                                        }
+                                        //TODO: add all semantics converters
+                                )
+                        )
+                );
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Insert program: ");
+        String input = sc.nextLine();
+        System.out.println(" ");
+        System.out.println("Execution Track:");
+        System.out.println(" ");
+
+        Program p = programGenerator.generate("test", input, (program, configuration) -> {
+            //Command c = (Command) program.getRootSemanticObject();
+            IntegerExpression c = (IntegerExpression) program.getRootSemanticObject();
+            if (!c.isTerminal()) {
+                program.setRootSemanticObject(c.step(configuration));
+                return false;
+            } else {
+                return true;
+            }
+        });
+        // creates a new store
+        // IntegerStore store = new IntegerStore(sName); // not needed now
+        p.executeProgram();
+    }
+
+    public static void oldFact(){
         String sName = "S"; //the name of the IntegerStore, used by Variable and Assignment classes to access the store.
 
         /*
@@ -42,7 +153,19 @@ public class Main {
                                 )
                         )
                 )
-        );
+        ){
+
+            @Override
+            public boolean step(Configuration configuration) {
+                Command c = (Command) this.getRootSemanticObject();
+                if (!c.isTerminal()) {
+                    setRootSemanticObject(c.step(configuration));
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        };
 
         // creates a new store
         IntegerStore store = new IntegerStore(sName);
@@ -50,44 +173,7 @@ public class Main {
         store.write("x", 3);
 
         //starts the execution
-        executeProgram(program, store);
-    }
-
-    /**
-     * Prints a separator between steps.
-     */
-    public static void printStepSeparator(){
-        System.out.println("------------------------------");
-    }
-
-    /**
-     * Prints the state of the execution.
-     */
-    public static void printState(Program program, Configuration configuration){
-        System.out.println("P  =  " + program);
-        configuration.printState();
-    }
-
-    /**
-     * Prints a separator followed by the state of program and configuration.
-     */
-    public static void printSepAndState(Program program, Configuration configuration){
-        printStepSeparator();
-        printState(program, configuration);
-    }
-
-    /**
-     * Executes the program and prints the track of execution and the configuration state at each step.
-     * @param program the program
-     * @param configurationElements the configuration elements
-     */
-    public static void executeProgram(Program program, ConfigurationElement... configurationElements){
-        Configuration configuration = new Configuration(configurationElements);
-        printState(program, configuration);
-        while(!program.step(configuration)){
-            printSepAndState(program, configuration);
-        }
-
+        program.executeProgram(store);
     }
 
 

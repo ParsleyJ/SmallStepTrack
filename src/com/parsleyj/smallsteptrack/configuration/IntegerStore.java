@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.configuration;
 
-import com.parsleyj.smallsteptrack.Program;
+import com.parsleyj.smallsteptrack.program.Program;
 import com.parsleyj.smallsteptrack.integerexpr.Variable;
 
 import java.util.HashMap;

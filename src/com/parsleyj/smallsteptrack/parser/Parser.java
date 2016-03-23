@@ -23,14 +23,14 @@ public class Parser {
     }
 
     //iterative attempt
-    public SyntaxTree parse(List<Token> tokens){
-        SyntaxTreeFactory stf = new SyntaxTreeFactory();
+    public SyntaxTreeNode parse(List<Token> tokens){
+        SyntaxTreeNodeFactory stf = new SyntaxTreeNodeFactory();
 
-        List<SyntaxTree> treeList = new ArrayList<>();
+        List<SyntaxTreeNode> treeList = new ArrayList<>();
         for (Token t: tokens) {
             TokenClass tokenClass = grammar.getTokenClass(t);
             if(tokenClass == null) throw new InvalidTokenFoundException(); //todo: add token info to exception
-            SyntaxTree ast = stf.newSyntaxTree();
+            SyntaxTreeNode ast = stf.newSyntaxTree();
             ast.setParsedToken(t);
             ast.setTokenClass(tokenClass);
             ast.setTerminal(true);
@@ -42,11 +42,11 @@ public class Parser {
             boolean lastIterationFailed = true;
             if(treeList.size() <= 1) break;
             for(Integer window: windows){
-                List<SyntaxTree> tempList = new ArrayList<>();
+                List<SyntaxTreeNode> tempList = new ArrayList<>();
                 int start;
                 for(start = 0; start <= treeList.size() - window; ++start){
                     int end = start + window;
-                    List<SyntaxTree> currentSubList = treeList.subList(start, end);
+                    List<SyntaxTreeNode> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
                                     .map(a -> a.isTerminal()?a.getTokenClass():a.getSyntaxClass())
@@ -54,7 +54,7 @@ public class Parser {
                     );
                     if (lookupResult != null) {
                         lastIterationFailed = false;
-                        SyntaxTree nst = stf.newSyntaxTree(currentSubList.toArray(new SyntaxTree[currentSubList.size()]));
+                        SyntaxTreeNode nst = stf.newSyntaxTree(currentSubList.toArray(new SyntaxTreeNode[currentSubList.size()]));
                         nst.setSyntaxClass(lookupResult.getFirst());
                         nst.setSyntaxCase(lookupResult.getSecond());
                         nst.setTerminal(false);
@@ -86,13 +86,13 @@ public class Parser {
     public static Grammar getTestGrammar() {
 
 
-        TokenClass string = new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1");
+        //TokenClass string = new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1");
         TokenClass identifier = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
-        TokenClass add = new TokenClass("ADD_OPERATOR", "(\\+)");
-        TokenClass sub = new TokenClass("SUB_OPERATOR", "(\\-)");
-        TokenClass mul = new TokenClass("MUL_OPERATOR", "(\\*)");
-        TokenClass openBracket = new TokenClass("OPEN_ROUND_BRACKET", "(\\()");
-        TokenClass closedBracket = new TokenClass("CLOSED_ROUND_BRACKET", "(\\))");
+        TokenClass add = new TokenClass("ADD_OPERATOR", "\\Q+\\E");
+        TokenClass sub = new TokenClass("SUB_OPERATOR", "\\Q-\\E");
+        TokenClass mul = new TokenClass("MUL_OPERATOR", "\\Q*\\E");
+        TokenClass openBracket = new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E");
+        TokenClass closedBracket = new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E");
         TokenClass numeral = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
         TokenClass blank = new RejectableTokenClass("BLANK", " ");
         SyntaxClass exp = new SyntaxClass("Exp");

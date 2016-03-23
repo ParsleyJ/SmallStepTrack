@@ -12,9 +12,9 @@ import java.util.stream.IntStream;
  * Created by Giuseppe on 19/03/16.
  * TODO: javadoc
  */
-public class SyntaxTree {
+public class SyntaxTreeNode {
     private int id;
-    private List<SyntaxTree> children;
+    private List<SyntaxTreeNode> children;
     // for terminals
     private Token parsedToken;
     private TokenClass tokenClass;
@@ -24,35 +24,35 @@ public class SyntaxTree {
 
     private boolean isTerminal = false;
 
-    public SyntaxTree(int id, SyntaxTree... children) {
+    public SyntaxTreeNode(int id, SyntaxTreeNode... children) {
         this.id = id;
         this.children = Arrays.asList(children);
     }
 
-    public SyntaxTree(int id) {
+    public SyntaxTreeNode(int id) {
         this.children = new ArrayList<>();
         this.id = id;
     }
 
-    public List<SyntaxTree> getChildren(){
+    public List<SyntaxTreeNode> getChildren(){
         return children;
     }
 
-    public SyntaxTree get(int i) {
+    public SyntaxTreeNode get(int i) {
         return children.get(i);
     }
 
-    public SyntaxTree addLast(SyntaxTree ast) {
+    public SyntaxTreeNode addLast(SyntaxTreeNode ast) {
         children.add(ast);
         return this;
     }
 
-    public SyntaxTree addFirst(SyntaxTree ast) {
+    public SyntaxTreeNode addFirst(SyntaxTreeNode ast) {
         children.add(0, ast);
         return this;
     }
 
-    public SyntaxTree add(int index, SyntaxTree ast) {
+    public SyntaxTreeNode add(int index, SyntaxTreeNode ast) {
         children.add(index, ast);
         return this;
     }
@@ -105,7 +105,7 @@ public class SyntaxTree {
         printTree(this, 0);
     }
 
-    private static void printTree(SyntaxTree tree, int indentStart){
+    private static void printTree(SyntaxTreeNode tree, int indentStart){
         StringBuilder sb = new StringBuilder("");
         IntStream.range(0, indentStart).forEach(i -> {
             if (i != indentStart-1) sb.append("  ");
@@ -117,7 +117,7 @@ public class SyntaxTree {
                         (tree.getSyntaxClass().getSyntaxComponentName()+": "+tree.getSyntaxCase().getCaseName())
                 )
         );
-        for(SyntaxTree child: tree.getChildren()){
+        for(SyntaxTreeNode child: tree.getChildren()){
             printTree(child, indentStart+1);
         }
     }

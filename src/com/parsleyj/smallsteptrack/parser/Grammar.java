@@ -5,7 +5,6 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * Created by Giuseppe on 19/03/16.
@@ -92,6 +91,8 @@ public class Grammar {
         }
         return null;
     }
+
+
 
     public List<Integer> getCaseSizes() {
         HashSet<Integer> hs= new HashSet<>();

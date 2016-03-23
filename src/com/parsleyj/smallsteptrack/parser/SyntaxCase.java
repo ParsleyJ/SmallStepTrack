@@ -1,5 +1,7 @@
 package com.parsleyj.smallsteptrack.parser;
 
+import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,6 +15,11 @@ public class SyntaxCase {
 
     public SyntaxCase(String caseName, SyntaxCaseComponent... structure) {
         this.caseName = caseName;
+        this.structure = Arrays.asList(structure);
+    }
+
+    public SyntaxCase(Class<? extends SmallStepSemanticObject> semanticClass, SyntaxCaseComponent... structure){
+        this.caseName = semanticClass.getName();
         this.structure = Arrays.asList(structure);
     }
 

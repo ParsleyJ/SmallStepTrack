@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.command;
 
-import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Common interface of all commands of the While language.

@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.command;
 
-import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.booleanexpr.BooleanExpression;
+import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Semantic object representing the {@code while} statement

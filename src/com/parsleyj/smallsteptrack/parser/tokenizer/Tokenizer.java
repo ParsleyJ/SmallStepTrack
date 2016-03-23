@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.parser.tokenizer;
 
-import com.parsleyj.smallsteptrack.parser.SyntaxTree;
 import com.parsleyj.smallsteptrack.parser.Parser;
+import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -67,11 +67,11 @@ public class Tokenizer {
 
         String input = sc.nextLine();
         Tokenizer tokenizer = new Tokenizer(Arrays.asList(
-                new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1"),
+                //new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1"),
                 new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*"),
                 //new TokenClass("OPERATOR", "[-!$%^&*_+|~=:;<>?,.\\/]"),
-                new TokenClass("ADD_OPERATOR", "(\\+)"),
-                new TokenClass("SUB_OPERATOR", "(\\-)"),
+                new TokenClass("ADD_OPERATOR", "\\Q+\\E"),
+                new TokenClass("SUB_OPERATOR", "\\Q-\\E"),
                 new TokenClass("MUL_OPERATOR", "\\Q*\\E"),
                 new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E"),
                 new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E"),
@@ -90,7 +90,7 @@ public class Tokenizer {
 
         if(tokens != null && !tokens.isEmpty()){
             Parser parser = new Parser(Parser.getTestGrammar());
-            SyntaxTree result = parser.parse(tokens);
+            SyntaxTreeNode result = parser.parse(tokens);
             if (result != null){
                 result.printTree();
             }else{
