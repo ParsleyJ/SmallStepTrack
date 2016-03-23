@@ -6,6 +6,7 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * Created by Giuseppe on 19/03/16.
@@ -98,5 +99,26 @@ public class SyntaxTree {
 
     public int getId() {
         return id;
+    }
+
+    public void printTree(){
+        printTree(this, 0);
+    }
+
+    private static void printTree(SyntaxTree tree, int indentStart){
+        StringBuilder sb = new StringBuilder("");
+        IntStream.range(0, indentStart).forEach(i -> {
+            if (i != indentStart-1) sb.append("  ");
+            else sb.append("|-");
+        });
+        System.out.println(sb.toString()+": "+
+                (tree.isTerminal()?
+                        ("TOKEN:"+tree.getTokenClass().getSyntaxComponentName()+": \""+tree.getParsedToken().getGeneratingString()+"\""):
+                        (tree.getSyntaxClass().getSyntaxComponentName()+": "+tree.getSyntaxCase().getCaseName())
+                )
+        );
+        for(SyntaxTree child: tree.getChildren()){
+            printTree(child, indentStart+1);
+        }
     }
 }

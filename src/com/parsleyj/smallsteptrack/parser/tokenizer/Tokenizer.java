@@ -92,7 +92,7 @@ public class Tokenizer {
             Parser parser = new Parser(Parser.getTestGrammar());
             SyntaxTree result = parser.parse(tokens);
             if (result != null){
-                System.out.println("PARSER RESULT SIZE: "+result.getChildren().size());
+                result.printTree();
             }else{
                 System.out.println("PARSER RESULT IS NULL");
             }

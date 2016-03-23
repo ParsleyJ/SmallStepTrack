@@ -39,16 +39,13 @@ public class Parser {
 
         List<Integer> windows = grammar.getCaseSizes();
         while(true){
-            System.err.println("size"+treeList.size());
             boolean lastIterationFailed = true;
             if(treeList.size() <= 1) break;
             for(Integer window: windows){
-                System.err.println("window"+window);
                 List<SyntaxTree> tempList = new ArrayList<>();
                 int start;
                 for(start = 0; start <= treeList.size() - window; ++start){
                     int end = start + window;
-                    System.err.println("start"+start+" end"+end);
                     List<SyntaxTree> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
@@ -56,7 +53,6 @@ public class Parser {
                                     .collect(Collectors.toList())
                     );
                     if (lookupResult != null) {
-                        System.err.println("Lookup Success");
                         lastIterationFailed = false;
                         SyntaxTree nst = stf.newSyntaxTree(currentSubList.toArray(new SyntaxTree[currentSubList.size()]));
                         nst.setSyntaxClass(lookupResult.getFirst());
@@ -66,7 +62,6 @@ public class Parser {
                         start += window - 1;
 
                     } else {
-                        System.err.println("Lookup Failed");
                         tempList.add(currentSubList.get(0));
                     }
                 }
@@ -77,7 +72,6 @@ public class Parser {
                     tempList.add(treeList.get(i));
 
                 treeList = tempList;
-                System.err.println("TempListSize:"+tempList.size());
             }
             if(lastIterationFailed) break;
         }
@@ -113,7 +107,7 @@ public class Parser {
                 new SyntaxCase("multiplication", exp, mul, exp)
         );
 
-        //)...
+        //TODO: complete with a not ambiguous grammar
 
         return new Grammar(exp, comm, bool);
     }
