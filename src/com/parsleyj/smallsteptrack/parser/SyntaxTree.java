@@ -1,6 +1,5 @@
 package com.parsleyj.smallsteptrack.parser;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
 import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 
@@ -12,9 +11,9 @@ import java.util.List;
  * Created by Giuseppe on 19/03/16.
  * TODO: javadoc
  */
-public class ASTObject {
+public class SyntaxTree {
     private int id;
-    private List<ASTObject> children;
+    private List<SyntaxTree> children;
     // for terminals
     private Token parsedToken;
     private TokenClass tokenClass;
@@ -24,35 +23,35 @@ public class ASTObject {
 
     private boolean isTerminal = false;
 
-    public ASTObject(int id, ASTObject... children) {
+    public SyntaxTree(int id, SyntaxTree... children) {
         this.id = id;
         this.children = Arrays.asList(children);
     }
 
-    public ASTObject(int id) {
+    public SyntaxTree(int id) {
         this.children = new ArrayList<>();
         this.id = id;
     }
 
-    public List<ASTObject> getChildren(){
+    public List<SyntaxTree> getChildren(){
         return children;
     }
 
-    public ASTObject get(int i) {
+    public SyntaxTree get(int i) {
         return children.get(i);
     }
 
-    public ASTObject addLast(ASTObject ast) {
+    public SyntaxTree addLast(SyntaxTree ast) {
         children.add(ast);
         return this;
     }
 
-    public ASTObject addFirst(ASTObject ast) {
+    public SyntaxTree addFirst(SyntaxTree ast) {
         children.add(0, ast);
         return this;
     }
 
-    public ASTObject add(int index, ASTObject ast) {
+    public SyntaxTree add(int index, SyntaxTree ast) {
         children.add(index, ast);
         return this;
     }

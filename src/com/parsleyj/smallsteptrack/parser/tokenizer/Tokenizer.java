@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.parser.tokenizer;
 
-import com.parsleyj.smallsteptrack.parser.ASTObject;
+import com.parsleyj.smallsteptrack.parser.SyntaxTree;
 import com.parsleyj.smallsteptrack.parser.Parser;
 
 import java.util.ArrayList;
@@ -90,7 +90,7 @@ public class Tokenizer {
 
         if(tokens != null && !tokens.isEmpty()){
             Parser parser = new Parser(Parser.getTestGrammar());
-            ASTObject result = parser.parse(tokens);
+            SyntaxTree result = parser.parse(tokens);
             if (result != null){
                 System.out.println("PARSER RESULT SIZE: "+result.getChildren().size());
             }else{

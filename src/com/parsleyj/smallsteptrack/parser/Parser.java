@@ -6,8 +6,6 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,14 +23,14 @@ public class Parser {
     }
 
     //iterative attempt
-    public ASTObject parse(List<Token> tokens){
-        ASTFactory astf = new ASTFactory();
+    public SyntaxTree parse(List<Token> tokens){
+        SyntaxTreeFactory stf = new SyntaxTreeFactory();
 
-        List<ASTObject> treeList = new ArrayList<>();
+        List<SyntaxTree> treeList = new ArrayList<>();
         for (Token t: tokens) {
             TokenClass tokenClass = grammar.getTokenClass(t);
             if(tokenClass == null) throw new InvalidTokenFoundException(); //todo: add token info to exception
-            ASTObject ast = astf.newASTObject();
+            SyntaxTree ast = stf.newSyntaxTree();
             ast.setParsedToken(t);
             ast.setTokenClass(tokenClass);
             ast.setTerminal(true);
@@ -46,12 +44,12 @@ public class Parser {
             if(treeList.size() <= 1) break;
             for(Integer window: windows){
                 System.err.println("window"+window);
-                List<ASTObject> tempList = new ArrayList<>();
+                List<SyntaxTree> tempList = new ArrayList<>();
                 int start;
                 for(start = 0; start <= treeList.size() - window; ++start){
                     int end = start + window;
                     System.err.println("start"+start+" end"+end);
-                    List<ASTObject> currentSubList = treeList.subList(start, end);
+                    List<SyntaxTree> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
                                     .map(a -> a.isTerminal()?a.getTokenClass():a.getSyntaxClass())
@@ -60,11 +58,11 @@ public class Parser {
                     if (lookupResult != null) {
                         System.err.println("Lookup Success");
                         lastIterationFailed = false;
-                        ASTObject asto = astf.newASTObject(currentSubList.toArray(new ASTObject[currentSubList.size()]));
-                        asto.setSyntaxClass(lookupResult.getFirst());
-                        asto.setSyntaxCase(lookupResult.getSecond());
-                        asto.setTerminal(false);
-                        tempList.add(asto);
+                        SyntaxTree nst = stf.newSyntaxTree(currentSubList.toArray(new SyntaxTree[currentSubList.size()]));
+                        nst.setSyntaxClass(lookupResult.getFirst());
+                        nst.setSyntaxCase(lookupResult.getSecond());
+                        nst.setTerminal(false);
+                        tempList.add(nst);
                         start += window - 1;
 
                     } else {
@@ -115,7 +113,7 @@ public class Parser {
                 new SyntaxCase("multiplication", exp, mul, exp)
         );
 
-        //...(EXPERIMENTING)...
+        //)...
 
         return new Grammar(exp, comm, bool);
     }

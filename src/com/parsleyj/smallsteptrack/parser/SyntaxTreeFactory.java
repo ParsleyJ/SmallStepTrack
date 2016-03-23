@@ -4,19 +4,19 @@ package com.parsleyj.smallsteptrack.parser;
  * Created by Giuseppe on 22/03/16.
  * TODO: javadoc
  */
-public class ASTFactory {
+public class SyntaxTreeFactory {
     private final IDGenerator idGenerator;
 
-    public ASTFactory(){
+    public SyntaxTreeFactory(){
         this.idGenerator = new IDGenerator();
     }
 
-    public ASTObject newASTObject(){
-        return new ASTObject(idGenerator.getNext());
+    public SyntaxTree newSyntaxTree(){
+        return new SyntaxTree(idGenerator.getNext());
     }
 
-    public ASTObject newASTObject(ASTObject... children){
-        return new ASTObject(idGenerator.getNext(), children);
+    public SyntaxTree newSyntaxTree(SyntaxTree... children){
+        return new SyntaxTree(idGenerator.getNext(), children);
     }
 
     private static class IDGenerator {
