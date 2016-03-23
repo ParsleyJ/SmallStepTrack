@@ -1,5 +1,8 @@
 package com.parsleyj.smallsteptrack.parser.tokenizer;
 
+import com.parsleyj.smallsteptrack.parser.ASTObject;
+import com.parsleyj.smallsteptrack.parser.Parser;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -60,31 +63,41 @@ public class Tokenizer {
      */
     public static void main(String[] argv){
         Scanner sc = new Scanner(System.in);
-        do {
-            String input = sc.nextLine();
-            if(input.equals("exit")) break;
-            Tokenizer tokenizer = new Tokenizer(Arrays.asList(
-                    new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1"),
-                    new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*"),
-                    //new TokenClass("OPERATOR", "[-!$%^&*_+|~=:;<>?,.\\/]"),
-                    new TokenClass("ADD_OPERATOR", "(\\+)"),
-                    new TokenClass("SUB_OPERATOR", "(\\-)"),
-                    new TokenClass("MUL_OPERATOR", "(\\*)"),
-                    new TokenClass("OPEN_ROUND_BRACKET", "(\\()"),
-                    new TokenClass("CLOSED_ROUND_BRACKET", "(\\))"),
-                    new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)"),
-                    //new TokenClass("NUMERAL2", "^(0|[1-9][0-9]*)$"),
-                    //new TokenClass("MUL_OPERATOR", "\\*"),
-                    //new TokenClass("SUB_OPERATOR", "\\-"),
-                    new RejectableTokenClass("BLANK", " ")
-            ));
-            List<Token> tokens = tokenizer.tokenize(input);
-            tokens.forEach((t) -> {
-                System.out.println("Token = " + t.getGeneratingString());
-                System.out.println(" Type = " + t.getTokenClassName());
-                System.out.println("--------------------------------------");
-            });
-        } while(1<2);
+        List<Token> tokens = null;
+
+        String input = sc.nextLine();
+        Tokenizer tokenizer = new Tokenizer(Arrays.asList(
+                new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1"),
+                new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*"),
+                //new TokenClass("OPERATOR", "[-!$%^&*_+|~=:;<>?,.\\/]"),
+                new TokenClass("ADD_OPERATOR", "(\\+)"),
+                new TokenClass("SUB_OPERATOR", "(\\-)"),
+                new TokenClass("MUL_OPERATOR", "(\\*)"),
+                new TokenClass("OPEN_ROUND_BRACKET", "(\\()"),
+                new TokenClass("CLOSED_ROUND_BRACKET", "(\\))"),
+                new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)"),
+                //new TokenClass("NUMERAL2", "^(0|[1-9][0-9]*)$"),
+                //new TokenClass("MUL_OPERATOR", "\\*"),
+                //new TokenClass("SUB_OPERATOR", "\\-"),
+                new RejectableTokenClass("BLANK", " ")
+        ));
+        tokens = tokenizer.tokenize(input);
+        tokens.forEach((t) -> {
+            System.out.println("Token = " + t.getGeneratingString());
+            System.out.println(" Type = " + t.getTokenClassName());
+            System.out.println("--------------------------------------");
+        });
+
+        if(tokens != null && !tokens.isEmpty()){
+            Parser parser = new Parser(Parser.getTestGrammar());
+            ASTObject result = parser.parse(tokens);
+            if (result != null){
+                System.out.println("PARSER RESULT SIZE: "+result.getChildren().size());
+            }else{
+                System.out.println("PARSER RESULT IS NULL");
+            }
+        }
+
     }
 
 

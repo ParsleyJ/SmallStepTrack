@@ -16,11 +16,13 @@ import java.util.stream.Collectors;
  */
 public class Parser {
 
-    private Grammar grammar = getTestGrammar();
+    private Grammar grammar;
 
     /* 9 + 3 - ( 4 * 7 - ( 12 + 2 ) ) * 2 */
 
-
+    public Parser(Grammar grammar) {
+        this.grammar = grammar;
+    }
 
     //iterative attempt
     public ASTObject parse(List<Token> tokens){
@@ -39,10 +41,16 @@ public class Parser {
 
         List<Integer> windows = grammar.getCaseSizes();
         while(true){
-            List<ASTObject> tempList = new ArrayList<>();
+            System.err.println("size"+treeList.size());
+            boolean lastIterationFailed = true;
+            if(treeList.size() <= 1) break;
             for(Integer window: windows){
-                for(int start = 0; start <= treeList.size() - window; ++start){
+                System.err.println("window"+window);
+                List<ASTObject> tempList = new ArrayList<>();
+                int start;
+                for(start = 0; start <= treeList.size() - window; ++start){
                     int end = start + window;
+                    System.err.println("start"+start+" end"+end);
                     List<ASTObject> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
@@ -50,15 +58,35 @@ public class Parser {
                                     .collect(Collectors.toList())
                     );
                     if (lookupResult != null) {
+                        System.err.println("Lookup Success");
+                        lastIterationFailed = false;
                         ASTObject asto = astf.newASTObject(currentSubList.toArray(new ASTObject[currentSubList.size()]));
                         asto.setSyntaxClass(lookupResult.getFirst());
                         asto.setSyntaxCase(lookupResult.getSecond());
                         asto.setTerminal(false);
+                        tempList.add(asto);
+                        start += window - 1;
 
-                        //(WORK IN PROGRESS...)
+                    } else {
+                        System.err.println("Lookup Failed");
+                        tempList.addAll(currentSubList);
                     }
                 }
+
+                //there are no more subLists with this window at this start index
+                //we need to add the remaining elements to tempList
+                for(int i = start; i < treeList.size(); ++i)
+                    tempList.add(treeList.get(i));
+
+                treeList = tempList;
+                System.err.println("TempListSize:"+tempList.size());
             }
+            if(lastIterationFailed) break;
+        }
+        if(treeList.size() == 1){
+            return treeList.get(0);
+        } else {
+            throw new ParseFailedException();
         }
     }
 
@@ -96,6 +124,6 @@ public class Parser {
     private class InvalidTokenFoundException extends RuntimeException {
     }
 
-    private class InvalidAbstractSyntaxSubtreeFoundException extends RuntimeException {
+    private class ParseFailedException extends RuntimeException {
     }
 }

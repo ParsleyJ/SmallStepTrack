@@ -96,9 +96,11 @@ public class Grammar {
     public List<Integer> getCaseSizes() {
         HashSet<Integer> hs= new HashSet<>();
         for(SyntaxClass clas: list)
-            hs.addAll(clas.getSyntaxCases().stream().map(cas -> cas.getStructure().size()).collect(Collectors.toList()));
+            //noinspection Convert2streamapi
+            for(SyntaxCase cas: clas.getSyntaxCases())
+                if(!cas.getStructure().isEmpty()) hs.add(cas.getStructure().size());
         List<Integer> sortedList = new ArrayList<>(hs);
-        Collections.sort(sortedList);
+        Collections.sort(sortedList, (o1, o2) -> o1-o2);
         return sortedList;
     }
 }

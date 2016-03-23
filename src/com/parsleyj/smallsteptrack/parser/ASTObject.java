@@ -34,6 +34,9 @@ public class ASTObject {
         this.id = id;
     }
 
+    public List<ASTObject> getChildren(){
+        return children;
+    }
 
     public ASTObject get(int i) {
         return children.get(i);

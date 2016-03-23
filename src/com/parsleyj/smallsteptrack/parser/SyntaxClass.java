@@ -1,5 +1,6 @@
 package com.parsleyj.smallsteptrack.parser;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class SyntaxClass implements SyntaxCaseComponent {
 
     public SyntaxClass(String name) {
         this.name = name;
-        cases = null;
+        cases = new ArrayList<>();
     }
 
     public SyntaxClass(String name, List<SyntaxCase> cases) {
