@@ -69,7 +69,7 @@ public class Parser {
 
                     } else {
                         System.err.println("Lookup Failed");
-                        tempList.addAll(currentSubList);
+                        tempList.add(currentSubList.get(0));
                     }
                 }
 
