@@ -23,7 +23,7 @@ public class SyntaxCase{
         this.structure = Arrays.asList(structure);
     }
 
-    List<SyntaxCaseComponent> getStructure() {
+    public List<SyntaxCaseComponent> getStructure() {
         return structure;
     }
 

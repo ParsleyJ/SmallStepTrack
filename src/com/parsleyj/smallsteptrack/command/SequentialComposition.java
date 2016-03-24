@@ -37,6 +37,6 @@ public class SequentialComposition implements Command {
 
     @Override
     public String toString() {
-        return "(" + a + "; " + b + ")";
+        return a + "; " + b;
     }
 }

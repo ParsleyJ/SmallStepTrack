@@ -21,5 +21,7 @@ public interface BooleanExpression extends SmallStepSemanticObject {
      * This must return {@code null} if {@link #isTerminal()} returns {@code false}.
      * @return the actual Boolean value of this semantic object, or {@code null}.
      */
-    Boolean getBooleanValue();
+    default Boolean getBooleanValue(){
+        return null;
+    }
 }
