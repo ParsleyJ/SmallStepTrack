@@ -43,7 +43,7 @@ public class Grammar {
         return lookup(components, list);
     }
 
-    public Pair<SyntaxClass, SyntaxCase> lookup(List<SyntaxCaseComponent> components, List<SyntaxClass> list) {
+    public static Pair<SyntaxClass, SyntaxCase> lookup(List<SyntaxCaseComponent> components, List<SyntaxClass> list) {
         SyntaxCase tempCase = new SyntaxCase("", components.toArray(new SyntaxCaseComponent[components.size()]));
         for (SyntaxClass clas : list) {
             for(SyntaxCase cas : clas.getSyntaxCases()){
@@ -55,7 +55,7 @@ public class Grammar {
         return null;
     }
 
-    public Boolean isPriorityGreaterOrEqual(List<SyntaxCaseComponent> a, List<SyntaxCaseComponent> b){
+    /*public Boolean isPriorityGreaterOrEqual(List<SyntaxCaseComponent> a, List<SyntaxCaseComponent> b){
         SyntaxCase tempCaseA = new SyntaxCase("", a.toArray(new SyntaxCaseComponent[a.size()]));
         SyntaxCase tempCaseB = new SyntaxCase("", b.toArray(new SyntaxCaseComponent[b.size()]));
         for (SyntaxClass clas : list) {
@@ -68,16 +68,25 @@ public class Grammar {
             }
         }
         return null;
-    }
+    }*/
 
-    public static boolean caseMatch(SyntaxCase sc1, SyntaxCase sc2) {
-        if(sc1.getStructure().size() != sc2.getStructure().size()) return false;
-        for(int i = 0; i < sc1.getStructure().size(); ++i){
-            if(!sc1.getStructure().get(i).getSyntaxComponentName().equals(sc2.getStructure().get(i).getSyntaxComponentName()))
+    public static boolean caseMatch(SyntaxCase instanceCase, SyntaxCase ruledCase) {
+        if(ruledCase.getStructure().size() != instanceCase.getStructure().size()) return false;
+        for(int i = 0; i < ruledCase.getStructure().size(); ++i){
+            SyntaxCaseComponent ruledComponent = ruledCase.getStructure().get(i);
+            SyntaxCaseComponent instanceComponent = instanceCase.getStructure().get(i);
+
+            if(ruledComponent instanceof  SpecificCaseComponent && !(instanceComponent instanceof TokenClass)){
+                if (!ruledComponent.getSyntaxComponentName().equals(instanceComponent.getSyntaxComponentName() + ":" + ((SyntaxParsingInstance) instanceComponent).getSyntaxCaseName()))
+                    return false;
+            }else if(!ruledComponent.getSyntaxComponentName().equals(instanceComponent.getSyntaxComponentName())) {
                 return false;
+            }
         }
         return true;
     }
+
+
 
     public TokenClass getTokenClass(Token t){
         for(SyntaxClass syntaxClass: list) {

@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Giuseppe on 19/03/16.
  * TODO: javadoc
  */
-public class SyntaxCase {
+public class SyntaxCase{
     private String caseName;
     private List<SyntaxCaseComponent> structure;
 

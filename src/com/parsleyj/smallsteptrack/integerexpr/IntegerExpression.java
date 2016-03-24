@@ -21,5 +21,7 @@ public interface IntegerExpression extends SmallStepSemanticObject {
      * This must return {@code null} if {@link #isTerminal()} returns {@code false}.
      * @return the actual Integer value of this semantic object, or {@code null}.
      */
-    Integer getIntValue();
+    default Integer getIntValue(){
+        return null;
+    }
 }

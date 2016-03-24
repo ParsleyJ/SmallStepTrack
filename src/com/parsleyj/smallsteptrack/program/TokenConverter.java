@@ -7,16 +7,21 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
  * Created by Giuseppe on 23/03/16.
  * TODO: javadoc
  */
-public abstract class TokenConverter {
+public class TokenConverter {
     private TokenClass tokenClass;
+    private TokenConverterMethod method;
 
-    protected TokenConverter(TokenClass tokenClass) {
+    public TokenConverter(TokenClass tokenClass, TokenConverterMethod method) {
         this.tokenClass = tokenClass;
+        this.method = method;
     }
 
     public TokenClass getTokenClass() {
         return tokenClass;
     }
 
-    public abstract SmallStepSemanticObject convert(String generatingString, Semantics s);
+    public  SmallStepSemanticObject convert(String generatingString, Semantics s){
+        return method.convert(generatingString, s);
+    }
+
 }

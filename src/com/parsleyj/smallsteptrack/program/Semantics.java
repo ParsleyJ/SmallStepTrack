@@ -1,6 +1,7 @@
 package com.parsleyj.smallsteptrack.program;
 
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.parser.SyntaxCase;
 import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
 
 import java.util.HashMap;
@@ -53,6 +54,8 @@ public class Semantics {
             return r.convert(generatingString, this);
         } else throw new NoResolverFoundForTokenClassException();
     }
+
+
 
 
 }

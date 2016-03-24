@@ -49,7 +49,7 @@ public class Parser {
                     List<SyntaxTreeNode> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
-                                    .map(a -> a.isTerminal()?a.getTokenClass():a.getSyntaxClass())
+                                    .map(a -> a.isTerminal()?a.getTokenClass():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
                                     .collect(Collectors.toList())
                     );
                     if (lookupResult != null) {
@@ -78,7 +78,10 @@ public class Parser {
         if(treeList.size() == 1){
             return treeList.get(0);
         } else {
-            throw new ParseFailedException();
+            SyntaxTreeNode errorNode = stf.newSyntaxTree(treeList.toArray(new SyntaxTreeNode[treeList.size()]));
+            errorNode.setSyntaxCase(new SyntaxCase("PARSE FAILED"));
+            errorNode.setSyntaxClass(new SyntaxClass("###"));
+            throw new ParseFailedException(errorNode);
         }
     }
 
@@ -113,9 +116,4 @@ public class Parser {
     }
 
 
-    private class InvalidTokenFoundException extends RuntimeException {
-    }
-
-    private class ParseFailedException extends RuntimeException {
-    }
 }

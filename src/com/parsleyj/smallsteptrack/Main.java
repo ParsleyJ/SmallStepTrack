@@ -1,20 +1,16 @@
 package com.parsleyj.smallsteptrack;
 
 import com.parsleyj.smallsteptrack.booleanexpr.GreaterIntegerComparison;
-import com.parsleyj.smallsteptrack.command.Assignment;
-import com.parsleyj.smallsteptrack.command.Command;
-import com.parsleyj.smallsteptrack.command.SequentialComposition;
-import com.parsleyj.smallsteptrack.command.WhileCommand;
+import com.parsleyj.smallsteptrack.command.*;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.configuration.IntegerStore;
 import com.parsleyj.smallsteptrack.integerexpr.*;
-import com.parsleyj.smallsteptrack.parser.Grammar;
-import com.parsleyj.smallsteptrack.parser.SyntaxCase;
-import com.parsleyj.smallsteptrack.parser.SyntaxClass;
-import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
+import com.parsleyj.smallsteptrack.parser.*;
 import com.parsleyj.smallsteptrack.parser.tokenizer.RejectableTokenClass;
 import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.program.*;
+import com.parsleyj.smallsteptrack.program.InvalidTokenFoundException;
+import com.parsleyj.smallsteptrack.utils.SimpleTokenClassWrapConverter;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -27,23 +23,26 @@ public class Main {
     }
 
     public static void newTest(){
-        // String sName = "S"; // not needed now
+        String storeName = "S";
 
         SyntaxClass exp = new SyntaxClass("Exp");
         SyntaxClass comm = new SyntaxClass("Comm");
         SyntaxClass bool = new SyntaxClass("Bool");
 
+        TokenClass skipToken = new TokenClass("SKIP_KEYWORD", "\\Qskip\\E");
         TokenClass identifierToken = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
-        TokenClass plusToken = new TokenClass("ADD_OPERATOR", "\\Q+\\E");
-        TokenClass minusToken = new TokenClass("SUB_OPERATOR", "\\Q-\\E");
-        TokenClass asteriskToken = new TokenClass("MUL_OPERATOR", "\\Q*\\E");
+        TokenClass plusToken = new TokenClass("PLUS", "\\Q+\\E");
+        TokenClass minusToken = new TokenClass("MINUS", "\\Q-\\E");
+        TokenClass asteriskToken = new TokenClass("ASTERISK", "\\Q*\\E");
+        TokenClass assignmentOperatorToken = new TokenClass("ASSIGNMENT_OPERATOR", "\\Q:=\\E");
+        TokenClass semicolonToken = new TokenClass("SEMICOLON", "\\Q;\\E");
         TokenClass openBracketToken = new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E");
         TokenClass closedBracketToken = new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E");
         TokenClass numeralToken = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
         TokenClass blankToken = new RejectableTokenClass("BLANK", " ");
 
         //Exp :=
-        SyntaxCase variable = new SyntaxCase("identifier", identifierToken); // x |
+        SyntaxCase variable = new SyntaxCase("variable", identifierToken); // x |
         SyntaxCase numeral = new SyntaxCase("numeral", numeralToken); // n |
         SyntaxCase expressionBetweenRoundBrackets = new SyntaxCase("expressionBetweenRoundBrackets", openBracketToken, exp, closedBracketToken); // ( E ) |
         SyntaxCase sum =new SyntaxCase("sum", exp, plusToken, exp); // E + E |
@@ -52,6 +51,10 @@ public class Main {
         exp.setCases(variable, numeral, expressionBetweenRoundBrackets, sum, subtraction, multiplication);
 
         //Comm :=
+        SyntaxCase skip = new SyntaxCase("skip", skipToken); // skip |
+        SyntaxCase assignment = new SyntaxCase("assignment", new SpecificCaseComponent(exp, variable), assignmentOperatorToken, exp); // x := E |
+        SyntaxCase sequentialComposition = new SyntaxCase("sequentialComposition", comm, semicolonToken, comm); //  C ; C |
+        comm.setCases(skip, assignment, sequentialComposition);
         //...
 
         //Bool :=
@@ -63,42 +66,53 @@ public class Main {
         ProgramGenerator programGenerator =
                 new ProgramGenerator(
                         Arrays.asList(
-                                identifierToken, plusToken, minusToken,
-                                asteriskToken, openBracketToken, closedBracketToken,
-                                numeralToken, blankToken
+                                skipToken, identifierToken, plusToken, minusToken,
+                                asteriskToken, assignmentOperatorToken, semicolonToken,
+                                openBracketToken, closedBracketToken, numeralToken,
+                                blankToken
                         ),
-                        new Grammar(exp, comm, bool),
+                        new Grammar(
+                                exp,
+                                comm,
+                                bool),
                         new Semantics(//TODO: improve this part with a easier and less verbose converter definition mechanism
                                 Arrays.asList(
-                                        new CaseConverter(sum){
-                                            @Override
-                                            public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s) {
-                                                if(node.getChildren().size() == 3){
-                                                    return new Sum(s.resolve(node.get(0)), s.resolve(node.get(2)));
-                                                }else throw new InvalidParseTreeException();
-                                            }
-                                        },
-                                        new CaseConverter(numeral){
-                                            @Override
-                                            public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s) {
-                                                if(node.getChildren().size() == 1){
-                                                    return s.resolve(node.get(0));
-                                                }else throw new InvalidParseTreeException();
-                                            }
-                                        }
+                                        new SimpleTokenClassWrapConverter(numeral),
+                                        new SimpleTokenClassWrapConverter(variable),
+                                        new CaseConverter(expressionBetweenRoundBrackets, (node, s) ->{
+                                            if(node.getChildren().size() == 3){
+                                                return new ExpressionBetweenRoundBrackets(s.resolve(node.get(1)));
+                                            }else throw new InvalidParseTreeException();
+                                        }),
+                                        new CaseConverter(sum, (node, s) -> {
+                                            if(node.getChildren().size() == 3){
+                                                return new Sum(s.resolve(node.get(0)), s.resolve(node.get(2)));
+                                            }else throw new InvalidParseTreeException();
+                                        }),
+                                        new SimpleTokenClassWrapConverter(skip),
+                                        new CaseConverter(assignment, (node, s)->{
+                                            if(node.getChildren().size() == 3){
+                                                return new Assignment(storeName, s.resolve(node.get(0)), s.resolve(node.get(2)));
+                                            }else throw new InvalidParseTreeException();
+                                        }),
+                                        new CaseConverter(sequentialComposition, (node, s) -> {
+                                            if(node.getChildren().size() == 3){
+                                                return new SequentialComposition(s.resolve(node.get(0)), s.resolve(node.get(2)));
+                                            }else throw new InvalidParseTreeException();
+                                        })
+
                                         //TODO: add all semantics converters
                                 ), Arrays.asList(
-                                        new TokenConverter(numeralToken) {
-                                            @Override
-                                            public SmallStepSemanticObject convert(String generatingString, Semantics s) {
-                                                try{
-                                                    Integer i =Integer.decode(generatingString);
-                                                    return new Numeral(i);
-                                                }catch (NumberFormatException e){
-                                                    throw new InvalidTokenFoundException();
-                                                }
+                                        new TokenConverter(numeralToken, (generatingString, s) -> {
+                                            try{
+                                                Integer i =Integer.decode(generatingString);
+                                                return new Numeral(i);
+                                            }catch (NumberFormatException e){
+                                                throw new InvalidTokenFoundException();
                                             }
-                                        }
+                                        }),
+                                        new TokenConverter(identifierToken, ((generatingString, s) -> new Variable(storeName, generatingString))),
+                                        new TokenConverter(skipToken, ((generatingString, s) -> new Skip()))
                                         //TODO: add all semantics converters
                                 )
                         )
@@ -108,12 +122,12 @@ public class Main {
         System.out.println("Insert program: ");
         String input = sc.nextLine();
         System.out.println(" ");
-        System.out.println("Execution Track:");
-        System.out.println(" ");
 
+
+        programGenerator.setPrintDebugMessages(true);
         Program p = programGenerator.generate("test", input, (program, configuration) -> {
-            //Command c = (Command) program.getRootSemanticObject();
-            IntegerExpression c = (IntegerExpression) program.getRootSemanticObject();
+            Command c = (Command) program.getRootSemanticObject();
+            //IntegerExpression c = (IntegerExpression) program.getRootSemanticObject();
             if (!c.isTerminal()) {
                 program.setRootSemanticObject(c.step(configuration));
                 return false;
@@ -122,8 +136,11 @@ public class Main {
             }
         });
         // creates a new store
-        // IntegerStore store = new IntegerStore(sName); // not needed now
-        p.executeProgram();
+        IntegerStore store = new IntegerStore(storeName);
+        store.write("x", 3);
+        System.out.println("Execution Track:");
+        System.out.println(" ");
+        p.executeProgram(store);
     }
 
     public static void oldFact(){

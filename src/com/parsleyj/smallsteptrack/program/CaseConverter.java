@@ -8,16 +8,21 @@ import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
  * Created by Giuseppe on 23/03/16.
  * TODO: javadoc
  */
-public abstract class CaseConverter {
+public class CaseConverter {
     private SyntaxCase casE;
+    private CaseConverterMethod method;
 
-    public CaseConverter(SyntaxCase casE){
+    public CaseConverter(SyntaxCase casE, CaseConverterMethod method){
         this.casE = casE;
+        this.method = method;
     }
 
     public SyntaxCase getCasE() {
         return casE;
     }
 
-    public abstract SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s);
+    public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s){
+        return method.convert(node, s);
+    }
+
 }
