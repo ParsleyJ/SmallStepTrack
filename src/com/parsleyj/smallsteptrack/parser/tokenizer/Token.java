@@ -1,13 +1,11 @@
 package com.parsleyj.smallsteptrack.parser.tokenizer;
 
 /**
- * todo: javadoc
+ * This is a data structure used to carry information about a
+ * portion of program around the tokenizer and the parser.
  */
 public class Token {
     public static final String UNSCANNED = "UNSCANNED";
-    public static final String NUMERAL = "NUMERAL";
-    public static final String TERMINAL_SYMBOL = "TERMINAL_SYMBOL";
-    public static final String IDENTIFIER = "IDENTIFIER";
 
     private String generatingString;
     private String tokenClass;
@@ -17,10 +15,16 @@ public class Token {
         this.tokenClass = tokenClass;
     }
 
+    /**
+     * @return the string that matched the {@code TokenClass}' pattern.
+     */
     public String getGeneratingString() {
         return generatingString;
     }
 
+    /**
+     * @return a string name of the corresponding {@code TokenClass}.
+     */
     public String getTokenClassName() {
         return tokenClass;
     }

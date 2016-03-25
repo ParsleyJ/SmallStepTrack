@@ -3,8 +3,7 @@ package com.parsleyj.smallsteptrack.booleanexpr;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
- * Created by Giuseppe on 25/03/16.
- * TODO: javadoc
+ * Semantic object representing a boolean expression surrounded by round brackets.
  */
 public class BooleanExpressionBetweenRoundBrackets implements BooleanExpression {
     private BooleanExpression e;

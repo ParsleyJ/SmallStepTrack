@@ -10,13 +10,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Parser definition class (EXPERIMENTING)
+ *
  */
 public class Parser {
 
     private Grammar grammar;
 
-    /* 9 + 3 - ( 4 * 7 - ( 12 + 2 ) ) * 2 */
 
     public Parser(Grammar grammar) {
         this.grammar = grammar;

@@ -1,8 +1,9 @@
 package com.parsleyj.smallsteptrack.parser;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * A special case component that overrides the normal mechanism that
+ * the parser uses when confronts two cases. This class can be used to use
+ * a specific syntax case as a case component.
  */
 public class SpecificCaseComponent implements SyntaxCaseComponent {
 

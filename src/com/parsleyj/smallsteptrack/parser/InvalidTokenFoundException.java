@@ -1,8 +1,8 @@
 package com.parsleyj.smallsteptrack.parser;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * Exception thrown by the parser when in the input token list appears
+ * an invalid token.
  */
 public class InvalidTokenFoundException extends RuntimeException {
 }
