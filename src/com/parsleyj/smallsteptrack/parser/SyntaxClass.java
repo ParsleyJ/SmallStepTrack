@@ -43,6 +43,13 @@ public class SyntaxClass implements SyntaxCaseComponent {
         this.cases = Arrays.asList(cases);
     }
 
+    public void addCase(SyntaxCase cas){
+        if (this.cases == null) {
+            cases = new ArrayList<>();
+        }
+        cases.add(cas);
+    }
+
     @Override
     public String getSyntaxComponentName() {
         return name;

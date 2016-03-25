@@ -2,6 +2,7 @@ package com.parsleyj.smallsteptrack.parser;
 
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
 import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.program.SyntaxCaseDefinition;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
 import java.util.*;
@@ -11,22 +12,34 @@ import java.util.*;
  * TODO: javadoc
  */
 public class Grammar {
-    private List<SyntaxClass> list;
+    private List<SyntaxClass> classList;
+    private List<Pair<SyntaxClass,SyntaxCase>> priorityCaseList;
 
-    public Grammar(SyntaxClass... list) {
-        this.list = Arrays.asList(list);
+    public Grammar(SyntaxCaseDefinition... syntaxCaseDefinitions) {
+        HashSet<SyntaxClass> classHashSet = new HashSet<>();
+        this.priorityCaseList = new ArrayList<>();
+        for(SyntaxCaseDefinition definition: syntaxCaseDefinitions){
+            definition.getBelongingClass().addCase(definition);
+            classHashSet.add(definition.getBelongingClass());
+            this.priorityCaseList.add(new Pair<>(definition.getBelongingClass(),definition));
+        }
+        this.classList = new ArrayList<>(classHashSet);
+    }
+
+    public List<Pair<SyntaxClass, SyntaxCase>> getPriorityCaseList() {
+        return priorityCaseList;
     }
 
 
 
     /**
-     * Finds all cases in all classes in which {@code component} is contained.
+     * Finds all syntax cases in all classes in which {@code component} is contained.
      * @param component
      * @return
      */
     public List<Pair<SyntaxClass, SyntaxCase>> findCases(SyntaxCaseComponent component){
         List<Pair<SyntaxClass, SyntaxCase>> result = new ArrayList<>();
-        for (SyntaxClass clas : list) {
+        for (SyntaxClass clas : classList) {
             for (SyntaxCase cas: clas.getSyntaxCases()){
                 for(SyntaxCaseComponent comp: cas.getStructure()){
                     if(comp.getSyntaxComponentName().equals(component.getSyntaxComponentName())) {
@@ -40,7 +53,7 @@ public class Grammar {
     }
 
     public Pair<SyntaxClass, SyntaxCase> lookup(List<SyntaxCaseComponent> components){
-        return lookup(components, list);
+        return lookup(components, classList);
     }
 
     public static Pair<SyntaxClass, SyntaxCase> lookup(List<SyntaxCaseComponent> components, List<SyntaxClass> list) {
@@ -89,7 +102,7 @@ public class Grammar {
 
 
     public TokenClass getTokenClass(Token t){
-        for(SyntaxClass syntaxClass: list) {
+        for(SyntaxClass syntaxClass: classList) {
             for(SyntaxCase syntaxCase: syntaxClass.getSyntaxCases()) {
                 for(SyntaxCaseComponent syntaxCaseComponent: syntaxCase.getStructure()) {
                     if (syntaxCaseComponent instanceof TokenClass && syntaxCaseComponent.getSyntaxComponentName().equals(t.getTokenClassName())) {
@@ -105,7 +118,7 @@ public class Grammar {
 
     public List<Integer> getCaseSizes() {
         HashSet<Integer> hs= new HashSet<>();
-        for(SyntaxClass clas: list)
+        for(SyntaxClass clas: classList)
             //noinspection Convert2streamapi
             for(SyntaxCase cas: clas.getSyntaxCases())
                 if(!cas.getStructure().isEmpty()) hs.add(cas.getStructure().size());
@@ -113,4 +126,6 @@ public class Grammar {
         Collections.sort(sortedList, (o1, o2) -> o1-o2);
         return sortedList;
     }
+
+
 }

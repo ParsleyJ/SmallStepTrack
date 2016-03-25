@@ -7,6 +7,7 @@ import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
 import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.parser.tokenizer.Tokenizer;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,10 +21,21 @@ public class ProgramGenerator {
     private Semantics semantics;
     private boolean printDebugMessages = false;
 
-    public ProgramGenerator(List<TokenClass> tokenClasses, Grammar grammar, Semantics semantics) {
-        this.grammar = grammar;
-        this.tokenClasses = tokenClasses;
-        this.semantics = semantics;
+    public ProgramGenerator(TokenClassDefinition[] tokenClassDefinitions, SyntaxCaseDefinition[] definitions){
+        this.tokenClasses = new ArrayList<>();
+        List<TokenConverter> tokenConverters = new ArrayList<>();
+        for(TokenClassDefinition tokenClassDefinition: tokenClassDefinitions){
+            tokenClasses.add(tokenClassDefinition);
+            if (tokenClassDefinition.getConverter() != null) {
+                tokenConverters.add(tokenClassDefinition.getConverter());
+            }
+        }
+        this.grammar = new Grammar(definitions);
+        List<CaseConverter> caseConverters = new ArrayList<>();
+        for(SyntaxCaseDefinition syntaxCaseDefinition: definitions){
+            caseConverters.add(syntaxCaseDefinition.getConverter());
+        }
+        this.semantics = new Semantics(caseConverters , tokenConverters);
     }
 
     private SmallStepSemanticObject generateRootSemanticObject(SyntaxTreeNode tree){
@@ -51,7 +63,7 @@ public class ProgramGenerator {
         Parser parser = new Parser(grammar);
         SyntaxTreeNode tree = null;
         try{
-            tree = parser.parse(tokenList);
+            tree = parser.priorityBasedParse(tokenList);
             if(printDebugMessages){
                 System.out.println();
                 System.out.println("PARSER RESULT:");

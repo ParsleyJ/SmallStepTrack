@@ -18,11 +18,6 @@ public class SyntaxCase{
         this.structure = Arrays.asList(structure);
     }
 
-    public SyntaxCase(Class<? extends SmallStepSemanticObject> semanticClass, SyntaxCaseComponent... structure){
-        this.caseName = semanticClass.getName();
-        this.structure = Arrays.asList(structure);
-    }
-
     public List<SyntaxCaseComponent> getStructure() {
         return structure;
     }

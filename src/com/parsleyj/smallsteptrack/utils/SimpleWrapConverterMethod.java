@@ -12,12 +12,12 @@ import com.parsleyj.smallsteptrack.program.Semantics;
  * Created by Giuseppe on 24/03/16.
  * TODO: javadoc
  */
-public class SimpleTokenClassWrapConverter extends CaseConverter {
-    public SimpleTokenClassWrapConverter(SyntaxCase casE) {
-        super(casE, (node, s) -> {
-            if(node.getChildren().size() == 1){
-                return s.resolve(node.get(0));
-            }else throw new InvalidParseTreeException();
-        });
+public class SimpleWrapConverterMethod implements CaseConverterMethod {
+
+    @Override
+    public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s) {
+        if(node.getChildren().size() == 1){
+            return s.resolve(node.get(0));
+        }else throw new InvalidParseTreeException();
     }
 }

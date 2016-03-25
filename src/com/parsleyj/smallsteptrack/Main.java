@@ -6,11 +6,8 @@ import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.configuration.IntegerStore;
 import com.parsleyj.smallsteptrack.integerexpr.*;
 import com.parsleyj.smallsteptrack.parser.*;
-import com.parsleyj.smallsteptrack.parser.tokenizer.RejectableTokenClass;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
 import com.parsleyj.smallsteptrack.program.*;
-import com.parsleyj.smallsteptrack.program.InvalidTokenFoundException;
-import com.parsleyj.smallsteptrack.utils.SimpleTokenClassWrapConverter;
+import com.parsleyj.smallsteptrack.utils.SimpleWrapConverterMethod;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,35 +28,35 @@ public class Main {
         String storeName = "S";
 
         //LEXICON ---------------------------------------------------------------
-        TokenClass skipToken = new TokenClass("SKIP_KEYWORD", "\\Qskip\\E");
-        TokenClass trueToken = new TokenClass("TRUE_KEYWORD", "\\Qtrue\\E");
-        TokenClass falseToken = new TokenClass("FALSE_KEYWORD", "\\Qfalse\\E");
-        TokenClass whileToken = new TokenClass("WHILE_KEYWORD", "\\Qwhile\\E");
-        TokenClass doToken = new TokenClass("DO_KEYWORD", "\\Qdo\\E");
-        TokenClass ifToken = new TokenClass("IF_KEYWORD", "\\Qif\\E");
-        TokenClass thenToken = new TokenClass("THEN_KEYWORD", "\\Qthen\\E");
-        TokenClass elseToken = new TokenClass("ELSE_KEYWORD", "\\Qelse\\E");
-        TokenClass identifierToken = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
-        TokenClass plusToken = new TokenClass("PLUS", "\\Q+\\E");
-        TokenClass minusToken = new TokenClass("MINUS", "\\Q-\\E");
-        TokenClass asteriskToken = new TokenClass("ASTERISK", "\\Q*\\E");
-        TokenClass assignmentOperatorToken = new TokenClass("ASSIGNMENT_OPERATOR", "\\Q:=\\E");
-        TokenClass equalsOperatorToken = new TokenClass("EQUALS_OPERATOR", "\\Q=\\E");
-        TokenClass greaterOperatorToken = new TokenClass("GREATER_OPERATOR", "\\Q>\\E");
-        TokenClass lessOperatorToken = new TokenClass("LESS_OPERATOR", "\\Q<\\E");
-        TokenClass semicolonToken = new TokenClass("SEMICOLON", "\\Q;\\E");
-        TokenClass openBracketToken = new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E");
-        TokenClass closedBracketToken = new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E");
-        TokenClass numeralToken = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
-        TokenClass blankToken = new RejectableTokenClass("BLANK", " ");
+        TokenClassDefinition skipToken = new TokenClassDefinition("SKIP_KEYWORD", "\\Qskip\\E", (g, s) -> new Skip());
+        TokenClassDefinition trueToken = new TokenClassDefinition("TRUE_KEYWORD", "\\Qtrue\\E", (g, s) -> new True());
+        TokenClassDefinition falseToken = new TokenClassDefinition("FALSE_KEYWORD", "\\Qfalse\\E", (g, s) -> new False());
+        TokenClassDefinition whileToken = new TokenClassDefinition("WHILE_KEYWORD", "\\Qwhile\\E");
+        TokenClassDefinition doToken = new TokenClassDefinition("DO_KEYWORD", "\\Qdo\\E");
+        TokenClassDefinition ifToken = new TokenClassDefinition("IF_KEYWORD", "\\Qif\\E");
+        TokenClassDefinition thenToken = new TokenClassDefinition("THEN_KEYWORD", "\\Qthen\\E");
+        TokenClassDefinition elseToken = new TokenClassDefinition("ELSE_KEYWORD", "\\Qelse\\E");
+        TokenClassDefinition identifierToken = new TokenClassDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*", (g, s) -> new Variable(storeName, g));
+        TokenClassDefinition plusToken = new TokenClassDefinition("PLUS", "\\Q+\\E");
+        TokenClassDefinition minusToken = new TokenClassDefinition("MINUS", "\\Q-\\E");
+        TokenClassDefinition asteriskToken = new TokenClassDefinition("ASTERISK", "\\Q*\\E");
+        TokenClassDefinition assignmentOperatorToken = new TokenClassDefinition("ASSIGNMENT_OPERATOR", "\\Q:=\\E");
+        TokenClassDefinition equalsOperatorToken = new TokenClassDefinition("EQUALS_OPERATOR", "\\Q=\\E");
+        TokenClassDefinition greaterOperatorToken = new TokenClassDefinition("GREATER_OPERATOR", "\\Q>\\E");
+        TokenClassDefinition lessOperatorToken = new TokenClassDefinition("LESS_OPERATOR", "\\Q<\\E");
+        TokenClassDefinition semicolonToken = new TokenClassDefinition("SEMICOLON", "\\Q;\\E");
+        TokenClassDefinition openBracketToken = new TokenClassDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
+        TokenClassDefinition closedBracketToken = new TokenClassDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
+        TokenClassDefinition numeralToken = new TokenClassDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)", (g, s) -> new Numeral(Integer.decode(g)));
+        TokenClassDefinition blankToken = new TokenClassDefinition("BLANK", " ", true);//rejectable
 
-        List<TokenClass> lexicon = Arrays.asList(
+        TokenClassDefinition[] lexicon = new TokenClassDefinition[]{
                 skipToken, trueToken, falseToken, whileToken, doToken, ifToken, thenToken, elseToken,
                 identifierToken, plusToken, minusToken, asteriskToken, assignmentOperatorToken,
                 equalsOperatorToken, greaterOperatorToken, lessOperatorToken, semicolonToken,
                 openBracketToken, closedBracketToken, numeralToken,
                 blankToken
-        );
+        };
 
         //GRAMMAR ---------------------------------------------------------------
         SyntaxClass exp = new SyntaxClass("Exp");
@@ -67,77 +64,94 @@ public class Main {
         SyntaxClass bool = new SyntaxClass("Bool");
 
         //Exp :=
-        SyntaxCase variable = new SyntaxCase("variable", identifierToken); // x |
-        SyntaxCase numeral = new SyntaxCase("numeral", numeralToken); // n |
-        SyntaxCase expressionBetweenRoundBrackets = new SyntaxCase("expressionBetweenRoundBrackets", openBracketToken, exp, closedBracketToken); // ( E ) |
-        SyntaxCase sum =new SyntaxCase("sum", exp, plusToken, exp); // E + E |
-        SyntaxCase subtraction = new SyntaxCase("subtraction", exp, minusToken, exp); // E - E |
-        SyntaxCase multiplication = new SyntaxCase("multiplication", exp, asteriskToken, exp); // E * E
-        exp.setCases(variable, numeral, expressionBetweenRoundBrackets, sum, subtraction, multiplication);
+        // x |
+        SyntaxCaseDefinition variable = new SyntaxCaseDefinition(exp, "variable",
+                new SimpleWrapConverterMethod(),
+                identifierToken);
+        // n |
+        SyntaxCaseDefinition numeral = new SyntaxCaseDefinition(exp, "numeral",
+                new SimpleWrapConverterMethod(),
+                numeralToken);
+        // ( E ) |
+        SyntaxCaseDefinition expressionBetweenRoundBrackets = new SyntaxCaseDefinition(exp, "expressionBetweenRoundBrackets",
+                (node, s) -> new ExpressionBetweenRoundBrackets(s.resolve(node.get(1))),
+                openBracketToken, exp, closedBracketToken);
+        // E + E |
+        SyntaxCaseDefinition sum =new SyntaxCaseDefinition(exp, "sum",
+                new CBOConverterMethod<IntegerExpression>(Sum::new),
+                exp, plusToken, exp);
+        // E - E |
+        SyntaxCaseDefinition subtraction = new SyntaxCaseDefinition(exp, "subtraction",
+                new CBOConverterMethod<IntegerExpression>(Subtraction::new),
+                exp, minusToken, exp);
+        // E * E
+        SyntaxCaseDefinition multiplication = new SyntaxCaseDefinition(exp, "multiplication",
+                new CBOConverterMethod<IntegerExpression>(Multiplication::new),
+                exp, asteriskToken, exp);
 
         //Comm :=
-        SyntaxCase skip = new SyntaxCase("skip", skipToken); // skip |
-        SyntaxCase commandBetweenRoundBrackets = new SyntaxCase("commandBetweenRoundBrackets", openBracketToken, comm, closedBracketToken); // ( C ) |
-        SyntaxCase assignment = new SyntaxCase("assignment", new SpecificCaseComponent(exp, variable), assignmentOperatorToken, exp); // x := E |
-        SyntaxCase sequentialComposition = new SyntaxCase("sequentialComposition", comm, semicolonToken, comm); //  C ; C |
-        SyntaxCase ifThenElseStatement = new SyntaxCase("ifThenElseStatement", ifToken, bool, thenToken, comm, elseToken, comm); // if B then C1 else C2 |
-        SyntaxCase whileStatement = new SyntaxCase("whileStatement", whileToken, bool, doToken, comm); // while B do C
-        comm.setCases(skip, commandBetweenRoundBrackets, assignment, sequentialComposition, ifThenElseStatement, whileStatement);
+        // skip |
+        SyntaxCaseDefinition skip = new SyntaxCaseDefinition(comm, "skip",
+                new SimpleWrapConverterMethod(),
+                skipToken);
+        // ( C ) |
+        SyntaxCaseDefinition commandBetweenRoundBrackets = new SyntaxCaseDefinition(comm, "commandBetweenRoundBrackets",
+                (node, s) -> new CommandBetweenRoundBrackets(s.resolve(node.get(1))),
+                openBracketToken, comm, closedBracketToken);
+        // x := E |
+        SyntaxCaseDefinition assignment = new SyntaxCaseDefinition(comm, "assignment",
+                new UBOConverterMethod<Command, Variable, IntegerExpression>((var, expr)-> new Assignment(storeName, var, expr)),
+                new SpecificCaseComponent(exp, variable), assignmentOperatorToken, exp);
+        //  C ; C |
+        SyntaxCaseDefinition sequentialComposition = new SyntaxCaseDefinition(comm, "sequentialComposition",
+                new CBOConverterMethod<Command>(SequentialComposition::new),
+                comm, semicolonToken, comm);
+        // if B then C1 else C2 |
+        SyntaxCaseDefinition ifThenElseStatement = new SyntaxCaseDefinition(comm, "ifThenElseStatement",
+                (node, s) -> new IfThenElseCommand(s.resolve(node.get(1)), s.resolve(node.get(3)), s.resolve(node.get(5))),
+                ifToken, bool, thenToken, comm, elseToken, comm);
+        // while B do C
+        SyntaxCaseDefinition whileStatement = new SyntaxCaseDefinition(comm, "whileStatement",
+                (node, s) -> new WhileCommand(s.resolve(node.get(1)), s.resolve(node.get(3))),
+                whileToken, bool, doToken, comm);
         //...
 
         //Bool :=
-        SyntaxCase trueVal = new SyntaxCase("trueVal", trueToken); // true |
-        SyntaxCase falseVal = new SyntaxCase("falseVal", falseToken); // false |
-        SyntaxCase booleanExpressionBetweenRoundBrackets = new SyntaxCase("booleanExpressionBetweenRoundBrackets", openBracketToken, bool, closedBracketToken); // ( B ) |
-        SyntaxCase equalIntegerComparison = new SyntaxCase("equalIntegerComparison", exp, equalsOperatorToken, exp); // E = E |
-        SyntaxCase greaterIntegerComparison = new SyntaxCase("greaterIntegerComparison", exp, greaterOperatorToken, exp); // E > E |
-        SyntaxCase lessIntegerComparison = new SyntaxCase("lessIntegerComparison", exp, lessOperatorToken, exp); // E < E |
-        bool.setCases(trueVal, booleanExpressionBetweenRoundBrackets, falseVal, equalIntegerComparison, greaterIntegerComparison, lessIntegerComparison);
+        // true |
+        SyntaxCaseDefinition trueVal = new SyntaxCaseDefinition(bool, "trueVal",
+                new SimpleWrapConverterMethod(),
+                trueToken);
+        // false |
+        SyntaxCaseDefinition falseVal = new SyntaxCaseDefinition(bool, "falseVal",
+                new SimpleWrapConverterMethod(),
+                falseToken);
+        // ( B ) |
+        SyntaxCaseDefinition booleanExpressionBetweenRoundBrackets = new SyntaxCaseDefinition(bool, "booleanExpressionBetweenRoundBrackets",
+                (node, s)-> new BooleanExpressionBetweenRoundBrackets(s.resolve(node.get(1))),
+                openBracketToken, bool, closedBracketToken);
+        // E = E |
+        SyntaxCaseDefinition equalIntegerComparison = new SyntaxCaseDefinition(bool, "equalIntegerComparison",
+                new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(EqualIntegerComparison::new),
+                exp, equalsOperatorToken, exp);
+        // E > E |
+        SyntaxCaseDefinition greaterIntegerComparison = new SyntaxCaseDefinition(bool, "greaterIntegerComparison",
+                new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(GreaterIntegerComparison::new),
+                exp, greaterOperatorToken, exp);
+        // E < E |
+        SyntaxCaseDefinition lessIntegerComparison = new SyntaxCaseDefinition(bool, "lessIntegerComparison",
+                new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(LessIntegerComparison::new),
+                exp, lessOperatorToken, exp);
         //...
         //TODO: complete with a not ambiguous grammar
-        Grammar grammar = new Grammar(exp, comm, bool);
 
-        //SEMANTICS ---------------------------------------------------------------
-        Semantics semantics = new Semantics(
-                Arrays.asList(
-                        new SimpleTokenClassWrapConverter(numeral),
-                        new SimpleTokenClassWrapConverter(variable),
-                        new CheckedCaseConverter(expressionBetweenRoundBrackets, (node, s) -> new ExpressionBetweenRoundBrackets(s.resolve(node.get(1)))),
-                        new ClosedBinaryOperationConverter<IntegerExpression>(sum, Sum::new),
-                        new ClosedBinaryOperationConverter<IntegerExpression>(multiplication, Multiplication::new),
-                        new ClosedBinaryOperationConverter<IntegerExpression>(subtraction, Subtraction::new),
+        SyntaxCaseDefinition[] grammar = new SyntaxCaseDefinition[]{
+                variable, numeral, trueVal, falseVal, skip,
+                expressionBetweenRoundBrackets, booleanExpressionBetweenRoundBrackets, commandBetweenRoundBrackets,
+                multiplication, sum, subtraction, equalIntegerComparison, greaterIntegerComparison, lessIntegerComparison,
+                assignment, ifThenElseStatement, whileStatement, sequentialComposition
+        };
 
-                        new SimpleTokenClassWrapConverter(skip),
-                        new CheckedCaseConverter(commandBetweenRoundBrackets, (node, s)-> new CommandBetweenRoundBrackets(s.resolve(node.get(1)))),
-                        new UnclosedBinaryOperationConverter<Command, Variable, IntegerExpression>
-                                (assignment, (var, expr) -> new Assignment(storeName, var, expr)),
-                        new ClosedBinaryOperationConverter<Command>(sequentialComposition, SequentialComposition::new),
-                        new CheckedCaseConverter(whileStatement, (node, s) -> new WhileCommand(s.resolve(node.get(1)), s.resolve(node.get(3)))),
-                        new CheckedCaseConverter(ifThenElseStatement, (node, s) ->
-                                new IfThenElseCommand(s.resolve(node.get(1)), s.resolve(node.get(3)), s.resolve(node.get(5)))),
-
-                        new SimpleTokenClassWrapConverter(trueVal),
-                        new SimpleTokenClassWrapConverter(falseVal),
-                        new CheckedCaseConverter(booleanExpressionBetweenRoundBrackets, (node, s) -> new ExpressionBetweenRoundBrackets(s.resolve(node.get(1)))),
-                        new UnclosedBinaryOperationConverter<BooleanExpression, IntegerExpression, IntegerExpression>
-                                (equalIntegerComparison, EqualIntegerComparison::new),
-                        new UnclosedBinaryOperationConverter<BooleanExpression, IntegerExpression, IntegerExpression>
-                                (greaterIntegerComparison, GreaterIntegerComparison::new),
-                        new UnclosedBinaryOperationConverter<BooleanExpression, IntegerExpression, IntegerExpression>
-                                (lessIntegerComparison, LessIntegerComparison::new)
-                        //TODO: add all semantics converters
-                ), Arrays.asList(
-                        new TokenConverter(numeralToken, (generatingString, s) -> new Numeral(Integer.decode(generatingString))),
-                        new TokenConverter(identifierToken, ((generatingString, s) -> new Variable(storeName, generatingString))),
-                        new TokenConverter(skipToken, (g, s) -> new Skip()),
-                        new TokenConverter(trueToken, (g, s) -> new True()),
-                        new TokenConverter(falseToken, (g, s) -> new False())
-                        //TODO: add all semantics converters
-                )
-        );
-
-
-        ProgramGenerator programGenerator = new ProgramGenerator(lexicon, grammar, semantics);
+        ProgramGenerator programGenerator = new ProgramGenerator(lexicon, grammar);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Insert program: ");

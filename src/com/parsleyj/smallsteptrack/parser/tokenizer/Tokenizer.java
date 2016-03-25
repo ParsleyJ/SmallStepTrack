@@ -58,47 +58,7 @@ public class Tokenizer {
         return result;
     }
 
-    /**
-     * Test main
-     */
-    public static void main(String[] argv){
-        Scanner sc = new Scanner(System.in);
-        List<Token> tokens = null;
 
-        String input = sc.nextLine();
-        Tokenizer tokenizer = new Tokenizer(Arrays.asList(
-                //new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1"),
-                new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*"),
-                //new TokenClass("OPERATOR", "[-!$%^&*_+|~=:;<>?,.\\/]"),
-                new TokenClass("ADD_OPERATOR", "\\Q+\\E"),
-                new TokenClass("SUB_OPERATOR", "\\Q-\\E"),
-                new TokenClass("MUL_OPERATOR", "\\Q*\\E"),
-                new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E"),
-                new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E"),
-                new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)"),
-                //new TokenClass("NUMERAL2", "^(0|[1-9][0-9]*)$"),
-                //new TokenClass("MUL_OPERATOR", "\\*"),
-                //new TokenClass("SUB_OPERATOR", "\\-"),
-                new RejectableTokenClass("BLANK", " ")
-        ));
-        tokens = tokenizer.tokenize(input);
-        tokens.forEach((t) -> {
-            System.out.println("Token = " + t.getGeneratingString());
-            System.out.println(" Type = " + t.getTokenClassName());
-            System.out.println("--------------------------------------");
-        });
-
-        if(tokens != null && !tokens.isEmpty()){
-            Parser parser = new Parser(Parser.getTestGrammar());
-            SyntaxTreeNode result = parser.parse(tokens);
-            if (result != null){
-                result.printTree();
-            }else{
-                System.out.println("PARSER RESULT IS NULL");
-            }
-        }
-
-    }
 
 
 

@@ -22,10 +22,7 @@ public class Parser {
         this.grammar = grammar;
     }
 
-    //iterative attempt
-    public SyntaxTreeNode parse(List<Token> tokens){
-        SyntaxTreeNodeFactory stf = new SyntaxTreeNodeFactory();
-
+    private List<SyntaxTreeNode> generateListFromToken(List<Token> tokens, SyntaxTreeNodeFactory stf){
         List<SyntaxTreeNode> treeList = new ArrayList<>();
         for (Token t: tokens) {
             TokenClass tokenClass = grammar.getTokenClass(t);
@@ -36,6 +33,15 @@ public class Parser {
             ast.setTerminal(true);
             treeList.add(ast);
         }
+        return treeList;
+    }
+
+    //iterative attempt
+    @SuppressWarnings("Duplicates")
+    public SyntaxTreeNode parse(List<Token> tokens){
+        SyntaxTreeNodeFactory stf = new SyntaxTreeNodeFactory();
+
+        List<SyntaxTreeNode> treeList = generateListFromToken(tokens, stf);
 
         List<Integer> windows = grammar.getCaseSizes();
         while(true){
@@ -86,33 +92,60 @@ public class Parser {
     }
 
 
-    public static Grammar getTestGrammar() {
+    //a more efficient version of parse.
+    @SuppressWarnings("Duplicates")
+    public SyntaxTreeNode priorityBasedParse(List<Token> tokens){
+        List<Pair<SyntaxClass, SyntaxCase>> caseList = grammar.getPriorityCaseList();
+        SyntaxTreeNodeFactory stf = new SyntaxTreeNodeFactory();
+
+        List<SyntaxTreeNode> treeList = generateListFromToken(tokens, stf);
 
 
-        //TokenClass string = new TokenClass("STRING_CONSTANT", "([\"'])(?:(?=(\\\\?))\\2.)*?\\1");
-        TokenClass identifier = new TokenClass("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*");
-        TokenClass add = new TokenClass("ADD_OPERATOR", "\\Q+\\E");
-        TokenClass sub = new TokenClass("SUB_OPERATOR", "\\Q-\\E");
-        TokenClass mul = new TokenClass("MUL_OPERATOR", "\\Q*\\E");
-        TokenClass openBracket = new TokenClass("OPEN_ROUND_BRACKET", "\\Q(\\E");
-        TokenClass closedBracket = new TokenClass("CLOSED_ROUND_BRACKET", "\\Q)\\E");
-        TokenClass numeral = new TokenClass("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)");
-        TokenClass blank = new RejectableTokenClass("BLANK", " ");
-        SyntaxClass exp = new SyntaxClass("Exp");
-        SyntaxClass comm = new SyntaxClass("Comm");
-        SyntaxClass bool = new SyntaxClass("Bool");
-        exp.setCases(
-                new SyntaxCase("identifier", identifier),
-                new SyntaxCase("numeral", numeral),
-                new SyntaxCase("bracketedExpression", openBracket, exp, closedBracket),
-                new SyntaxCase("sum", exp, add, exp),
-                new SyntaxCase("subtraction", exp, sub, exp),
-                new SyntaxCase("multiplication", exp, mul, exp)
-        );
+        while(true){
+            boolean lastIterationFailed = true;
+            if(treeList.size() <= 1) break;
+            for(Pair<SyntaxClass, SyntaxCase> currentCase: caseList){
+                List<SyntaxTreeNode> tempList = new ArrayList<>();
+                int window = currentCase.getSecond().getStructure().size();
+                int start;
+                for(start = 0; start <= treeList.size() - window; ++start){
+                    int end = start + window;
+                    List<SyntaxTreeNode> currentSubList = treeList.subList(start, end);
 
-        //TODO: complete with a not ambiguous grammar
+                    SyntaxCase instanceCase = new SyntaxCase("", currentSubList.stream()
+                            .map(a -> a.isTerminal()?a.getTokenClass():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
+                            .collect(Collectors.toList()).toArray(new SyntaxCaseComponent[currentSubList.size()]));
+                    boolean caseMatch = Grammar.caseMatch(instanceCase, currentCase.getSecond());
+                    if (caseMatch) {
+                        lastIterationFailed = false;
+                        SyntaxTreeNode nst = stf.newSyntaxTree(currentSubList.toArray(new SyntaxTreeNode[currentSubList.size()]));
+                        nst.setSyntaxClass(currentCase.getFirst());
+                        nst.setSyntaxCase(currentCase.getSecond());
+                        nst.setTerminal(false);
+                        tempList.add(nst);
+                        start += window - 1;
+                    } else {
+                        tempList.add(currentSubList.get(0));
+                    }
+                }
 
-        return new Grammar(exp, comm, bool);
+                //there are no more subLists with this window at this start index
+                //we need to add the remaining elements to tempList
+                for(int i = start; i < treeList.size(); ++i)
+                    tempList.add(treeList.get(i));
+
+                treeList = tempList;
+            }
+            if(lastIterationFailed) break;
+        }
+        if(treeList.size() == 1){
+            return treeList.get(0);
+        } else {
+            SyntaxTreeNode errorNode = stf.newSyntaxTree(treeList.toArray(new SyntaxTreeNode[treeList.size()]));
+            errorNode.setSyntaxCase(new SyntaxCase("PARSE FAILED"));
+            errorNode.setSyntaxClass(new SyntaxClass("###"));
+            throw new ParseFailedException(errorNode);
+        }
     }
 
 
