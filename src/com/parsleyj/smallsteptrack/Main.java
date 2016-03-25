@@ -24,6 +24,9 @@ public class Main {
     /*
         (y := x); ((a := 1); (while (y > 0) do ( a := (a * y) ; (y := (y - 1)))))
          */
+    /*
+        y := x; a := 1; while y > 0 do (a := a * y; y := y - 1)
+     */
     public static void newTest(){
         String storeName = "S";
 
@@ -114,7 +117,6 @@ public class Main {
         SyntaxCaseDefinition whileStatement = new SyntaxCaseDefinition(comm, "whileStatement",
                 (node, s) -> new WhileCommand(s.resolve(node.get(1)), s.resolve(node.get(3))),
                 whileToken, bool, doToken, comm);
-        //...
 
         //Bool :=
         // true |
@@ -141,8 +143,6 @@ public class Main {
         SyntaxCaseDefinition lessIntegerComparison = new SyntaxCaseDefinition(bool, "lessIntegerComparison",
                 new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(LessIntegerComparison::new),
                 exp, lessOperatorToken, exp);
-        //...
-        //TODO: complete with a not ambiguous grammar
 
         SyntaxCaseDefinition[] grammar = new SyntaxCaseDefinition[]{
                 variable, numeral, trueVal, falseVal, skip,
