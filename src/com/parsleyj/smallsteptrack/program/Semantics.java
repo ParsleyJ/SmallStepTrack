@@ -1,8 +1,7 @@
 package com.parsleyj.smallsteptrack.program;
 
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
-import com.parsleyj.smallsteptrack.parser.SyntaxCase;
-import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
+import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +28,7 @@ public class Semantics {
         }
     }
 
-    public <T extends SmallStepSemanticObject> T resolve(SyntaxTreeNode node){
+    public <T extends SmallStepSemanticObject> T resolve(ParseTreeNode node){
         try {
             if (node.isTerminal()) {
                 return (T) resolveToken(node.getParsedToken().getTokenClassName(), node.getParsedToken().getGeneratingString());
@@ -41,7 +40,7 @@ public class Semantics {
         }
     }
 
-    public SmallStepSemanticObject resolveCase(String syntaxCase, SyntaxTreeNode node) {
+    public SmallStepSemanticObject resolveCase(String syntaxCase, ParseTreeNode node) {
         CaseConverter c = caseResolvers.get(syntaxCase);
         if (c != null) {
             return c.convert(node, this);

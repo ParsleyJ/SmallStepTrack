@@ -38,7 +38,7 @@ public class ProgramGenerator {
         this.semantics = new Semantics(caseConverters , tokenConverters);
     }
 
-    private SmallStepSemanticObject generateRootSemanticObject(SyntaxTreeNode tree){
+    private SmallStepSemanticObject generateRootSemanticObject(ParseTreeNode tree){
         if (tree.isTerminal()) {
             return semantics.resolveToken(tree.getParsedToken().getTokenClassName(), tree.getParsedToken().getGeneratingString());
         }else{
@@ -61,7 +61,7 @@ public class ProgramGenerator {
         }
 
         Parser parser = new Parser(grammar);
-        SyntaxTreeNode tree = null;
+        ParseTreeNode tree = null;
         try{
             tree = parser.priorityBasedParse(tokenList);
             if(printDebugMessages){

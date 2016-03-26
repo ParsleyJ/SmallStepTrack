@@ -9,12 +9,11 @@ import java.util.List;
 import java.util.stream.IntStream;
 
 /**
- * Created by Giuseppe on 19/03/16.
- * TODO: javadoc
+ * Represents a node of the parse tree.
  */
-public class SyntaxTreeNode {
+public class ParseTreeNode {
     private int id;
-    private List<SyntaxTreeNode> children;
+    private List<ParseTreeNode> children;
     // for terminals
     private Token parsedToken;
     private TokenClass tokenClass;
@@ -24,39 +23,72 @@ public class SyntaxTreeNode {
 
     private boolean isTerminal = false;
 
-    public SyntaxTreeNode(int id, SyntaxTreeNode... children) {
+    /**
+     * Creates a new node with the given ID and a list of children.
+     * @param id the id of this node
+     * @param children the children nodes.
+     */
+    public ParseTreeNode(int id, ParseTreeNode... children) {
         this.id = id;
         this.children = Arrays.asList(children);
     }
 
-    public SyntaxTreeNode(int id) {
+    /**
+     * Creates a new node with the given ID and no children.
+     * @param id the id of this node
+     */
+    public ParseTreeNode(int id) {
         this.children = new ArrayList<>();
         this.id = id;
     }
 
-    public List<SyntaxTreeNode> getChildren(){
+    /**
+     * @return a list of all the children of this node.
+     */
+    public List<ParseTreeNode> getChildren(){
         return children;
     }
 
-    public SyntaxTreeNode get(int i) {
+    /**
+     * Returns the node child at the index {@code i}
+     * @param i the index
+     * @return the node at index {@code i}
+     */
+    public ParseTreeNode get(int i) {
         return children.get(i);
     }
 
-    public SyntaxTreeNode addLast(SyntaxTreeNode ast) {
+    /**
+     * Adds a node to the children list of this node, at the last position.
+     * @param ast the node
+     * @return this object for method chaining.
+     */
+    public ParseTreeNode addLast(ParseTreeNode ast) {
         children.add(ast);
         return this;
     }
 
-    public SyntaxTreeNode addFirst(SyntaxTreeNode ast) {
+    /**
+     * Adds a node to the children list of this node, at the first position.
+     * @param ast the node
+     * @return this object for method chaining.
+     */
+    public ParseTreeNode addFirst(ParseTreeNode ast) {
         children.add(0, ast);
         return this;
     }
-
-    public SyntaxTreeNode add(int index, SyntaxTreeNode ast) {
+    /**
+     * Adds a node to the children list of this node, at the {@code index} position.
+     * @param index the index
+     * @param ast the node
+     * @return this object for method chaining.
+     */
+    public ParseTreeNode add(int index, ParseTreeNode ast) {
         children.add(index, ast);
         return this;
     }
 
+    
     public Token getParsedToken() {
         return parsedToken;
     }
@@ -105,7 +137,7 @@ public class SyntaxTreeNode {
         printTree(this, 0);
     }
 
-    private static void printTree(SyntaxTreeNode tree, int indentStart){
+    private static void printTree(ParseTreeNode tree, int indentStart){
         StringBuilder sb = new StringBuilder("");
         IntStream.range(0, indentStart).forEach(i -> {
             if (i != indentStart-1) sb.append("  ");
@@ -117,7 +149,7 @@ public class SyntaxTreeNode {
                         (tree.getSyntaxClass().getSyntaxComponentName()+": "+tree.getSyntaxCase().getCaseName())
                 )
         );
-        for(SyntaxTreeNode child: tree.getChildren()){
+        for(ParseTreeNode child: tree.getChildren()){
             printTree(child, indentStart+1);
         }
     }

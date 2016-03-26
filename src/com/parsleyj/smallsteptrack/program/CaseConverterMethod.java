@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.program;
 
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
-import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
+import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 /**
  * Created by Giuseppe on 24/03/16.
@@ -9,5 +9,5 @@ import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
  */
 @FunctionalInterface
 public interface CaseConverterMethod {
-    SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s);
+    SmallStepSemanticObject convert(ParseTreeNode node, Semantics s);
 }

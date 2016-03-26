@@ -1,12 +1,7 @@
 package com.parsleyj.smallsteptrack.parser.tokenizer;
 
-import com.parsleyj.smallsteptrack.parser.Parser;
-import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

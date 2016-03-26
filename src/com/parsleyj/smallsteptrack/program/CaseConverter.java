@@ -2,7 +2,7 @@ package com.parsleyj.smallsteptrack.program;
 
 import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
 import com.parsleyj.smallsteptrack.parser.SyntaxCase;
-import com.parsleyj.smallsteptrack.parser.SyntaxTreeNode;
+import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 /**
  * Created by Giuseppe on 23/03/16.
@@ -21,7 +21,7 @@ public class CaseConverter {
         return casE;
     }
 
-    public SmallStepSemanticObject convert(SyntaxTreeNode node, Semantics s){
+    public SmallStepSemanticObject convert(ParseTreeNode node, Semantics s){
         return method.convert(node, s);
     }
 
