@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.parser;
 
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
 import java.util.ArrayList;
@@ -29,11 +29,11 @@ public class Parser {
     private List<ParseTreeNode> generateListFromToken(List<Token> tokens, ParseTreeNodeFactory stf){
         List<ParseTreeNode> treeList = new ArrayList<>();
         for (Token t: tokens) {
-            TokenClass tokenClass = grammar.getTokenClass(t);
-            if(tokenClass == null) throw new InvalidTokenFoundException(); //todo: add token info to exception
-            ParseTreeNode ast = stf.newSyntaxTree();
+            TokenCategory tokenCategory = grammar.getTokenClass(t);
+            if(tokenCategory == null) throw new InvalidTokenFoundException(); //todo: add token info to exception
+            ParseTreeNode ast = stf.newNodeTree();
             ast.setParsedToken(t);
-            ast.setTokenClass(tokenClass);
+            ast.setTokenCategory(tokenCategory);
             ast.setTerminal(true);
             treeList.add(ast);
         }
@@ -59,12 +59,12 @@ public class Parser {
                     List<ParseTreeNode> currentSubList = treeList.subList(start, end);
                     Pair<SyntaxClass, SyntaxCase> lookupResult = grammar.lookup(
                             currentSubList.stream()
-                                    .map(a -> a.isTerminal()?a.getTokenClass():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
+                                    .map(a -> a.isTerminal()?a.getTokenCategory():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
                                     .collect(Collectors.toList())
                     );
                     if (lookupResult != null) {
                         lastIterationFailed = false;
-                        ParseTreeNode nst = stf.newSyntaxTree(currentSubList.toArray(new ParseTreeNode[currentSubList.size()]));
+                        ParseTreeNode nst = stf.newNodeTree(currentSubList.toArray(new ParseTreeNode[currentSubList.size()]));
                         nst.setSyntaxClass(lookupResult.getFirst());
                         nst.setSyntaxCase(lookupResult.getSecond());
                         nst.setTerminal(false);
@@ -88,7 +88,7 @@ public class Parser {
         if(treeList.size() == 1){
             return treeList.get(0);
         } else {
-            ParseTreeNode errorNode = stf.newSyntaxTree(treeList.toArray(new ParseTreeNode[treeList.size()]));
+            ParseTreeNode errorNode = stf.newNodeTree(treeList.toArray(new ParseTreeNode[treeList.size()]));
             errorNode.setSyntaxCase(new SyntaxCase("PARSE FAILED"));
             errorNode.setSyntaxClass(new SyntaxClass("###"));
             throw new ParseFailedException(errorNode);
@@ -132,12 +132,12 @@ public class Parser {
                     List<ParseTreeNode> currentSubList = treeList.subList(start, end);
 
                     SyntaxCase instanceCase = new SyntaxCase("", currentSubList.stream()
-                            .map(a -> a.isTerminal()?a.getTokenClass():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
+                            .map(a -> a.isTerminal()?a.getTokenCategory():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
                             .collect(Collectors.toList()).toArray(new SyntaxCaseComponent[currentSubList.size()]));
                     boolean caseMatch = Grammar.caseMatch(instanceCase, currentCase.getSecond());
                     if (caseMatch) {
                         lastIterationFailed = false;
-                        ParseTreeNode nst = stf.newSyntaxTree(currentSubList.toArray(new ParseTreeNode[currentSubList.size()]));
+                        ParseTreeNode nst = stf.newNodeTree(currentSubList.toArray(new ParseTreeNode[currentSubList.size()]));
                         nst.setSyntaxClass(currentCase.getFirst());
                         nst.setSyntaxCase(currentCase.getSecond());
                         nst.setTerminal(false);
@@ -160,7 +160,7 @@ public class Parser {
         if(treeList.size() == 1){
             return treeList.get(0);
         } else {
-            ParseTreeNode errorNode = stf.newSyntaxTree(treeList.toArray(new ParseTreeNode[treeList.size()]));
+            ParseTreeNode errorNode = stf.newNodeTree(treeList.toArray(new ParseTreeNode[treeList.size()]));
             errorNode.setSyntaxCase(new SyntaxCase("PARSE FAILED"));
             errorNode.setSyntaxClass(new SyntaxClass("###"));
             throw new ParseFailedException(errorNode);

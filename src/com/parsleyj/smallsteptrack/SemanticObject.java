@@ -3,7 +3,7 @@ package com.parsleyj.smallsteptrack;
 /**
  * Common interface of all the semantic definitions of the language.
  */
-public interface SmallStepSemanticObject {
+public interface SemanticObject {
 
     /**
      * Used to determine if the object is terminal ( = it cannot do other steps of computation).

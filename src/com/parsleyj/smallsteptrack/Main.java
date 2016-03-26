@@ -9,8 +9,6 @@ import com.parsleyj.smallsteptrack.parser.*;
 import com.parsleyj.smallsteptrack.program.*;
 import com.parsleyj.smallsteptrack.utils.SimpleWrapConverterMethod;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -31,29 +29,29 @@ public class Main {
         String storeName = "S";
 
         //LEXICON ---------------------------------------------------------------
-        TokenClassDefinition skipToken = new TokenClassDefinition("SKIP_KEYWORD", "\\Qskip\\E", (g, s) -> new Skip());
-        TokenClassDefinition trueToken = new TokenClassDefinition("TRUE_KEYWORD", "\\Qtrue\\E", (g, s) -> new True());
-        TokenClassDefinition falseToken = new TokenClassDefinition("FALSE_KEYWORD", "\\Qfalse\\E", (g, s) -> new False());
-        TokenClassDefinition whileToken = new TokenClassDefinition("WHILE_KEYWORD", "\\Qwhile\\E");
-        TokenClassDefinition doToken = new TokenClassDefinition("DO_KEYWORD", "\\Qdo\\E");
-        TokenClassDefinition ifToken = new TokenClassDefinition("IF_KEYWORD", "\\Qif\\E");
-        TokenClassDefinition thenToken = new TokenClassDefinition("THEN_KEYWORD", "\\Qthen\\E");
-        TokenClassDefinition elseToken = new TokenClassDefinition("ELSE_KEYWORD", "\\Qelse\\E");
-        TokenClassDefinition identifierToken = new TokenClassDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*", (g, s) -> new Variable(storeName, g));
-        TokenClassDefinition plusToken = new TokenClassDefinition("PLUS", "\\Q+\\E");
-        TokenClassDefinition minusToken = new TokenClassDefinition("MINUS", "\\Q-\\E");
-        TokenClassDefinition asteriskToken = new TokenClassDefinition("ASTERISK", "\\Q*\\E");
-        TokenClassDefinition assignmentOperatorToken = new TokenClassDefinition("ASSIGNMENT_OPERATOR", "\\Q:=\\E");
-        TokenClassDefinition equalsOperatorToken = new TokenClassDefinition("EQUALS_OPERATOR", "\\Q=\\E");
-        TokenClassDefinition greaterOperatorToken = new TokenClassDefinition("GREATER_OPERATOR", "\\Q>\\E");
-        TokenClassDefinition lessOperatorToken = new TokenClassDefinition("LESS_OPERATOR", "\\Q<\\E");
-        TokenClassDefinition semicolonToken = new TokenClassDefinition("SEMICOLON", "\\Q;\\E");
-        TokenClassDefinition openBracketToken = new TokenClassDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
-        TokenClassDefinition closedBracketToken = new TokenClassDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
-        TokenClassDefinition numeralToken = new TokenClassDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)", (g, s) -> new Numeral(Integer.decode(g)));
-        TokenClassDefinition blankToken = new TokenClassDefinition("BLANK", " ", true);//rejectable
+        TokenCategoryDefinition skipToken = new TokenCategoryDefinition("SKIP_KEYWORD", "\\Qskip\\E", (g, s) -> new Skip());
+        TokenCategoryDefinition trueToken = new TokenCategoryDefinition("TRUE_KEYWORD", "\\Qtrue\\E", (g, s) -> new True());
+        TokenCategoryDefinition falseToken = new TokenCategoryDefinition("FALSE_KEYWORD", "\\Qfalse\\E", (g, s) -> new False());
+        TokenCategoryDefinition whileToken = new TokenCategoryDefinition("WHILE_KEYWORD", "\\Qwhile\\E");
+        TokenCategoryDefinition doToken = new TokenCategoryDefinition("DO_KEYWORD", "\\Qdo\\E");
+        TokenCategoryDefinition ifToken = new TokenCategoryDefinition("IF_KEYWORD", "\\Qif\\E");
+        TokenCategoryDefinition thenToken = new TokenCategoryDefinition("THEN_KEYWORD", "\\Qthen\\E");
+        TokenCategoryDefinition elseToken = new TokenCategoryDefinition("ELSE_KEYWORD", "\\Qelse\\E");
+        TokenCategoryDefinition identifierToken = new TokenCategoryDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*", (g, s) -> new Variable(storeName, g));
+        TokenCategoryDefinition plusToken = new TokenCategoryDefinition("PLUS", "\\Q+\\E");
+        TokenCategoryDefinition minusToken = new TokenCategoryDefinition("MINUS", "\\Q-\\E");
+        TokenCategoryDefinition asteriskToken = new TokenCategoryDefinition("ASTERISK", "\\Q*\\E");
+        TokenCategoryDefinition assignmentOperatorToken = new TokenCategoryDefinition("ASSIGNMENT_OPERATOR", "\\Q:=\\E");
+        TokenCategoryDefinition equalsOperatorToken = new TokenCategoryDefinition("EQUALS_OPERATOR", "\\Q=\\E");
+        TokenCategoryDefinition greaterOperatorToken = new TokenCategoryDefinition("GREATER_OPERATOR", "\\Q>\\E");
+        TokenCategoryDefinition lessOperatorToken = new TokenCategoryDefinition("LESS_OPERATOR", "\\Q<\\E");
+        TokenCategoryDefinition semicolonToken = new TokenCategoryDefinition("SEMICOLON", "\\Q;\\E");
+        TokenCategoryDefinition openBracketToken = new TokenCategoryDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
+        TokenCategoryDefinition closedBracketToken = new TokenCategoryDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
+        TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)", (g, s) -> new Numeral(Integer.decode(g)));
+        TokenCategoryDefinition blankToken = new TokenCategoryDefinition("BLANK", " ", true);//rejectable
 
-        TokenClassDefinition[] lexicon = new TokenClassDefinition[]{
+        TokenCategoryDefinition[] lexicon = new TokenCategoryDefinition[]{
                 skipToken, trueToken, falseToken, whileToken, doToken, ifToken, thenToken, elseToken,
                 identifierToken, plusToken, minusToken, asteriskToken, assignmentOperatorToken,
                 equalsOperatorToken, greaterOperatorToken, lessOperatorToken, semicolonToken,
@@ -77,7 +75,7 @@ public class Main {
                 numeralToken);
         // ( E ) |
         SyntaxCaseDefinition expressionBetweenRoundBrackets = new SyntaxCaseDefinition(exp, "expressionBetweenRoundBrackets",
-                (node, s) -> new ExpressionBetweenRoundBrackets(s.resolve(node.get(1))),
+                (node, s) -> new ExpressionBetweenRoundBrackets(s.convert(node.get(1))),
                 openBracketToken, exp, closedBracketToken);
         // E + E |
         SyntaxCaseDefinition sum =new SyntaxCaseDefinition(exp, "sum",
@@ -99,7 +97,7 @@ public class Main {
                 skipToken);
         // ( C ) |
         SyntaxCaseDefinition commandBetweenRoundBrackets = new SyntaxCaseDefinition(comm, "commandBetweenRoundBrackets",
-                (node, s) -> new CommandBetweenRoundBrackets(s.resolve(node.get(1))),
+                (node, s) -> new CommandBetweenRoundBrackets(s.convert(node.get(1))),
                 openBracketToken, comm, closedBracketToken);
         // x := E |
         SyntaxCaseDefinition assignment = new SyntaxCaseDefinition(comm, "assignment",
@@ -111,11 +109,11 @@ public class Main {
                 comm, semicolonToken, comm);
         // if B then C1 else C2 |
         SyntaxCaseDefinition ifThenElseStatement = new SyntaxCaseDefinition(comm, "ifThenElseStatement",
-                (node, s) -> new IfThenElseCommand(s.resolve(node.get(1)), s.resolve(node.get(3)), s.resolve(node.get(5))),
+                (node, s) -> new IfThenElseCommand(s.convert(node.get(1)), s.convert(node.get(3)), s.convert(node.get(5))),
                 ifToken, bool, thenToken, comm, elseToken, comm);
         // while B do C
         SyntaxCaseDefinition whileStatement = new SyntaxCaseDefinition(comm, "whileStatement",
-                (node, s) -> new WhileCommand(s.resolve(node.get(1)), s.resolve(node.get(3))),
+                (node, s) -> new WhileCommand(s.convert(node.get(1)), s.convert(node.get(3))),
                 whileToken, bool, doToken, comm);
 
         //Bool :=
@@ -129,7 +127,7 @@ public class Main {
                 falseToken);
         // ( B ) |
         SyntaxCaseDefinition booleanExpressionBetweenRoundBrackets = new SyntaxCaseDefinition(bool, "booleanExpressionBetweenRoundBrackets",
-                (node, s)-> new BooleanExpressionBetweenRoundBrackets(s.resolve(node.get(1))),
+                (node, s)-> new BooleanExpressionBetweenRoundBrackets(s.convert(node.get(1))),
                 openBracketToken, bool, closedBracketToken);
         // E = E |
         SyntaxCaseDefinition equalIntegerComparison = new SyntaxCaseDefinition(bool, "equalIntegerComparison",

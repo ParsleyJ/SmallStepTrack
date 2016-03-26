@@ -1,21 +1,22 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * Helper class used to easily generate a {@link CaseConverterMethod} for
+ * closed binary operations, i.e. those binary operations which result is
+ * of the same semantic type of its operands.
  */
-public class CBOConverterMethod<T extends SmallStepSemanticObject>  implements CaseConverterMethod {
+public class CBOConverterMethod<T extends SemanticObject>  implements CaseConverterMethod {
     private BinaryOperationConverterMethod<T> method;
     public CBOConverterMethod(BinaryOperationConverterMethod<T> method) {
         this.method = method;
     }
 
     @Override
-    public SmallStepSemanticObject convert(ParseTreeNode node, Semantics s) {
-        return method.convert(s.resolve(node.get(0)), s.resolve(node.get(2)));
+    public SemanticObject convert(ParseTreeNode node, SemanticsConverter s) {
+        return method.convert(s.convert(node.get(0)), s.convert(node.get(2)));
     }
 
     @FunctionalInterface

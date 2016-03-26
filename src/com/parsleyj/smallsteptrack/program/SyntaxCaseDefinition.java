@@ -7,8 +7,8 @@ import com.parsleyj.smallsteptrack.program.CaseConverterMethod;
 import com.parsleyj.smallsteptrack.program.CheckedCaseConverter;
 
 /**
- * Created by Giuseppe on 25/03/16.
- * TODO: javadoc
+ * Helper class used to define a {@link SyntaxCase} with the belonging {@link SyntaxClass}
+ * and a {@link CaseConverter}, using the given {@link CaseConverterMethod}.
  */
 public class SyntaxCaseDefinition extends SyntaxCase {
 

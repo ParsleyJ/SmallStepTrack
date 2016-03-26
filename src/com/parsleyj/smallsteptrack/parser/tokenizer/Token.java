@@ -16,14 +16,14 @@ public class Token {
     }
 
     /**
-     * @return the string that matched the {@code TokenClass}' pattern.
+     * @return the string that matched the {@code TokenCategory}' pattern.
      */
     public String getGeneratingString() {
         return generatingString;
     }
 
     /**
-     * @return a string name of the corresponding {@code TokenClass}.
+     * @return a string name of the corresponding {@code TokenCategory}.
      */
     public String getTokenClassName() {
         return tokenClass;

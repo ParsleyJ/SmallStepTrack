@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 
 /**
  * A {@link Tokenizer}'s job is to return a list of {@link Token}, generated
- * from the given {@link String} input, with the given list of {@link TokenClass}es.
+ * from the given {@link String} input, with the given list of {@link TokenCategory}es.
  */
 public class Tokenizer {
-    private List<TokenClass> tokenClasses;
+    private List<TokenCategory> tokenCategories;
 
-    public Tokenizer(List<TokenClass> tokenClasses){
+    public Tokenizer(List<TokenCategory> tokenCategories){
 
-        this.tokenClasses = tokenClasses;
+        this.tokenCategories = tokenCategories;
     }
 
     public List<Token> tokenize(String input){
@@ -22,19 +22,19 @@ public class Tokenizer {
     }
 
     private List<Token> tokenize(String input, int tcIndex){
-        if(tcIndex >= tokenClasses.size()) throw new UnscannableSubstringException(input);
+        if(tcIndex >= tokenCategories.size()) throw new UnscannableSubstringException(input);
 
         ArrayList<Token> tempResult = new ArrayList<>();
-        TokenClass tokenClass = tokenClasses.get(tcIndex);
-        Matcher matcher = Pattern.compile(tokenClass.getPattern()).matcher(input);
+        TokenCategory tokenCategory = tokenCategories.get(tcIndex);
+        Matcher matcher = Pattern.compile(tokenCategory.getPattern()).matcher(input);
         int lastEnd = 0;
         while(matcher.find()){
             if(lastEnd<matcher.start()){
                 tempResult.add(new UnscannedTempToken(input.substring(lastEnd, matcher.start())));
             }
             lastEnd = matcher.end();
-            Token found = new Token(input.substring(matcher.start(), matcher.end()),tokenClass.getTokenClassName());
-            if(!tokenClass.isIgnorable())
+            Token found = new Token(input.substring(matcher.start(), matcher.end()), tokenCategory.getTokenClassName());
+            if(!tokenCategory.isIgnorable())
                 tempResult.add(found);
         }
         if(lastEnd < input.length()){

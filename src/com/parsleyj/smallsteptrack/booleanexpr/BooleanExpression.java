@@ -1,12 +1,12 @@
 package com.parsleyj.smallsteptrack.booleanexpr;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Common interface of all boolean expressions.
  */
-public interface BooleanExpression extends SmallStepSemanticObject {
+public interface BooleanExpression extends SemanticObject {
 
     /**
      * Make a computational step.

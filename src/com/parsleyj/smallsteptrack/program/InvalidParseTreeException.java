@@ -1,8 +1,7 @@
 package com.parsleyj.smallsteptrack.program;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * Thrown by converters when an error in the parse tree is found.
  */
 public class InvalidParseTreeException extends RuntimeException {
 }

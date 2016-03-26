@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.parser;
 
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class ParseTreeNode {
     private List<ParseTreeNode> children;
     // for terminals
     private Token parsedToken;
-    private TokenClass tokenClass;
+    private TokenCategory tokenCategory;
     //for more complex objects
     private SyntaxCase syntaxCase;
     private SyntaxClass syntaxClass;
@@ -88,51 +88,93 @@ public class ParseTreeNode {
         return this;
     }
 
-    
+    /**
+     * @return the token assigned to this terminal node
+     */
     public Token getParsedToken() {
         return parsedToken;
     }
 
+    /**
+     * @param parsedToken the token assigned to this terminal node
+     */
     public void setParsedToken(Token parsedToken) {
         this.parsedToken = parsedToken;
     }
 
-    public TokenClass getTokenClass() {
-        return tokenClass;
+    /**
+     * @return the token category of the token assigned to this terminal node
+     */
+    public TokenCategory getTokenCategory() {
+        return tokenCategory;
     }
 
-    public void setTokenClass(TokenClass tokenClass) {
-        this.tokenClass = tokenClass;
+    /**
+     * @param tokenCategory the token category of the token assigned to this
+     *                      terminal node
+     */
+    public void setTokenCategory(TokenCategory tokenCategory) {
+        this.tokenCategory = tokenCategory;
     }
 
+    /**
+     * @return the syntax case that this non-terminal node corresponds to.
+     */
     public SyntaxCase getSyntaxCase() {
         return syntaxCase;
     }
 
+    /**
+     * @param syntaxCase the syntax case that this non-terminal node
+     *                   corresponds to.
+     */
     public void setSyntaxCase(SyntaxCase syntaxCase) {
         this.syntaxCase = syntaxCase;
     }
 
+    /**
+     * @return the syntax class that this non-terminal node corresponds to.
+     */
     public SyntaxClass getSyntaxClass() {
         return syntaxClass;
     }
 
+    /**
+     * @param syntaxClass the syntax class that this non-terminal node
+     *                    corresponds to.
+     */
     public void setSyntaxClass(SyntaxClass syntaxClass) {
         this.syntaxClass = syntaxClass;
     }
 
+    /**
+     * @return true if this node is a terminal class (i.e. assigned to a token
+     *          and token class), false otherwise (i.e. assigned to a syntax case
+     *          and a syntax class).
+     */
     public boolean isTerminal() {
         return isTerminal;
     }
 
+    /**
+     * @param terminal true if this node is a terminal class (i.e. assigned to a token
+     *                 and token class), false otherwise (i.e. assigned to a syntax case
+     *                 and syntax class).
+     */
     public void setTerminal(boolean terminal) {
         isTerminal = terminal;
     }
 
+    /**
+     * @return the unique id of this node
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Prints the tree to {@link System}{@code .out} using this node as root.
+     */
     public void printTree(){
         printTree(this, 0);
     }
@@ -145,7 +187,7 @@ public class ParseTreeNode {
         });
         System.out.println(sb.toString()+": "+
                 (tree.isTerminal()?
-                        ("TOKEN:"+tree.getTokenClass().getSyntaxComponentName()+": \""+tree.getParsedToken().getGeneratingString()+"\""):
+                        ("TOKEN:"+tree.getTokenCategory().getSyntaxComponentName()+": \""+tree.getParsedToken().getGeneratingString()+"\""):
                         (tree.getSyntaxClass().getSyntaxComponentName()+": "+tree.getSyntaxCase().getCaseName())
                 )
         );

@@ -4,28 +4,28 @@ import com.parsleyj.smallsteptrack.parser.SyntaxCaseComponent;
 
 /**
  * Class representing a category of the lexicon. For example, the numerals
- * can be seen as a {@link TokenClass}.
+ * can be seen as a {@link TokenCategory}.
  */
-public class TokenClass implements SyntaxCaseComponent {
+public class TokenCategory implements SyntaxCaseComponent {
     private String tokenClassName;
     private String pattern;
     private boolean ignoreToken = false;
 
     /**
-     * @param tokenClassName the unique name of this {@link TokenClass}
+     * @param tokenClassName the unique name of this {@link TokenCategory}
      * @param pattern the regex pattern
      */
-    public TokenClass(String tokenClassName, String pattern) {
+    public TokenCategory(String tokenClassName, String pattern) {
         this.tokenClassName = tokenClassName;
         this.pattern = pattern;
     }
 
     /**
-     * @param tokenClassName the unique name of this {@link TokenClass}
+     * @param tokenClassName the unique name of this {@link TokenCategory}
      * @param pattern the regex pattern
      * @param ignoreToken true if the found token must be discarted, false otherwise
      */
-    public TokenClass(String tokenClassName, String pattern, boolean ignoreToken) {
+    public TokenCategory(String tokenClassName, String pattern, boolean ignoreToken) {
         this.tokenClassName = tokenClassName;
         this.pattern = pattern;
         this.ignoreToken = ignoreToken;
@@ -34,21 +34,21 @@ public class TokenClass implements SyntaxCaseComponent {
     /**
      * Called by the {@link Tokenizer} to determine if the found token corresponding
      * this category must be discarded instead of inserted to the resulting token list.
-     * @return true if this {@link TokenClass} must be ignored by the {@link Tokenizer}, false otherwise.
+     * @return true if this {@link TokenCategory} must be ignored by the {@link Tokenizer}, false otherwise.
      */
     public boolean isIgnorable() {
         return ignoreToken;
     }
 
     /**
-     * @return an unique String name identifying this {@link TokenClass}.
+     * @return an unique String name identifying this {@link TokenCategory}.
      */
     public String getTokenClassName() {
         return tokenClassName;
     }
 
     /**
-     * @return the regex pattern used by the {@link Tokenizer} to find instances of this {@link TokenClass}.
+     * @return the regex pattern used by the {@link Tokenizer} to find instances of this {@link TokenCategory}.
      */
     public String getPattern() {
         return pattern;

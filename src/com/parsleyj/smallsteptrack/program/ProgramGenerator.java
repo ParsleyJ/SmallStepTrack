@@ -1,31 +1,45 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.parser.*;
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.parser.tokenizer.Tokenizer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * Helpful class used to define a {@link Tokenizer}, a {@link Parser}
+ * and a {@link SemanticsConverter}, which inputs and outputs are chained
+ * in order to generate a {@link Program} object from the input {@link String}
+ * program.
  */
 public class ProgramGenerator {
 
     private Grammar grammar;
-    private List<TokenClass> tokenClasses;
-    private Semantics semantics;
+    private List<TokenCategory> tokenCategories;
+    private SemanticsConverter semanticsConverter;
     private boolean printDebugMessages = false;
 
-    public ProgramGenerator(TokenClassDefinition[] tokenClassDefinitions, SyntaxCaseDefinition[] definitions){
-        this.tokenClasses = new ArrayList<>();
+    /**
+     * Creates a program generator with the given {@link TokenCategoryDefinition}s and the
+     * {@link SyntaxCaseDefinition}s.
+     * The {@code Definition}s objects are used to create the {@link ProgramGenerator}'s
+     * internal {@link Tokenizer}, {@link Parser} and {@link SemanticsConverter}. The order
+     * of both arrays is meaningful: see params descriptions for more.
+     * @param tokenCategories  an ordered array of the token categories with eventual method converters.
+*                              The tokenizer searches the patterns in the input program string following
+*                              the order of this array.
+     * @param definitions an ordered array of the syntax cases with method converters. The parser
+     *                    searches the cases in the input token list following the order of this array.
+     */
+    public ProgramGenerator(TokenCategoryDefinition[] tokenCategories, SyntaxCaseDefinition[] definitions){
+        this.tokenCategories = new ArrayList<>();
         List<TokenConverter> tokenConverters = new ArrayList<>();
-        for(TokenClassDefinition tokenClassDefinition: tokenClassDefinitions){
-            tokenClasses.add(tokenClassDefinition);
+        for(TokenCategoryDefinition tokenClassDefinition: tokenCategories){
+            this.tokenCategories.add(tokenClassDefinition);
             if (tokenClassDefinition.getConverter() != null) {
                 tokenConverters.add(tokenClassDefinition.getConverter());
             }
@@ -35,19 +49,28 @@ public class ProgramGenerator {
         for(SyntaxCaseDefinition syntaxCaseDefinition: definitions){
             caseConverters.add(syntaxCaseDefinition.getConverter());
         }
-        this.semantics = new Semantics(caseConverters , tokenConverters);
+        this.semanticsConverter = new SemanticsConverter(caseConverters , tokenConverters);
     }
 
-    private SmallStepSemanticObject generateRootSemanticObject(ParseTreeNode tree){
+
+    private SemanticObject generateRootSemanticObject(ParseTreeNode tree){
         if (tree.isTerminal()) {
-            return semantics.resolveToken(tree.getParsedToken().getTokenClassName(), tree.getParsedToken().getGeneratingString());
+            return semanticsConverter.resolveToken(tree.getParsedToken().getTokenClassName(), tree.getParsedToken().getGeneratingString());
         }else{
-            return semantics.resolveCase(tree.getSyntaxCase().getCaseName(), tree);
+            return semanticsConverter.resolveCase(tree.getSyntaxCase().getCaseName(), tree);
         }
     }
 
+    /**
+     * Generates the {@link Program} object with the semantics of the input string program,
+     * by tokenizing it, parsing it and converting the parse tree.
+     * @param name the name of the program
+     * @param inputProgram the program input string
+     * @param stepMethod the method used to let the program make a computational step.
+     * @return the Program object.
+     */
     public Program generate(String name, String inputProgram, final ProgramStepMethod stepMethod){
-        Tokenizer tokenizer = new Tokenizer(tokenClasses);
+        Tokenizer tokenizer = new Tokenizer(tokenCategories);
         List<Token> tokenList = tokenizer.tokenize(inputProgram);
 
         if(printDebugMessages){
@@ -87,10 +110,18 @@ public class ProgramGenerator {
         }
     }
 
+    /**
+     * @return the state of the flag used to determine if the generator
+     * should print debug messages.
+     */
     public boolean isPrintDebugMessages() {
         return printDebugMessages;
     }
 
+    /**
+     * @param printDebugMessages the state of the flag used to determine if the generator
+     * should print debug messages.
+     */
     public void setPrintDebugMessages(boolean printDebugMessages) {
         this.printDebugMessages = printDebugMessages;
     }

@@ -1,13 +1,13 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * A functional interface used to define a method to convert a
+ * non-terminal {@link ParseTreeNode} to a {@link SemanticObject}.
  */
 @FunctionalInterface
 public interface CaseConverterMethod {
-    SmallStepSemanticObject convert(ParseTreeNode node, Semantics s);
+    SemanticObject convert(ParseTreeNode node, SemanticsConverter s);
 }

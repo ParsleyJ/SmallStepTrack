@@ -3,9 +3,10 @@ package com.parsleyj.smallsteptrack.program;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * Functional interface used to define how a {@link Program} makes
+ * a computational step.
  */
+@FunctionalInterface
 public interface ProgramStepMethod {
     boolean step(Program program, Configuration configuration);
 }

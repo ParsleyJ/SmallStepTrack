@@ -1,21 +1,22 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * A {@link SemanticsConverter} has the job to convert single nodes
+ * of a parse tree in {@link SemanticObject}s, following the rules defined
+ * in the lists of {@link CaseConverter}s and {@link TokenConverter}.
  */
-public class Semantics {
+public class SemanticsConverter {
 
     private HashMap<String, CaseConverter> caseResolvers;
     private HashMap<String, TokenConverter> tokenResolvers;
 
-    public Semantics(
+    public SemanticsConverter(
             List<? extends CaseConverter> caseResolvers,
             List<? extends TokenConverter> tokenResolvers) {
         this.caseResolvers = new HashMap<>();
@@ -24,11 +25,11 @@ public class Semantics {
         }
         this.tokenResolvers = new HashMap<>();
         for (TokenConverter tr : tokenResolvers) {
-            this.tokenResolvers.put(tr.getTokenClass().getTokenClassName(), tr);
+            this.tokenResolvers.put(tr.getTokenCategory().getTokenClassName(), tr);
         }
     }
 
-    public <T extends SmallStepSemanticObject> T resolve(ParseTreeNode node){
+    public <T extends SemanticObject> T convert(ParseTreeNode node){
         try {
             if (node.isTerminal()) {
                 return (T) resolveToken(node.getParsedToken().getTokenClassName(), node.getParsedToken().getGeneratingString());
@@ -40,18 +41,18 @@ public class Semantics {
         }
     }
 
-    public SmallStepSemanticObject resolveCase(String syntaxCase, ParseTreeNode node) {
+    public SemanticObject resolveCase(String syntaxCase, ParseTreeNode node) {
         CaseConverter c = caseResolvers.get(syntaxCase);
         if (c != null) {
             return c.convert(node, this);
-        } else throw new NoResolverFoundForSyntaxCaseException();
+        } else throw new NoConverterFoundForSyntaxCaseException();
     }
 
-    public SmallStepSemanticObject resolveToken(String tokenClass, String generatingString) {
+    public SemanticObject resolveToken(String tokenClass, String generatingString) {
         TokenConverter r = tokenResolvers.get(tokenClass);
         if (r != null) {
             return r.convert(generatingString, this);
-        } else throw new NoResolverFoundForTokenClassException();
+        } else throw new NoConverterFoundForTokenCategoryException();
     }
 
 

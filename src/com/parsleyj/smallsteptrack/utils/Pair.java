@@ -1,8 +1,9 @@
 package com.parsleyj.smallsteptrack.utils;
 
 /**
- * Created by Giuseppe on 19/03/16.
- * TODO: javadoc
+ * Helper generic data structure containing two objects of different
+ * types. Useful for let methods return multiple values without creating
+ * a dedicated class.
  */
 public class Pair<T1, T2> {
     private T1 first;

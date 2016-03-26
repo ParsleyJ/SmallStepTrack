@@ -1,26 +1,26 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.SemanticObject;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * Contains the method and the metadata to convert a node
+ * representing a token category in a {@link SemanticObject}.
  */
 public class TokenConverter {
-    private TokenClass tokenClass;
+    private TokenCategory tokenCategory;
     private TokenConverterMethod method;
 
-    public TokenConverter(TokenClass tokenClass, TokenConverterMethod method) {
-        this.tokenClass = tokenClass;
+    public TokenConverter(TokenCategory tokenCategory, TokenConverterMethod method) {
+        this.tokenCategory = tokenCategory;
         this.method = method;
     }
 
-    public TokenClass getTokenClass() {
-        return tokenClass;
+    public TokenCategory getTokenCategory() {
+        return tokenCategory;
     }
 
-    public  SmallStepSemanticObject convert(String generatingString, Semantics s){
+    public SemanticObject convert(String generatingString, SemanticsConverter s){
         return method.convert(generatingString, s);
     }
 

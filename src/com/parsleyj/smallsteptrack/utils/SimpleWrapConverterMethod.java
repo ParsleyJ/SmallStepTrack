@@ -1,21 +1,21 @@
 package com.parsleyj.smallsteptrack.utils;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
 import com.parsleyj.smallsteptrack.program.CaseConverterMethod;
 import com.parsleyj.smallsteptrack.program.InvalidParseTreeException;
-import com.parsleyj.smallsteptrack.program.Semantics;
+import com.parsleyj.smallsteptrack.program.SemanticsConverter;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * Helpful class used to define a converter method that simply takes the
+ * only child node of the current node and returns it, after a conversion.
  */
 public class SimpleWrapConverterMethod implements CaseConverterMethod {
 
     @Override
-    public SmallStepSemanticObject convert(ParseTreeNode node, Semantics s) {
+    public SemanticObject convert(ParseTreeNode node, SemanticsConverter s) {
         if(node.getChildren().size() == 1){
-            return s.resolve(node.get(0));
+            return s.convert(node.get(0));
         }else throw new InvalidParseTreeException();
     }
 }

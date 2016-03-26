@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 import com.parsleyj.smallsteptrack.configuration.ConfigurationElement;
 
@@ -11,14 +11,14 @@ import com.parsleyj.smallsteptrack.configuration.ConfigurationElement;
 public abstract class Program {
     private String programName;
 
-    private SmallStepSemanticObject rootSemObject;
+    private SemanticObject rootSemObject;
 
     /**
      * Creates a new Program class, wrapped around the specified "root" Command.
      * @param name the program's name
      * @param rootSemObject the root semantic object of this program
      */
-    public Program(String name, SmallStepSemanticObject rootSemObject) {
+    public Program(String name, SemanticObject rootSemObject) {
         programName = name;
         this.rootSemObject = rootSemObject;
     }
@@ -71,18 +71,18 @@ public abstract class Program {
         return programName;
     }
 
-    public SmallStepSemanticObject getRootSemanticObject() {
+    public SemanticObject getRootSemanticObject() {
         return rootSemObject;
     }
 
-    public void setRootSemanticObject(SmallStepSemanticObject rootSemObject) {
+    public void setRootSemanticObject(SemanticObject rootSemObject) {
         this.rootSemObject = rootSemObject;
     }
 
     /**
      * Returns the string representation of the Program object.
      * This is done by returning the string representation of the
-     * Command object initially specified via {@link #Program(String,SmallStepSemanticObject)}
+     * Command object initially specified via {@link #Program(String, SemanticObject)}
      * @return the string representation of the Program object.
      */
     @Override

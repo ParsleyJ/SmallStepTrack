@@ -1,8 +1,7 @@
 package com.parsleyj.smallsteptrack.program;
 
 /**
- * Created by Giuseppe on 23/03/16.
- * TODO: javadoc
+ * Thrown by converters when an error is found in a token.
  */
 public class InvalidTokenFoundException extends RuntimeException {
 }

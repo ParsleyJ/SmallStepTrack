@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.parser;
 
 import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenClass;
+import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.program.SyntaxCaseDefinition;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
@@ -111,7 +111,7 @@ public class Grammar {
             SyntaxCaseComponent ruledComponent = ruledCase.getStructure().get(i);
             SyntaxCaseComponent instanceComponent = instanceCase.getStructure().get(i);
 
-            if(ruledComponent instanceof  SpecificCaseComponent && !(instanceComponent instanceof TokenClass)){
+            if(ruledComponent instanceof  SpecificCaseComponent && !(instanceComponent instanceof TokenCategory)){
                 if (!ruledComponent.getSyntaxComponentName().equals(instanceComponent.getSyntaxComponentName() + ":" + ((SyntaxParsingInstance) instanceComponent).getSyntaxCaseName()))
                     return false;
             }else if(!ruledComponent.getSyntaxComponentName().equals(instanceComponent.getSyntaxComponentName())) {
@@ -123,16 +123,16 @@ public class Grammar {
 
 
     /**
-     * Searches in the {@link SyntaxCaseComponent}s of each syntax case, for a {@link TokenClass} corresponding to the given token.
+     * Searches in the {@link SyntaxCaseComponent}s of each syntax case, for a {@link TokenCategory} corresponding to the given token.
      * @param t the Token
-     * @return the {@link TokenClass} if found, {@code null} otherwise.
+     * @return the {@link TokenCategory} if found, {@code null} otherwise.
      */
-    public TokenClass getTokenClass(Token t){
+    public TokenCategory getTokenClass(Token t){
         for(SyntaxClass syntaxClass: classList) {
             for(SyntaxCase syntaxCase: syntaxClass.getSyntaxCases()) {
                 for(SyntaxCaseComponent syntaxCaseComponent: syntaxCase.getStructure()) {
-                    if (syntaxCaseComponent instanceof TokenClass && syntaxCaseComponent.getSyntaxComponentName().equals(t.getTokenClassName())) {
-                        return (TokenClass) syntaxCaseComponent;
+                    if (syntaxCaseComponent instanceof TokenCategory && syntaxCaseComponent.getSyntaxComponentName().equals(t.getTokenClassName())) {
+                        return (TokenCategory) syntaxCaseComponent;
                     }
                 }
             }

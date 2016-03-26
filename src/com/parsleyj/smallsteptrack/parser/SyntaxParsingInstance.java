@@ -1,8 +1,8 @@
 package com.parsleyj.smallsteptrack.parser;
 
 /**
- * Created by Giuseppe on 24/03/16.
- * TODO: javadoc
+ * Helper class used by the parser to override the normal
+ * case match mechanism in order to match {@link SpecificCaseComponent}s.
  */
 public class SyntaxParsingInstance implements SyntaxCaseComponent {
     private final SyntaxClass syntaxClass;

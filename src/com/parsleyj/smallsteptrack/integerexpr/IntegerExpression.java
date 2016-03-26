@@ -1,12 +1,12 @@
 package com.parsleyj.smallsteptrack.integerexpr;
 
-import com.parsleyj.smallsteptrack.SmallStepSemanticObject;
+import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.configuration.Configuration;
 
 /**
  * Common interface of all integer expressions.
  */
-public interface IntegerExpression extends SmallStepSemanticObject {
+public interface IntegerExpression extends SemanticObject {
 
     /**
      * Make a computational step.
