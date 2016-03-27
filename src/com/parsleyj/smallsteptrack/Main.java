@@ -1,13 +1,19 @@
 package com.parsleyj.smallsteptrack;
 
-import com.parsleyj.smallsteptrack.booleanexpr.*;
-import com.parsleyj.smallsteptrack.command.*;
-import com.parsleyj.smallsteptrack.configuration.Configuration;
-import com.parsleyj.smallsteptrack.configuration.IntegerStore;
-import com.parsleyj.smallsteptrack.integerexpr.*;
-import com.parsleyj.smallsteptrack.parser.*;
-import com.parsleyj.smallsteptrack.program.*;
+import com.parsleyj.smallsteptrack.configurations.Configuration;
+import com.parsleyj.smallsteptrack.configurations.IntegerStore;
+import com.parsleyj.smallsteptrack.parser.SpecificCaseComponent;
+import com.parsleyj.smallsteptrack.parser.SyntaxClass;
+import com.parsleyj.smallsteptrack.program.Program;
+import com.parsleyj.smallsteptrack.program.ProgramGenerator;
+import com.parsleyj.smallsteptrack.program.SyntaxCaseDefinition;
+import com.parsleyj.smallsteptrack.program.TokenCategoryDefinition;
+import com.parsleyj.smallsteptrack.semanticsconverter.CBOConverterMethod;
+import com.parsleyj.smallsteptrack.semanticsconverter.UBOConverterMethod;
 import com.parsleyj.smallsteptrack.utils.SimpleWrapConverterMethod;
+import com.parsleyj.smallsteptrack.whilesemantics.booleanexpr.*;
+import com.parsleyj.smallsteptrack.whilesemantics.command.*;
+import com.parsleyj.smallsteptrack.whilesemantics.integerexpr.*;
 
 import java.util.Scanner;
 
@@ -20,24 +26,25 @@ public class Main {
 
 
     /*
-        (y := x); ((a := 1); (while (y > 0) do ( a := (a * y) ; (y := (y - 1)))))
-         */
-    /*
         y := x; a := 1; while y > 0 do (a := a * y; y := y - 1)
      */
     public static void newTest(){
         String storeName = "S";
 
         //LEXICON ---------------------------------------------------------------
-        TokenCategoryDefinition skipToken = new TokenCategoryDefinition("SKIP_KEYWORD", "\\Qskip\\E", (g, s) -> new Skip());
-        TokenCategoryDefinition trueToken = new TokenCategoryDefinition("TRUE_KEYWORD", "\\Qtrue\\E", (g, s) -> new True());
-        TokenCategoryDefinition falseToken = new TokenCategoryDefinition("FALSE_KEYWORD", "\\Qfalse\\E", (g, s) -> new False());
+        TokenCategoryDefinition skipToken = new TokenCategoryDefinition("SKIP_KEYWORD", "\\Qskip\\E",
+                (g, s) -> new Skip());
+        TokenCategoryDefinition trueToken = new TokenCategoryDefinition("TRUE_KEYWORD", "\\Qtrue\\E",
+                (g, s) -> new True());
+        TokenCategoryDefinition falseToken = new TokenCategoryDefinition("FALSE_KEYWORD", "\\Qfalse\\E",
+                (g, s) -> new False());
         TokenCategoryDefinition whileToken = new TokenCategoryDefinition("WHILE_KEYWORD", "\\Qwhile\\E");
         TokenCategoryDefinition doToken = new TokenCategoryDefinition("DO_KEYWORD", "\\Qdo\\E");
         TokenCategoryDefinition ifToken = new TokenCategoryDefinition("IF_KEYWORD", "\\Qif\\E");
         TokenCategoryDefinition thenToken = new TokenCategoryDefinition("THEN_KEYWORD", "\\Qthen\\E");
         TokenCategoryDefinition elseToken = new TokenCategoryDefinition("ELSE_KEYWORD", "\\Qelse\\E");
-        TokenCategoryDefinition identifierToken = new TokenCategoryDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*", (g, s) -> new Variable(storeName, g));
+        TokenCategoryDefinition identifierToken = new TokenCategoryDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*",
+                (g, s) -> new Variable(storeName, g));
         TokenCategoryDefinition plusToken = new TokenCategoryDefinition("PLUS", "\\Q+\\E");
         TokenCategoryDefinition minusToken = new TokenCategoryDefinition("MINUS", "\\Q-\\E");
         TokenCategoryDefinition asteriskToken = new TokenCategoryDefinition("ASTERISK", "\\Q*\\E");
@@ -48,7 +55,8 @@ public class Main {
         TokenCategoryDefinition semicolonToken = new TokenCategoryDefinition("SEMICOLON", "\\Q;\\E");
         TokenCategoryDefinition openBracketToken = new TokenCategoryDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
         TokenCategoryDefinition closedBracketToken = new TokenCategoryDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
-        TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)", (g, s) -> new Numeral(Integer.decode(g)));
+        TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)",
+                (g, s) -> new Numeral(Integer.decode(g)));
         TokenCategoryDefinition blankToken = new TokenCategoryDefinition("BLANK", " ", true);//rejectable
 
         TokenCategoryDefinition[] lexicon = new TokenCategoryDefinition[]{

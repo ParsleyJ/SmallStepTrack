@@ -1,10 +1,10 @@
 package com.parsleyj.smallsteptrack.utils;
 
-import com.parsleyj.smallsteptrack.SemanticObject;
 import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
-import com.parsleyj.smallsteptrack.program.CaseConverterMethod;
-import com.parsleyj.smallsteptrack.program.InvalidParseTreeException;
-import com.parsleyj.smallsteptrack.program.SemanticsConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.CaseConverterMethod;
+import com.parsleyj.smallsteptrack.semanticsconverter.InvalidParseTreeException;
+import com.parsleyj.smallsteptrack.semanticsconverter.SemanticObject;
+import com.parsleyj.smallsteptrack.semanticsconverter.SemanticsConverter;
 
 /**
  * Helpful class used to define a converter method that simply takes the

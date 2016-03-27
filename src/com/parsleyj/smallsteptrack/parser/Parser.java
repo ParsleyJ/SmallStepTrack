@@ -1,7 +1,7 @@
 package com.parsleyj.smallsteptrack.parser;
 
-import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
+import com.parsleyj.smallsteptrack.tokenizer.Token;
+import com.parsleyj.smallsteptrack.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
 import java.util.ArrayList;

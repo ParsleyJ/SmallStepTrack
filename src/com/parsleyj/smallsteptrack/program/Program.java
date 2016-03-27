@@ -1,8 +1,8 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SemanticObject;
-import com.parsleyj.smallsteptrack.configuration.Configuration;
-import com.parsleyj.smallsteptrack.configuration.ConfigurationElement;
+import com.parsleyj.smallsteptrack.configurations.Configuration;
+import com.parsleyj.smallsteptrack.configurations.ConfigurationElement;
+import com.parsleyj.smallsteptrack.semanticsconverter.SemanticObject;
 
 
 /**

@@ -1,6 +1,6 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.configuration.Configuration;
+import com.parsleyj.smallsteptrack.configurations.Configuration;
 
 /**
  * Functional interface used to define how a {@link Program} makes

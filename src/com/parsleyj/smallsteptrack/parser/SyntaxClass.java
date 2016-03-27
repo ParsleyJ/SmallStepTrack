@@ -1,7 +1,5 @@
 package com.parsleyj.smallsteptrack.parser;
 
-import com.parsleyj.smallsteptrack.SemanticObject;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

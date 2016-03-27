@@ -1,6 +1,8 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
+import com.parsleyj.smallsteptrack.semanticsconverter.TokenConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.TokenConverterMethod;
+import com.parsleyj.smallsteptrack.tokenizer.TokenCategory;
 
 /**
  * Helper class used to define a {@link TokenCategory} and a {@link TokenConverter}, using

@@ -1,11 +1,17 @@
 package com.parsleyj.smallsteptrack.program;
 
-import com.parsleyj.smallsteptrack.SemanticObject;
-import com.parsleyj.smallsteptrack.configuration.Configuration;
-import com.parsleyj.smallsteptrack.parser.*;
-import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
-import com.parsleyj.smallsteptrack.parser.tokenizer.Tokenizer;
+import com.parsleyj.smallsteptrack.configurations.Configuration;
+import com.parsleyj.smallsteptrack.parser.Grammar;
+import com.parsleyj.smallsteptrack.parser.ParseFailedException;
+import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
+import com.parsleyj.smallsteptrack.parser.Parser;
+import com.parsleyj.smallsteptrack.semanticsconverter.CaseConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.SemanticObject;
+import com.parsleyj.smallsteptrack.semanticsconverter.SemanticsConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.TokenConverter;
+import com.parsleyj.smallsteptrack.tokenizer.Token;
+import com.parsleyj.smallsteptrack.tokenizer.TokenCategory;
+import com.parsleyj.smallsteptrack.tokenizer.Tokenizer;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -3,8 +3,9 @@ package com.parsleyj.smallsteptrack.program;
 import com.parsleyj.smallsteptrack.parser.SyntaxCase;
 import com.parsleyj.smallsteptrack.parser.SyntaxCaseComponent;
 import com.parsleyj.smallsteptrack.parser.SyntaxClass;
-import com.parsleyj.smallsteptrack.program.CaseConverterMethod;
-import com.parsleyj.smallsteptrack.program.CheckedCaseConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.CaseConverter;
+import com.parsleyj.smallsteptrack.semanticsconverter.CaseConverterMethod;
+import com.parsleyj.smallsteptrack.semanticsconverter.CheckedCaseConverter;
 
 /**
  * Helper class used to define a {@link SyntaxCase} with the belonging {@link SyntaxClass}

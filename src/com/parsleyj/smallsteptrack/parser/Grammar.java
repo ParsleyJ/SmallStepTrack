@@ -1,11 +1,14 @@
 package com.parsleyj.smallsteptrack.parser;
 
-import com.parsleyj.smallsteptrack.parser.tokenizer.Token;
-import com.parsleyj.smallsteptrack.parser.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.program.SyntaxCaseDefinition;
+import com.parsleyj.smallsteptrack.tokenizer.Token;
+import com.parsleyj.smallsteptrack.tokenizer.TokenCategory;
 import com.parsleyj.smallsteptrack.utils.Pair;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 /**
  * A {@link Grammar} object carries two important infos: the list
