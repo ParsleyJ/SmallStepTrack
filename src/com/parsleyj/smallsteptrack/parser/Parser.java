@@ -123,16 +123,17 @@ public class Parser {
         while(true){
             boolean lastIterationFailed = true;
             if(treeList.size() <= 1) break;
-            for(Pair<SyntaxClass, SyntaxCase> currentCase: caseList){
+
+            for (int iCase = 0; iCase < caseList.size(); iCase++) {
+                Pair<SyntaxClass, SyntaxCase> currentCase = caseList.get(iCase);
                 List<ParseTreeNode> tempList = new ArrayList<>();
                 int window = currentCase.getSecond().getStructure().size();
                 int start;
-                for(start = 0; start <= treeList.size() - window; ++start){
+                for (start = 0; start <= treeList.size() - window; ++start) {
                     int end = start + window;
                     List<ParseTreeNode> currentSubList = treeList.subList(start, end);
-
                     SyntaxCase instanceCase = new SyntaxCase("", currentSubList.stream()
-                            .map(a -> a.isTerminal()?a.getTokenCategory():new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
+                            .map(a -> a.isTerminal() ? a.getTokenCategory() : new SyntaxParsingInstance(a.getSyntaxClass(), a.getSyntaxCase()))
                             .collect(Collectors.toList()).toArray(new SyntaxCaseComponent[currentSubList.size()]));
                     boolean caseMatch = Grammar.caseMatch(instanceCase, currentCase.getSecond());
                     if (caseMatch) {
@@ -143,6 +144,9 @@ public class Parser {
                         nst.setTerminal(false);
                         tempList.add(nst);
                         start += window - 1;
+
+                        iCase = 0;
+                        currentCase = caseList.get(iCase);
                     } else {
                         tempList.add(currentSubList.get(0));
                     }
@@ -150,13 +154,16 @@ public class Parser {
 
                 //there are no more subLists with this window at this start index
                 //we need to add the remaining elements to tempList
-                for(int i = start; i < treeList.size(); ++i)
+                for (int i = start; i < treeList.size(); ++i)
                     tempList.add(treeList.get(i));
 
                 treeList = tempList;
             }
+
             if(lastIterationFailed) break;
         }
+
+
         if(treeList.size() == 1){
             return treeList.get(0);
         } else {

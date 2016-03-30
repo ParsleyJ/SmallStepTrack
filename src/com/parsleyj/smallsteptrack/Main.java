@@ -58,7 +58,7 @@ public class Main {
         TokenCategoryDefinition semicolonToken = new TokenCategoryDefinition("SEMICOLON", "\\Q;\\E");
         TokenCategoryDefinition openBracketToken = new TokenCategoryDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
         TokenCategoryDefinition closedBracketToken = new TokenCategoryDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
-        TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)",
+        TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL","(0|([1-9]\\d*))",// "(?<=\\s|^)[-+]?\\d+(?=\\s|$)"
                 (g) -> new Numeral(Integer.decode(g)));
         TokenCategoryDefinition blankToken = new TokenCategoryDefinition("BLANK", " ", true);//rejectable
 
