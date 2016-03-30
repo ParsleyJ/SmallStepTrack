@@ -130,6 +130,7 @@ public class Parser {
                 int window = currentCase.getSecond().getStructure().size();
                 int start;
                 for (start = 0; start <= treeList.size() - window; ++start) {
+                    //todo implement reverse scan for different associativity
                     int end = start + window;
                     List<ParseTreeNode> currentSubList = treeList.subList(start, end);
                     SyntaxCase instanceCase = new SyntaxCase("", currentSubList.stream()
