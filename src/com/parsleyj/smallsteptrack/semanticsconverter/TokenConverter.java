@@ -20,7 +20,7 @@ public class TokenConverter {
     }
 
     public SemanticObject convert(String generatingString, SemanticsConverter s){
-        return method.convert(generatingString, s);
+        return method.convert(generatingString);
     }
 
 }

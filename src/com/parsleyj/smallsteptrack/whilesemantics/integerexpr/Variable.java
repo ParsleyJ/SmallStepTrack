@@ -2,6 +2,7 @@ package com.parsleyj.smallsteptrack.whilesemantics.integerexpr;
 
 import com.parsleyj.smallsteptrack.configurations.Configuration;
 import com.parsleyj.smallsteptrack.configurations.IntegerStore;
+import com.parsleyj.smallsteptrack.whilesemantics.StuckInt;
 
 /**
  * Semantic object representing a variable.
@@ -22,6 +23,9 @@ public class Variable implements IntegerExpression {
     @Override
     public IntegerExpression step(Configuration c) {
         Integer val = ((IntegerStore) c.getConfigurationElement(storeName)).read(name);
+        if(val == null){
+            return new StuckInt();
+        }
         return new Numeral(val);
     }
 

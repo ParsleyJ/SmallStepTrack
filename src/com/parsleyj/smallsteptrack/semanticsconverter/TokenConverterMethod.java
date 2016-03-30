@@ -8,5 +8,5 @@ import com.parsleyj.smallsteptrack.parser.ParseTreeNode;
  */
 @FunctionalInterface
 public interface TokenConverterMethod {
-    SemanticObject convert(String generatingString, SemanticsConverter s);
+    SemanticObject convert(String generatingString);
 }

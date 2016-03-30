@@ -1,6 +1,7 @@
 package com.parsleyj.smallsteptrack;
 
 import com.parsleyj.smallsteptrack.configurations.Configuration;
+import com.parsleyj.smallsteptrack.configurations.DirectInputStream;
 import com.parsleyj.smallsteptrack.configurations.IntegerStore;
 import com.parsleyj.smallsteptrack.parser.SpecificCaseComponent;
 import com.parsleyj.smallsteptrack.parser.SyntaxClass;
@@ -14,7 +15,6 @@ import com.parsleyj.smallsteptrack.utils.SimpleWrapConverterMethod;
 import com.parsleyj.smallsteptrack.whilesemantics.booleanexpr.*;
 import com.parsleyj.smallsteptrack.whilesemantics.command.*;
 import com.parsleyj.smallsteptrack.whilesemantics.integerexpr.*;
-
 import java.util.Scanner;
 
 public class Main {
@@ -26,25 +26,28 @@ public class Main {
 
 
     /*
-        y := x; a := 1; while y > 0 do (a := a * y; y := y - 1)
+        y := read; a := 1; while y > 0 do (a := a * y; y := y - 1)
      */
     public static void newTest(){
         String storeName = "S";
+        String inputStreamName = "stdin";
 
         //LEXICON ---------------------------------------------------------------
         TokenCategoryDefinition skipToken = new TokenCategoryDefinition("SKIP_KEYWORD", "\\Qskip\\E",
-                (g, s) -> new Skip());
+                (g) -> new Skip());
         TokenCategoryDefinition trueToken = new TokenCategoryDefinition("TRUE_KEYWORD", "\\Qtrue\\E",
-                (g, s) -> new True());
+                (g) -> new True());
         TokenCategoryDefinition falseToken = new TokenCategoryDefinition("FALSE_KEYWORD", "\\Qfalse\\E",
-                (g, s) -> new False());
+                (g) -> new False());
         TokenCategoryDefinition whileToken = new TokenCategoryDefinition("WHILE_KEYWORD", "\\Qwhile\\E");
         TokenCategoryDefinition doToken = new TokenCategoryDefinition("DO_KEYWORD", "\\Qdo\\E");
         TokenCategoryDefinition ifToken = new TokenCategoryDefinition("IF_KEYWORD", "\\Qif\\E");
         TokenCategoryDefinition thenToken = new TokenCategoryDefinition("THEN_KEYWORD", "\\Qthen\\E");
         TokenCategoryDefinition elseToken = new TokenCategoryDefinition("ELSE_KEYWORD", "\\Qelse\\E");
+        TokenCategoryDefinition readToken = new TokenCategoryDefinition("READ_KEYWORD", "\\Qread\\E",
+                (g) -> new ReadCommand(inputStreamName));
         TokenCategoryDefinition identifierToken = new TokenCategoryDefinition("IDENTIFIER", "[_a-zA-Z][_a-zA-Z0-9]*",
-                (g, s) -> new Variable(storeName, g));
+                (g) -> new Variable(storeName, g));
         TokenCategoryDefinition plusToken = new TokenCategoryDefinition("PLUS", "\\Q+\\E");
         TokenCategoryDefinition minusToken = new TokenCategoryDefinition("MINUS", "\\Q-\\E");
         TokenCategoryDefinition asteriskToken = new TokenCategoryDefinition("ASTERISK", "\\Q*\\E");
@@ -56,12 +59,12 @@ public class Main {
         TokenCategoryDefinition openBracketToken = new TokenCategoryDefinition("OPEN_ROUND_BRACKET", "\\Q(\\E");
         TokenCategoryDefinition closedBracketToken = new TokenCategoryDefinition("CLOSED_ROUND_BRACKET", "\\Q)\\E");
         TokenCategoryDefinition numeralToken = new TokenCategoryDefinition("NUMERAL", "(?<=\\s|^)[-+]?\\d+(?=\\s|$)",
-                (g, s) -> new Numeral(Integer.decode(g)));
+                (g) -> new Numeral(Integer.decode(g)));
         TokenCategoryDefinition blankToken = new TokenCategoryDefinition("BLANK", " ", true);//rejectable
 
         TokenCategoryDefinition[] lexicon = new TokenCategoryDefinition[]{
                 skipToken, trueToken, falseToken, whileToken, doToken, ifToken, thenToken, elseToken,
-                identifierToken, plusToken, minusToken, asteriskToken, assignmentOperatorToken,
+                readToken, identifierToken, plusToken, minusToken, asteriskToken, assignmentOperatorToken,
                 equalsOperatorToken, greaterOperatorToken, lessOperatorToken, semicolonToken,
                 openBracketToken, closedBracketToken, numeralToken,
                 blankToken
@@ -93,10 +96,14 @@ public class Main {
         SyntaxCaseDefinition subtraction = new SyntaxCaseDefinition(exp, "subtraction",
                 new CBOConverterMethod<IntegerExpression>(Subtraction::new),
                 exp, minusToken, exp);
-        // E * E
+        // E * E |
         SyntaxCaseDefinition multiplication = new SyntaxCaseDefinition(exp, "multiplication",
                 new CBOConverterMethod<IntegerExpression>(Multiplication::new),
                 exp, asteriskToken, exp);
+        // read
+        SyntaxCaseDefinition read = new SyntaxCaseDefinition(exp, "read",
+                new SimpleWrapConverterMethod(),
+                readToken);
 
         //Comm :=
         // skip |
@@ -151,7 +158,7 @@ public class Main {
                 exp, lessOperatorToken, exp);
 
         SyntaxCaseDefinition[] grammar = new SyntaxCaseDefinition[]{
-                variable, numeral, trueVal, falseVal, skip,
+                variable, numeral, trueVal, falseVal, skip, read,
                 expressionBetweenRoundBrackets, booleanExpressionBetweenRoundBrackets, commandBetweenRoundBrackets,
                 multiplication, sum, subtraction, equalIntegerComparison, greaterIntegerComparison, lessIntegerComparison,
                 assignment, ifThenElseStatement, whileStatement, sequentialComposition
@@ -177,11 +184,12 @@ public class Main {
             }
         });
         // creates a new store
-        IntegerStore store = new IntegerStore(storeName);
-        store.write("x", 3);
+        IntegerStore store = new IntegerStore(storeName); //TODO: throw and exception when a semantic object cannot find a configuration element
+        DirectInputStream directInputStream = new DirectInputStream(inputStreamName);
+        // store.write("x", 3);
         System.out.println("Execution Track:");
         System.out.println(" ");
-        p.executeProgram(store);
+        p.executeProgram(store, directInputStream);
     }
 
     public static void oldFact(){

@@ -7,6 +7,6 @@ import com.parsleyj.smallsteptrack.configurations.Configuration;
  * a computational step.
  */
 @FunctionalInterface
-public interface ProgramStepMethod {
+public interface ProgramExecutionMethod {
     boolean step(Program program, Configuration configuration);
 }

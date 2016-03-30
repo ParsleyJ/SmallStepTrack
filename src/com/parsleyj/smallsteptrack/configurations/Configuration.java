@@ -32,6 +32,8 @@ public class Configuration{
      * Prints the stat of all the configuration elements to stdout.
      */
     public void printState() {
-        elementsMap.keySet().forEach((k) -> System.out.println(k + "  =  " + elementsMap.get(k)));
+        elementsMap.keySet().forEach((k) -> {
+            if(elementsMap.get(k).toBePrinted())System.out.println(k + "  =  " + elementsMap.get(k));
+        });
     }
 }

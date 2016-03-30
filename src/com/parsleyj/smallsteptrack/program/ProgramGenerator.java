@@ -75,7 +75,7 @@ public class ProgramGenerator {
      * @param stepMethod the method used to let the program make a computational step.
      * @return the Program object.
      */
-    public Program generate(String name, String inputProgram, final ProgramStepMethod stepMethod){
+    public Program generate(String name, String inputProgram, final ProgramExecutionMethod stepMethod){
         Tokenizer tokenizer = new Tokenizer(tokenCategories);
         List<Token> tokenList = tokenizer.tokenize(inputProgram);
 

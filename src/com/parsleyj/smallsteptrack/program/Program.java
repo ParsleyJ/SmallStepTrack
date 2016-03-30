@@ -3,6 +3,7 @@ package com.parsleyj.smallsteptrack.program;
 import com.parsleyj.smallsteptrack.configurations.Configuration;
 import com.parsleyj.smallsteptrack.configurations.ConfigurationElement;
 import com.parsleyj.smallsteptrack.semanticsconverter.SemanticObject;
+import com.parsleyj.smallsteptrack.whilesemantics.StuckConfigurationException;
 
 
 /**
@@ -53,8 +54,13 @@ public abstract class Program {
     public void executeProgram(ConfigurationElement... configurationElements){
         Configuration configuration = new Configuration(configurationElements);
         printState(this, configuration);
-        while(!this.step(configuration)){
-            printSepAndState(this, configuration);
+
+        try {
+            while(!this.step(configuration)){
+                printSepAndState(this, configuration);
+            }
+        } catch (StuckConfigurationException e) {
+            System.out.println("Stuck configuration found.");
         }
 
     }
