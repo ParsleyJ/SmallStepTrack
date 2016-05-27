@@ -1,20 +1,22 @@
 package com.parsleyj.smallsteptrack;
 
-import com.parsleyj.smallsteptrack.configurations.Configuration;
+import com.parsleyj.smallsteptrack.booleanexpr.*;
+import com.parsleyj.smallsteptrack.command.*;
 import com.parsleyj.smallsteptrack.configurations.DirectInputStream;
 import com.parsleyj.smallsteptrack.configurations.IntegerStore;
-import com.parsleyj.smallsteptrack.parser.SpecificCaseComponent;
-import com.parsleyj.smallsteptrack.parser.SyntaxClass;
-import com.parsleyj.smallsteptrack.program.Program;
-import com.parsleyj.smallsteptrack.program.ProgramGenerator;
-import com.parsleyj.smallsteptrack.program.SyntaxCaseDefinition;
-import com.parsleyj.smallsteptrack.program.TokenCategoryDefinition;
-import com.parsleyj.smallsteptrack.semanticsconverter.CBOConverterMethod;
-import com.parsleyj.smallsteptrack.semanticsconverter.UBOConverterMethod;
-import com.parsleyj.smallsteptrack.utils.SimpleWrapConverterMethod;
-import com.parsleyj.smallsteptrack.whilesemantics.booleanexpr.*;
-import com.parsleyj.smallsteptrack.whilesemantics.command.*;
-import com.parsleyj.smallsteptrack.whilesemantics.integerexpr.*;
+import com.parsleyj.smallsteptrack.integerexpr.*;
+import com.parsleyj.toolparser.configuration.Configuration;
+import com.parsleyj.toolparser.parser.Associativity;
+import com.parsleyj.toolparser.parser.SpecificCaseComponent;
+import com.parsleyj.toolparser.parser.SyntaxClass;
+import com.parsleyj.toolparser.program.Interpreter;
+import com.parsleyj.toolparser.program.Program;
+import com.parsleyj.toolparser.program.SyntaxCaseDefinition;
+import com.parsleyj.toolparser.program.TokenCategoryDefinition;
+import com.parsleyj.toolparser.semanticsconverter.CBOConverterMethod;
+import com.parsleyj.toolparser.semanticsconverter.UBOConverterMethod;
+import com.parsleyj.utils.SimpleWrapConverterMethod;
+
 import java.util.Scanner;
 
 public class Main {
@@ -71,37 +73,40 @@ public class Main {
         };
 
         //GRAMMAR ---------------------------------------------------------------
-        SyntaxClass exp = new SyntaxClass("Exp");
+        SyntaxClass rExp = new SyntaxClass("rExp");
+
+        SyntaxClass lExp = new SyntaxClass("lExp", rExp);
+
         SyntaxClass comm = new SyntaxClass("Comm");
         SyntaxClass bool = new SyntaxClass("Bool");
 
         //Exp :=
         // x |
-        SyntaxCaseDefinition variable = new SyntaxCaseDefinition(exp, "variable",
+        SyntaxCaseDefinition variable = new SyntaxCaseDefinition(lExp, "variable",
                 new SimpleWrapConverterMethod(),
                 identifierToken);
         // n |
-        SyntaxCaseDefinition numeral = new SyntaxCaseDefinition(exp, "numeral",
+        SyntaxCaseDefinition numeral = new SyntaxCaseDefinition(rExp, "numeral",
                 new SimpleWrapConverterMethod(),
                 numeralToken);
         // ( E ) |
-        SyntaxCaseDefinition expressionBetweenRoundBrackets = new SyntaxCaseDefinition(exp, "expressionBetweenRoundBrackets",
+        SyntaxCaseDefinition expressionBetweenRoundBrackets = new SyntaxCaseDefinition(rExp, "expressionBetweenRoundBrackets",
                 (node, s) -> new ExpressionBetweenRoundBrackets(s.convert(node.get(1))),
-                openBracketToken, exp, closedBracketToken);
+                openBracketToken, rExp, closedBracketToken);
         // E + E |
-        SyntaxCaseDefinition sum =new SyntaxCaseDefinition(exp, "sum",
+        SyntaxCaseDefinition sum =new SyntaxCaseDefinition(rExp, "sum",
                 new CBOConverterMethod<IntegerExpression>(Sum::new),
-                exp, plusToken, exp);
+                rExp, plusToken, rExp);
         // E - E |
-        SyntaxCaseDefinition subtraction = new SyntaxCaseDefinition(exp, "subtraction",
+        SyntaxCaseDefinition subtraction = new SyntaxCaseDefinition(rExp, "subtraction",
                 new CBOConverterMethod<IntegerExpression>(Subtraction::new),
-                exp, minusToken, exp);
+                rExp, minusToken, rExp);
         // E * E |
-        SyntaxCaseDefinition multiplication = new SyntaxCaseDefinition(exp, "multiplication",
+        SyntaxCaseDefinition multiplication = new SyntaxCaseDefinition(rExp, "multiplication",
                 new CBOConverterMethod<IntegerExpression>(Multiplication::new),
-                exp, asteriskToken, exp);
+                rExp, asteriskToken, rExp);
         // read
-        SyntaxCaseDefinition read = new SyntaxCaseDefinition(exp, "read",
+        SyntaxCaseDefinition read = new SyntaxCaseDefinition(rExp, "read",
                 new SimpleWrapConverterMethod(),
                 readToken);
 
@@ -117,7 +122,7 @@ public class Main {
         // x := E |
         SyntaxCaseDefinition assignment = new SyntaxCaseDefinition(comm, "assignment",
                 new UBOConverterMethod<Command, Variable, IntegerExpression>((var, expr)-> new Assignment(storeName, var, expr)),
-                new SpecificCaseComponent(exp, variable), assignmentOperatorToken, exp);
+                lExp, assignmentOperatorToken, rExp).parsingDirection(Associativity.RightToLeft);
         //  C ; C |
         SyntaxCaseDefinition sequentialComposition = new SyntaxCaseDefinition(comm, "sequentialComposition",
                 new CBOConverterMethod<Command>(SequentialComposition::new),
@@ -125,11 +130,11 @@ public class Main {
         // if B then C1 else C2 |
         SyntaxCaseDefinition ifThenElseStatement = new SyntaxCaseDefinition(comm, "ifThenElseStatement",
                 (node, s) -> new IfThenElseCommand(s.convert(node.get(1)), s.convert(node.get(3)), s.convert(node.get(5))),
-                ifToken, bool, thenToken, comm, elseToken, comm);
+                ifToken, bool, thenToken, comm, elseToken, comm).parsingDirection(Associativity.RightToLeft);
         // while B do C
         SyntaxCaseDefinition whileStatement = new SyntaxCaseDefinition(comm, "whileStatement",
                 (node, s) -> new WhileCommand(s.convert(node.get(1)), s.convert(node.get(3))),
-                whileToken, bool, doToken, comm);
+                whileToken, bool, doToken, comm).parsingDirection(Associativity.RightToLeft);
 
         //Bool :=
         // true |
@@ -147,15 +152,15 @@ public class Main {
         // E = E |
         SyntaxCaseDefinition equalIntegerComparison = new SyntaxCaseDefinition(bool, "equalIntegerComparison",
                 new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(EqualIntegerComparison::new),
-                exp, equalsOperatorToken, exp);
+                rExp, equalsOperatorToken, rExp);
         // E > E |
         SyntaxCaseDefinition greaterIntegerComparison = new SyntaxCaseDefinition(bool, "greaterIntegerComparison",
                 new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(GreaterIntegerComparison::new),
-                exp, greaterOperatorToken, exp);
+                rExp, greaterOperatorToken, rExp);
         // E < E |
         SyntaxCaseDefinition lessIntegerComparison = new SyntaxCaseDefinition(bool, "lessIntegerComparison",
                 new UBOConverterMethod<BooleanExpression, IntegerExpression, IntegerExpression>(LessIntegerComparison::new),
-                exp, lessOperatorToken, exp);
+                rExp, lessOperatorToken, rExp);
 
         SyntaxCaseDefinition[] grammar = new SyntaxCaseDefinition[]{
                 variable, numeral, trueVal, falseVal, skip, read,
@@ -164,7 +169,7 @@ public class Main {
                 assignment, ifThenElseStatement, whileStatement, sequentialComposition
         };
 
-        ProgramGenerator programGenerator = new ProgramGenerator(lexicon, grammar);
+        Interpreter programGenerator = new Interpreter(lexicon, grammar);
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Insert program: ");
@@ -173,7 +178,7 @@ public class Main {
 
 
         //programGenerator.setPrintDebugMessages(true);
-        Program p = programGenerator.generate("test", input, (program, configuration) -> {
+        Program p = programGenerator.interpret("test", input, comm, (program, configuration) -> {
             Command c = (Command) program.getRootSemanticObject();
             //IntegerExpression c = (IntegerExpression) program.getRootSemanticObject();
             if (!c.isTerminal()) {
@@ -222,7 +227,7 @@ public class Main {
         ){
 
             @Override
-            public boolean step(Configuration configuration) {
+            public boolean execute(Configuration configuration) {
                 Command c = (Command) this.getRootSemanticObject();
                 if (!c.isTerminal()) {
                     setRootSemanticObject(c.step(configuration));

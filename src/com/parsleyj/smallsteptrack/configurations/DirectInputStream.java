@@ -1,5 +1,7 @@
 package com.parsleyj.smallsteptrack.configurations;
 
+import com.parsleyj.toolparser.configuration.ConfigurationElement;
+
 import java.io.InputStream;
 import java.util.Scanner;
 

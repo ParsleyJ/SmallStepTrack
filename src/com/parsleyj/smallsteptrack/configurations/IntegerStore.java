@@ -1,7 +1,8 @@
 package com.parsleyj.smallsteptrack.configurations;
 
-import com.parsleyj.smallsteptrack.program.Program;
-import com.parsleyj.smallsteptrack.whilesemantics.integerexpr.Variable;
+import com.parsleyj.toolparser.configuration.ConfigurationElement;
+import com.parsleyj.toolparser.program.Program;
+import com.parsleyj.smallsteptrack.integerexpr.Variable;
 
 import java.util.HashMap;
 
@@ -11,7 +12,7 @@ import java.util.HashMap;
  * in order to allow expressions and commands to write and read from the store.
  * The store behaves like a Map. The variable name is used as key, and values are {@link Integer}.
  */
-public class IntegerStore implements ConfigurationElement{
+public class IntegerStore implements ConfigurationElement {
     private HashMap<String, Integer> map = new HashMap<>();
     private String storeName;
 
